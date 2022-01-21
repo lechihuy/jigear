@@ -15,6 +15,15 @@ class CreateSalePromotionsTable extends Migration
     {
         Schema::create('sale_promotions', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->enum('sale_off', ['easy', 'hard']);
+            $table->string('value');
+            $table->boolean('actived');
+            $table->unsignedBigInteger('init_uses');
+            $table->unsignedBigInteger('remaining_uses');
+            $table->timestamp('started_at')->useCurrent();
+            $table->timestamp('ended_at')->useCurrent();
+            $table->timestamp('deleted_at')->useCurrent();
             $table->timestamps();
         });
     }
