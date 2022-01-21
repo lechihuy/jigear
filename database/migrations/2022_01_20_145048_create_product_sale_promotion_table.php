@@ -14,8 +14,8 @@ class CreateProductSalePromotionTable extends Migration
     public function up()
     {
         Schema::create('product_sale_promotion', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            $table->unsignedBigInteger('product_id')->nullable();
+            $table->unsignedBigInteger('sale_promotion_id')->nullable();
         });
     }
 
