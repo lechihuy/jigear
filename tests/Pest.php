@@ -1,5 +1,8 @@
 <?php
 
+use Illuminate\Support\Facades\Artisan;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+
 /*
 |--------------------------------------------------------------------------
 | Test Case

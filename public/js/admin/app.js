@@ -5466,20 +5466,47 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./resources/js/admin/bootstrap.js":
-/*!*****************************************!*\
-  !*** ./resources/js/admin/bootstrap.js ***!
-  \*****************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/***/ "./resources/js/admin/store/toast.js":
+/*!*******************************************!*\
+  !*** ./resources/js/admin/store/toast.js ***!
+  \*******************************************/
+/***/ (() => {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var alpinejs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! alpinejs */ "./node_modules/alpinejs/dist/module.esm.js");
+document.addEventListener('alpine:init', function () {
+  var TOASTS = {
+    danger: {
+      theme: 'bg-red-100 text-red-800',
+      icon: 'error'
+    },
+    success: {
+      theme: 'bg-green-100 text-green-800',
+      icon: 'check_circle'
+    }
+  };
+  Alpine.store('toast', {
+    type: 'danger',
+    shown: false,
+    message: null,
+    timer: null,
+    show: function show(type, message) {
+      var _this = this;
 
-window._ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
-window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
-window.Alpine = alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"];
+      this.type = type;
+      this.message = message;
+      this.shown = true;
+      this.timer = setTimeout(function () {
+        _this.shown = false;
+        clearTimeout(_this.timer);
+      }, 2000);
+    },
+    getIconName: function getIconName() {
+      return TOASTS[this.type].icon;
+    },
+    getThemeClass: function getThemeClass() {
+      return TOASTS[this.type].theme;
+    }
+  });
+});
 
 /***/ }),
 
@@ -22930,6 +22957,18 @@ module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"P
 /******/ 	}
 /******/ 	
 /************************************************************************/
+/******/ 	/* webpack/runtime/compat get default export */
+/******/ 	(() => {
+/******/ 		// getDefaultExport function for compatibility with non-harmony modules
+/******/ 		__webpack_require__.n = (module) => {
+/******/ 			var getter = module && module.__esModule ?
+/******/ 				() => (module['default']) :
+/******/ 				() => (module);
+/******/ 			__webpack_require__.d(getter, { a: getter });
+/******/ 			return getter;
+/******/ 		};
+/******/ 	})();
+/******/ 	
 /******/ 	/* webpack/runtime/define property getters */
 /******/ 	(() => {
 /******/ 		// define getter functions for harmony exports
@@ -22981,12 +23020,22 @@ module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"P
 /******/ 	
 /************************************************************************/
 var __webpack_exports__ = {};
-// This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
+// This entry need to be wrapped in an IIFE because it need to be in strict mode.
 (() => {
+"use strict";
 /*!***********************************!*\
   !*** ./resources/js/admin/app.js ***!
   \***********************************/
-__webpack_require__(/*! ./bootstrap */ "./resources/js/admin/bootstrap.js");
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var alpinejs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! alpinejs */ "./node_modules/alpinejs/dist/module.esm.js");
+/* harmony import */ var _store_toast__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./store/toast */ "./resources/js/admin/store/toast.js");
+/* harmony import */ var _store_toast__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_store_toast__WEBPACK_IMPORTED_MODULE_1__);
+
+window._ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
+window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+window.Alpine = alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"];
+
 })();
 
 /******/ })()

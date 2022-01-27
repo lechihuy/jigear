@@ -20,4 +20,5 @@ mix.postCss('resources/css/admin/app.css', 'public/css/admin', [
     require('tailwindcss')
   ])
   .js('resources/js/admin/app.js', 'public/js/admin/app.js')
+  .js('resources/js/admin/store/toast.js', 'public/js/admin/store/toast.js')
   .js('resources/js/admin/pages/auth/login.js', 'public/js/admin/pages/auth/login.js')
