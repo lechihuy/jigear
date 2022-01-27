@@ -10,11 +10,14 @@
     <link rel="icon" type="image/png" href="{{ asset('images/logo-icon.png') }}">
     
     @routes
+
+    <script src="{{ mix('js/admin/app.js') }}"></script>
 </head>
 <body>
     @yield('content')
 
-    <script src="{{ mix('js/admin/app.js') }}"></script>
+    <x-toast />
+
     @stack('scripts')
     <script>
         Alpine.start();
