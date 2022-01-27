@@ -14,21 +14,29 @@ jobs:
         php: [8.1]
         laravel: [^8.0]
 
+    services:
+    mysql:
+      image: mysql:5.7
+      env:
+        MYSQL_DATABASE: jigear_testing
+        MYSQL_USER: root
+        MYSQL_PASSWORD: 
+        MYSQL_ROOT_PASSWORD: 
+      ports:
+        - 3306
+      options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+
     name: PHP ${{ matrix.php }} - Laravel ${{ matrix.laravel }}
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Shutdown Ubuntu MySQL (SUDO)
-        run: sudo service mysql stop
-
-      - name: Set up MySQL
-        uses: mirromutth/mysql-action@v1.1
-        with:
-          mysql database: jigear_testing
-          mysql user: root
-          mysql password: 
+      - name: Verify MySQL connection
+        run: |
+          mysql --version
+          sudo apt-get install -y mysql-client
+          mysql --host 127.0.0.1 --port ${{ job.services.mysql.ports['3306'] }} -uuser -psecret -e "SHOW DATABASES"
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
