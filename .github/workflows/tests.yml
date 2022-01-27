@@ -27,6 +27,8 @@ jobs:
           collation server: utf8mb4_unicode_ci
           mysql database: jigear
           mysql root password: 
+          mysql user: root
+          mysql password:
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
