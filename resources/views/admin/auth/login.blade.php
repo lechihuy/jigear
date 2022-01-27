@@ -22,12 +22,12 @@
             
             {{-- Email input --}}
             <div class="mb-2">
-                <input type="text" class="form-text w-full rounded-lg" placeholder="{{ __('Địa chỉ E-mail') }}">
+                <input type="text" class="form-text" placeholder="{{ __('Địa chỉ E-mail') }}">
             </div>
 
             {{-- Password input --}}
             <div class="mb-4">
-                <input type="text" class="form-text w-full rounded-lg" placeholder="{{ __('Mật khẩu') }}">
+                <input type="password" class="form-text" placeholder="{{ __('Mật khẩu') }}">
             </div>
 
             {{-- Submit button --}}

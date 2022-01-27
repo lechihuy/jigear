@@ -15,7 +15,9 @@ img {
 @tailwind components;
 
 .form-text {
-    @apply border-gray-300 focus:ring-sky-500 focus:border-sky-500
+    @apply border-gray-300 w-full rounded-lg
+        focus:ring-sky-500 focus:border-sky-500
+        
 }
 
 .btn {
