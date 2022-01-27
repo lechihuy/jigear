@@ -24,5 +24,6 @@ Route::prefix('admin')->name('admin.')->group(function() {
     /* Auth Routes */
     Route::name('auth.')->group(function() {
         Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
+        Route::post('/login', [LoginController::class, 'store'])->name('login.store');
     });
 });

@@ -16,6 +16,8 @@
 
     <script src="{{ mix('js/admin/app.js') }}"></script>
     @stack('scripts')
-    <script>Alpine.start()</script>
+    <script>
+        Alpine.start();
+    </script>
 </body>
 </html>

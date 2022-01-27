@@ -16,4 +16,15 @@ class LoginController extends Controller
     {
         return view('admin.auth.login');
     }
+
+    /**
+     * Handle to attempt login.
+     * 
+     * @param \App\Http\Requests\Admin\LoginRequest  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(LoginRequest $request)
+    {
+
+    }
 }
