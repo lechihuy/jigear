@@ -27,7 +27,8 @@ jobs:
         uses: mirromutth/mysql-action@v1.1
         with:
           mysql database: jigear_testing
-          mysql root password: ''
+          mysql user: root
+          mysql password: 
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
