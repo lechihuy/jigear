@@ -1,0 +1,40 @@
+@import url("https://fonts.googleapis.com/css2?family=Mochiy+Pop+P+One&family=Open+Sans:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp");
+
+@tailwind base;
+
+img {
+  -webkit-backface-visibility: hidden;
+  transform: translateZ(0);
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: -o-crisp-edges;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  -ms-interpolation-mode: nearest-neighbor;
+}
+
+@tailwind components;
+
+.form-text {
+  @apply w-full border-gray-300 rounded-lg focus:ring-sky-500 focus:border-sky-500;
+}
+
+.form-checkbox {
+  @apply rounded w-5 h-5 border-gray-300 shadow-inner cursor-pointer text-sky-500
+        focus:ring-sky-500
+}
+
+.btn {
+  @apply flex items-center justify-center gap-2 px-3 py-2 rounded-lg;
+}
+
+.btn-block {
+  @apply w-full;
+}
+
+.btn-primary {
+  @apply text-white border bg-sky-500 border-sky-500 hover:bg-sky-600 hover:border-sky-600;
+}
+
+@tailwind utilities;

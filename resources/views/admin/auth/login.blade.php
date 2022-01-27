@@ -7,13 +7,13 @@
     {{-- Box --}}
     <div class="w-96">
         {{-- Logo --}}
-        <div class="flex items-center gap-2 justify-center mb-5">
+        <div class="flex items-center justify-center gap-2 mb-5">
             <img src="{{ asset('images/logo-icon.png') }}" class="w-14">
-            <span class="font-logo text-3xl text-gray-900">Jigear</span>
+            <span class="text-3xl text-gray-900 font-logo">Jigear</span>
         </div>
 
         {{-- Login form --}}
-        <form action="" class="bg-white p-7 rounded-lg shadow" method="POST">
+        <form action="" class="bg-white rounded-lg shadow p-7" method="POST" x-data="loginForm" @submit.prevent="submit">
             {{-- Intro --}}
             <div class="text-center mb-7">
                 <h3 class="text-xl">{{  __('Chào mừng quay lại!') }}</h3>
@@ -22,19 +22,34 @@
             
             {{-- Email input --}}
             <div class="mb-2">
-                <input type="text" class="form-text" placeholder="{{ __('Địa chỉ E-mail') }}">
+                <input type="text" class="form-text" placeholder="{{ __('Địa chỉ E-mail') }}" x-model="email">
             </div>
 
             {{-- Password input --}}
+            <div class="mb-2">
+                <input type="password" class="form-text" placeholder="{{ __('Mật khẩu') }}" x-model="password">
+            </div>
+
+            {{-- Remember checkbox --}}
             <div class="mb-4">
-                <input type="password" class="form-text" placeholder="{{ __('Mật khẩu') }}">
+                <label class="flex items-center gap-2 cursor-pointer select-none">
+                    <input type="checkbox" class="form-checkbox" x-model="remember" />
+                    {{ __('Lưu đăng nhập') }}
+                </label>
             </div>
 
             {{-- Submit button --}}
-            <button type="submit" class="btn btn-block btn-primary">{{ __('Đăng nhập') }}</button>
+            <button type="submit" class="btn btn-block btn-primary">
+                {{ __('Đăng nhập') }}
+                <x-icons.loading x-show="loading" />
+            </button>
         </form> 
         {{-- /Login form --}}
     </div>
     {{-- /Box --}}
 </div>
 @endsection
+
+@push('scripts')
+<script src="{{ mix('js/admin/pages/auth/login.js') }}"></script>
+@endpush
