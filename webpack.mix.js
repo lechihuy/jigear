@@ -15,6 +15,9 @@ mix.js('resources/js/app.js', 'public/js')
   .postCss('resources/css/app.css', 'public/css', [
     //
   ])
-  .postCss('resources/admin/css/app.css', 'public/admin/css', [
-    require("tailwindcss")
+
+mix.postCss('resources/css/admin/app.css', 'public/css/admin', [
+    require('tailwindcss')
   ])
+  .js('resources/js/admin/app.js', 'public/js/admin/app.js')
+  .js('resources/js/admin/pages/auth/login.js', 'public/js/admin/pages/auth/login.js')
