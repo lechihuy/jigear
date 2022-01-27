@@ -738,6 +738,10 @@ img {
   margin-top: -1px;
 }
 
+.ml-3{
+  margin-left: 0.75rem;
+}
+
 .mb-5{
   margin-bottom: 1.25rem;
 }
@@ -752,10 +756,6 @@ img {
 
 .mb-4{
   margin-bottom: 1rem;
-}
-
-.ml-3{
-  margin-left: 0.75rem;
 }
 
 .flex{
@@ -868,16 +868,12 @@ img {
   justify-content: center;
 }
 
-.gap-4{
-  gap: 1rem;
+.gap-3{
+  gap: 0.75rem;
 }
 
 .gap-2{
   gap: 0.5rem;
-}
-
-.gap-3{
-  gap: 0.75rem;
 }
 
 .overflow-hidden{
@@ -926,16 +922,12 @@ img {
   padding: 1.5rem;
 }
 
-.p-5{
-  padding: 1.25rem;
+.p-4{
+  padding: 1rem;
 }
 
 .p-7{
   padding: 1.75rem;
-}
-
-.p-4{
-  padding: 1rem;
 }
 
 .py-4{
