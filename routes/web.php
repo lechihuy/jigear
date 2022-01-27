@@ -29,5 +29,6 @@ Route::prefix('admin')->name('admin.')->group(function() {
         Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
     });
 
+    /* Dashboard */
     Route::get('/', DashboardController::class)->name('dashboard');
 });
