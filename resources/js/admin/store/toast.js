@@ -11,7 +11,7 @@ document.addEventListener('alpine:init', () => {
   }
 
   Alpine.store('toast', {
-    type: null,
+    type: 'danger',
     shown: false,
     message: null,
     timer: null,

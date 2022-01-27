@@ -15,7 +15,7 @@ document.addEventListener('alpine:init', function () {
     }
   };
   Alpine.store('toast', {
-    type: null,
+    type: 'danger',
     shown: false,
     message: null,
     timer: null,

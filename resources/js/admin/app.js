@@ -7,7 +7,4 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 window.Alpine = Alpine;
 
-window.Turbolinks = require('turbolinks')
-Turbolinks.start()
-
 import './store/toast'

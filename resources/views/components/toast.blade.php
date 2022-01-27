@@ -1,5 +1,5 @@
 <div 
-    class="fixed flex items-center gap-4 p-5 rounded-lg shadow-lg top-3 right-3" 
+    class="fixed flex items-center max-w-sm gap-3 p-4 ml-3 text-sm rounded-lg shadow-lg top-3 right-3" 
     x-data="$store.toast" 
     x-show="shown"
     :class="getThemeClass()"
