@@ -5,7 +5,14 @@ module.exports = {
     "./resources/**/*.vue"
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        sans: ['Open Sans', 'sans-serif'],
+        logo: ['Mochiy Pop P One', 'sans-serif']
+      }
+    },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/forms'),
+  ],
 }
