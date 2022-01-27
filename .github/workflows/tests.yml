@@ -46,6 +46,8 @@ jobs:
            cp .env.example .env
            php artisan key:generate
            cp .env .env.testing
+           php artisan migrate --env=testing
+           php artisan migrate:status --env=testing
            
       - name: Execute tests
         run: php artisan test
