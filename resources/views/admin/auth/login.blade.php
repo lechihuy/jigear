@@ -7,13 +7,13 @@
     {{-- Box --}}
     <div class="w-96">
         {{-- Logo --}}
-        <div class="flex items-center gap-2 justify-center mb-5">
+        <div class="flex items-center justify-center gap-2 mb-5">
             <img src="{{ asset('images/logo-icon.png') }}" class="w-14">
-            <span class="font-logo text-3xl text-gray-900">Jigear</span>
+            <span class="text-3xl text-gray-900 font-logo">Jigear</span>
         </div>
 
         {{-- Login form --}}
-        <form action="" class="bg-white p-7 rounded-lg shadow" method="POST" x-data="loginForm" @submit.prevent="submit">
+        <form action="" class="bg-white rounded-lg shadow p-7" method="POST" x-data="loginForm" @submit.prevent="submit">
             {{-- Intro --}}
             <div class="text-center mb-7">
                 <h3 class="text-xl">{{  __('Chào mừng quay lại!') }}</h3>
@@ -32,7 +32,7 @@
 
             {{-- Remember checkbox --}}
             <div class="mb-4">
-                <label class="cursor-pointer select-none flex items-center gap-2">
+                <label class="flex items-center gap-2 cursor-pointer select-none">
                     <input type="checkbox" class="form-checkbox" x-model="remember" />
                     {{ __('Lưu đăng nhập') }}
                 </label>
