@@ -27,14 +27,17 @@ jobs:
           extensions: dom, curl, libxml, mbstring, zip
           tools: composer:v2
           coverage: none
+      
+      - name: Start mysql service
+        run: sudo systemctl start mysql
 
       - name: Install dependencies
         run: |
-           composer update --prefer-dist --no-interaction --no-progress
+          composer update --prefer-dist --no-interaction --no-progress
       - name: Setup Laravel
         run: |
-           cp .env.example .env
-           php artisan key:generate
+          cp .env.example .env
+          php artisan key:generate
            
       - name: Execute tests
         run: php artisan test
