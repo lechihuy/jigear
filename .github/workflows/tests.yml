@@ -20,6 +20,13 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - name: Setup Mysql
+        uses: mirromutth/mysql-action@v1.1
+        with: 
+          character set server: utf8mb4,
+          collation server: utf8mb4_unicode_ci
+          mysql database: jigear
+
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
@@ -34,7 +41,9 @@ jobs:
       - name: Setup Laravel
         run: |
            cp .env.example .env
+           cp .env.example .env.testing
            php artisan key:generate
+           php artisan migrate --env=testing
            
       - name: Execute tests
         run: php artisan test
