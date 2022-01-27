@@ -9,7 +9,7 @@ it('has login page', function () {
 });
 
 test('can login with admin user', function() {
-    $user = User::where('role', 'admin')->first();
+    $user = User::factory()->admin()->create();
 
     $response = $this->post(route('admin.auth.login.store'), [
         'email' => $user->email,
