@@ -8,16 +8,6 @@ jobs:
   tests:
     runs-on: ubuntu-20.04
 
-    services:
-      mysql:
-        image: mysql:5.7
-        env:
-          MYSQL_DATABASE: jigear
-          MYSQL_ALLOW_EMPTY_PASSWORD: yes
-        ports:
-          - 3306
-        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
-
     strategy:
       fail-fast: true
       matrix:
@@ -48,9 +38,6 @@ jobs:
         run: |
           cp .env.example .env
           php artisan key:generate
-          cp .env .env.testing
-          php artisan migrate --env=testing
-          php artisan migrate:status --env=testing
            
       - name: Execute tests
         run: php artisan test
