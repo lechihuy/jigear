@@ -44,8 +44,8 @@ jobs:
       - name: Setup Laravel
         run: |
            cp .env.example .env
-           cp .env .env.testing
            php artisan key:generate
+           cp .env .env.testing
            
       - name: Execute tests
         run: php artisan test
