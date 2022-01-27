@@ -653,14 +653,6 @@ img {
   margin-bottom: 1rem;
 }
 
-.mr-1{
-  margin-right: 0.25rem;
-}
-
-.inline-block{
-  display: inline-block;
-}
-
 .flex{
   display: flex;
 }
