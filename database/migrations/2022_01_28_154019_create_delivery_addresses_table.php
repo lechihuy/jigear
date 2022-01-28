@@ -16,8 +16,8 @@ class CreateDeliveryAddressesTable extends Migration
         Schema::create('delivery_addresses', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('customer_id');
-            $table->text('address');
-            $table->string('phone_number');
+            $table->text('address')->index();
+            $table->string('phone_number')->index();
             $table->timestamps();
             $table->softDeletes();
         });
