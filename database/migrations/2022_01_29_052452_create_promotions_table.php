@@ -17,17 +17,17 @@ class CreatePromotionsTable extends Migration
             $table->id();
             $table->string('name')->unique();
             $table->string('code')->unique()->nullable();
-            $table->enum('type', ['sale_off', 'voucher']);
+            $table->enum('type', ['sale_off', 'voucher'])->index();
             $table->string('value');
             $table->boolean('is_percent_unit');
             $table->unsignedBigInteger('max')->nullable();
-            $table->boolean('actived')->default(true);
+            $table->boolean('actived')->default(true)->index();
             $table->unsignedBigInteger('init_uses');
-            $table->unsignedBigInteger('remaining_uses');
+            $table->unsignedBigInteger('remaining_uses')->index();
             $table->timestamps();
             $table->softDeletes();
-            $table->timestamp('started_at')->useCurrent();
-            $table->timestamp('ended_at')->useCurrent()->nullable();
+            $table->timestamp('started_at')->useCurrent()->index();
+            $table->timestamp('ended_at')->useCurrent()->nullable()->index();
         });
     }
 
