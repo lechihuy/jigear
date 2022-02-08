@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateProductParametersTable extends Migration
+class FkProductIdColumnToCartItemsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,8 @@ class CreateProductParametersTable extends Migration
      */
     public function up()
     {
-        Schema::create('product_parameters', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+        Schema::table('cart_items', function (Blueprint $table) {
+            $table->foreign('product_id')->references('id')->on('products');
         });
     }
 
@@ -26,6 +25,8 @@ class CreateProductParametersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('product_parameters');
+        Schema::table('cart_items', function (Blueprint $table) {
+            $table->dropForeign('product_id');
+        });
     }
 }

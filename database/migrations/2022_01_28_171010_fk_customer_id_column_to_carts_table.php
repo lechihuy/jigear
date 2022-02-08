@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCatalogablesTable extends Migration
+class FkCustomerIdColumnToCartsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,8 @@ class CreateCatalogablesTable extends Migration
      */
     public function up()
     {
-        Schema::create('catalogables', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+        Schema::table('carts', function (Blueprint $table) {
+            $table->foreign('customer_id')->references('id')->on('users');
         });
     }
 
@@ -26,6 +25,8 @@ class CreateCatalogablesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('catalogables');
+        Schema::table('carts', function (Blueprint $table) {
+            $table->dropForeign(['customer_id']);
+        });
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCartsTable extends Migration
+class FkOrderIdColumnToOrderItemsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,8 @@ class CreateCartsTable extends Migration
      */
     public function up()
     {
-        Schema::create('carts', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+        Schema::table('order_items', function (Blueprint $table) {
+            $table->foreign('order_id')->references('id')->on('orders');
         });
     }
 
@@ -26,6 +25,8 @@ class CreateCartsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('carts');
+        Schema::table('order_items', function (Blueprint $table) {
+            $table->dropForeign(['order_id']);
+        });
     }
 }

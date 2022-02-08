@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateOrderSalePromotionTable extends Migration
+class FkProductIdColumnToOrderItemsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,8 @@ class CreateOrderSalePromotionTable extends Migration
      */
     public function up()
     {
-        Schema::create('order_sale_promotion', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+        Schema::table('order_items', function (Blueprint $table) {
+            $table->foreign('product_id')->references('id')->on('products');
         });
     }
 
@@ -26,6 +25,8 @@ class CreateOrderSalePromotionTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('order_sale_promotion');
+        Schema::table('order_items', function (Blueprint $table) {
+            $table->dropForeign('product_id');
+        });
     }
 }

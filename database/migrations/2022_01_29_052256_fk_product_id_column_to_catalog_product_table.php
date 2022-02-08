@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class SetFkAvatarIdColumnForUsersTable extends Migration
+class FkProductIdColumnToCatalogProductTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,9 @@ class SetFkAvatarIdColumnForUsersTable extends Migration
      */
     public function up()
     {
-        //
+        Schema::table('catalog_product', function (Blueprint $table) {
+            $table->foreign('product_id')->references('id')->on('products');
+        });
     }
 
     /**
@@ -23,6 +25,8 @@ class SetFkAvatarIdColumnForUsersTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::table('catalog_product', function (Blueprint $table) {
+            $table->dropForeign(['product_id']);
+        });
     }
 }

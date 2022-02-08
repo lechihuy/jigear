@@ -17,16 +17,14 @@ class CreateUsersTable extends Migration
             $table->id();
             $table->string('email')->unique();
             $table->string('password');
-            $table->enum('gender', [0, 1, 2]);
+            $table->enum('gender', [0, 1, 2])->index();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('remember_token')->nullable();
-            $table->string('first_name');
-            $table->string('last_name');
-            $table->enum('role', ['customer', 'admin']);
+            $table->string('first_name')->index();
+            $table->string('last_name')->index();
+            $table->enum('role', ['customer', 'admin'])->index();
             $table->timestamps();
             $table->softDeletes();
-
-            $table->index(['role', 'gender', 'first_name', 'last_name']);
         });
     }
 

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSalePromotionsTable extends Migration
+class CreateImagesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,11 @@ class CreateSalePromotionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('sale_promotions', function (Blueprint $table) {
+        Schema::create('images', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string('path')->unique();
+            $table->timestamp('created_at')->useCurrent();
+            $table->softDeletes();
         });
     }
 
@@ -26,6 +28,6 @@ class CreateSalePromotionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sale_promotions');
+        Schema::dropIfExists('images');
     }
 }
