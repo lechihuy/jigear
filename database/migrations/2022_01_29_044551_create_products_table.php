@@ -23,7 +23,7 @@ class CreateProductsTable extends Migration
             $table->unsignedBigInteger('stock')->nullable()->index();
             $table->boolean('published')->default(false)->index();
             $table->boolean('purchasable')->default(true)->index();
-            $table->json('parameters')->nullable()->index();
+            $table->json('parameters')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

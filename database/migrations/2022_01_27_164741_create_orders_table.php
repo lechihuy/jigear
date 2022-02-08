@@ -26,7 +26,7 @@ class CreateOrdersTable extends Migration
             $table->enum('payment_method', ['cod', 'banking'])->index();
             $table->string('first_name')->index();
             $table->string('last_name')->index();
-            $table->text('address')->index();
+            $table->text('address');
             $table->string('phone_number')->index();
             $table->timestamps();
             $table->softDeletes();
