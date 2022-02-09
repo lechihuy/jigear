@@ -13,8 +13,15 @@
 
     <script src="{{ mix('js/admin/app.js') }}"></script>
 </head>
-<body>
-    @yield('content')
+<body class="bg-gray-100">
+    @include('admin.layouts.header')
+    @include('admin.layouts.sidebar')
+
+    <main class="pt-16 pl-72">
+        <div class="p-5 shadow-inner">
+            @yield('content')
+        </div>
+    </main>
 
     <x-toast />
 
