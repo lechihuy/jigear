@@ -18,7 +18,7 @@
     @include('admin.layouts.sidebar')
 
     <main class="pt-16 lg:pl-72">
-        <div class="p-5">
+        <div class="container p-5 mx-auto lg:p-7">
             @yield('content')
         </div>
     </main>

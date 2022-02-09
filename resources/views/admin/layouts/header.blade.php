@@ -29,24 +29,6 @@
 
         {{-- Navs --}}
         <div class="flex items-center gap-5 ml-auto">
-            {{-- Creation dropdown --}}
-            <div class="relative" x-data="{ open: false }">
-                <button @click="open = ! open" class="btn btn-primary">
-                    <span class="material-icons-outlined">add_circle</span>
-                    <span class="hidden sm:block">{{ __('Tạo') }}</span>
-                </button>
-
-                <div x-show="open" x-transition class="absolute right-0 mt-2 origin-top-right bg-white rounded-md shadow-lg w-52 ring-1 ring-black ring-opacity-5 focus:outline-none">
-                    <div class="py-1">
-                        <a href="#" class="block px-4 py-2 text-sm text-gray-700">{{ __('Tạo sản phẩm') }}</a>
-                        <a href="#" class="block px-4 py-2 text-sm text-gray-700">{{ __('Tạo bài viết') }}</a>
-                        <a href="#" class="block px-4 py-2 text-sm text-gray-700">{{ __('Tạo đơn hàng') }}</a>
-                        <a href="#" class="block px-4 py-2 text-sm text-gray-700">{{ __('Tạo khuyến mãi') }}</a>
-                    </div>
-                </div>
-            </div>
-            {{-- /Creation dropdown --}}
-
             {{-- User dropdown --}}
             <div class="relative" x-data="{ open: false }">
                 <div @click="open = ! open">
