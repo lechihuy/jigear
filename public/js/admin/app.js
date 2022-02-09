@@ -5484,9 +5484,9 @@ document.addEventListener('alpine:init', function () {
       this.shownSidebar = !this.shownSidebar;
     },
     update: function update() {
-      this.shownSidebar = this.width >= 1024;
       this.width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
       this.height = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+      this.shownSidebar = this.width >= 1024;
     }
   });
 });
