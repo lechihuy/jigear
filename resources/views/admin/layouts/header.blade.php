@@ -1,8 +1,16 @@
 <header class="fixed flex items-center w-full h-16 bg-white border-b border-gray-300">
+    {{-- Toggle sidebar button --}}
+    <button 
+        type="button" class="ml-5 btn btn-secondary lg:hidden" 
+        x-data @click="$store.theme.toggleSidebar()"
+    >
+        <span class="material-icons-outlined">menu</span>
+    </button>
+
     {{-- Logo --}}
-    <a class="flex items-center flex-none gap-2 px-5 w-72">
+    <a class="flex items-center flex-none gap-2 px-5 sm:w-72">
         <img src="{{ asset('images/logo-icon.png') }}" class="h-10">
-        <div class="flex flex-col">
+        <div class="flex-col hidden sm:flex">
             <span class="text-xl text-gray-900 font-logo">Jigear</span>
             <small class="text-xs text-gray-500">Administration</small>
         </div>
@@ -20,7 +28,7 @@
 
         {{-- Navs --}}
         <div class="flex items-center gap-5 ml-auto">
-            {{-- Dropdown --}}
+            {{-- Creation dropdown --}}
             <div class="relative" x-data="{ open: false }">
                 <button @click="open = ! open" class="btn btn-primary">
                     <span class="material-icons-outlined">add_circle</span>
@@ -36,9 +44,9 @@
                     </div>
                 </div>
             </div>
-            {{-- /Dropdown --}}
+            {{-- /Creation dropdown --}}
 
-            {{-- Dropdown --}}
+            {{-- User dropdown --}}
             <div class="relative" x-data="{ open: false }">
                 <div @click="open = ! open">
                     <img src="https://ui-avatars.com/api/?name=John+Doe&size=50" class="h-10 rounded-full cursor-pointer" :class="open ? 'ring-2 ring-sky-500 ring-offset-2' : ''">
@@ -54,7 +62,7 @@
                     </div>
                 </div>
             </div>
-            {{-- /Dropdown --}}
+            {{-- /User dropdown --}}
             
         </div>
     </div>

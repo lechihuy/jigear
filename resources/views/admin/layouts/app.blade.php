@@ -17,7 +17,7 @@
     @include('admin.layouts.header')
     @include('admin.layouts.sidebar')
 
-    <main class="pt-16 pl-72">
+    <main class="pt-16 lg:pl-72">
         <div class="p-5 shadow-inner">
             @yield('content')
         </div>

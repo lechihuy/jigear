@@ -7,4 +7,5 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 window.Alpine = Alpine;
 
-import './store/toast'
+import './store/theme';
+import './store/toast';

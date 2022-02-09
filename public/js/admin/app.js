@@ -5466,6 +5466,36 @@ module.exports = {
 
 /***/ }),
 
+/***/ "./resources/js/admin/store/theme.js":
+/*!*******************************************!*\
+  !*** ./resources/js/admin/store/theme.js ***!
+  \*******************************************/
+/***/ (() => {
+
+document.addEventListener('alpine:init', function () {
+  Alpine.store('theme', {
+    width: 0,
+    height: 0,
+    shownSidebar: false,
+    init: function init() {
+      this.update();
+    },
+    toggleSidebar: function toggleSidebar() {
+      this.shownSidebar = !this.shownSidebar;
+    },
+    update: function update() {
+      this.shownSidebar = this.width >= 1024;
+      this.width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+      this.height = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+    }
+  });
+});
+window.addEventListener('resize', function () {
+  Alpine.store('theme').update();
+});
+
+/***/ }),
+
 /***/ "./resources/js/admin/store/toast.js":
 /*!*******************************************!*\
   !*** ./resources/js/admin/store/toast.js ***!
@@ -23028,13 +23058,16 @@ var __webpack_exports__ = {};
   \***********************************/
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var alpinejs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! alpinejs */ "./node_modules/alpinejs/dist/module.esm.js");
-/* harmony import */ var _store_toast__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./store/toast */ "./resources/js/admin/store/toast.js");
-/* harmony import */ var _store_toast__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_store_toast__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _store_theme__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./store/theme */ "./resources/js/admin/store/theme.js");
+/* harmony import */ var _store_theme__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_store_theme__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _store_toast__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./store/toast */ "./resources/js/admin/store/toast.js");
+/* harmony import */ var _store_toast__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_store_toast__WEBPACK_IMPORTED_MODULE_2__);
 
 window._ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
 window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 window.Alpine = alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"];
+
 
 })();
 
