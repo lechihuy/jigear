@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Catalog;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreCatalogRequest;
 
 class CatalogController extends Controller
 {
@@ -27,18 +28,24 @@ class CatalogController extends Controller
     public function create()
     {
         return view('admin.catalog.create', [
+            'catalogs' => Catalog::all()->map(fn($catalog) => [
+                'label' => $catalog->title,
+                'value' => $catalog->id
+            ])
         ]);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\StoreCatalogRequest $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreCatalogRequest $request)
     {
-        //
+        $catalog = Catalog::create($request->validated());
+
+        return response()->json(['catalog' => $catalog]);
     }
 
     /**

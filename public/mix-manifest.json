@@ -2,6 +2,7 @@
     "/js/app.js": "/js/app.js",
     "/js/admin/app.js": "/js/admin/app.js",
     "/js/admin/pages/auth/login.js": "/js/admin/pages/auth/login.js",
-    "/css/app.css": "/css/app.css",
-    "/css/admin/app.css": "/css/admin/app.css"
+    "/js/admin/pages/catalog/create.js": "/js/admin/pages/catalog/create.js",
+    "/css/admin/app.css": "/css/admin/app.css",
+    "/css/app.css": "/css/app.css"
 }

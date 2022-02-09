@@ -20,6 +20,10 @@ img {
   @apply w-full border-gray-300 rounded-lg focus:ring-sky-500 focus:border-sky-500;
 }
 
+.form-select {
+  @apply w-full border-gray-300 rounded-lg focus:ring-sky-500 focus:border-sky-500;
+}
+
 .form-checkbox {
   @apply rounded w-5 h-5 border-gray-300 shadow-inner cursor-pointer text-sky-500
         focus:ring-sky-500

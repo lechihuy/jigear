@@ -7,19 +7,19 @@
 @section('title', $title)
 
 @section('content')
-<form action="{{ route('admin.catalogs.store') }}" method="POST">
-    @csrf
+<form method="POST" x-data="createCatalogForm" @submit.prevent="submit">
 
     {{-- Panel --}}
     <x-admin.panel :name="$title">
 
         {{-- Title --}}
         <x-admin.panel.item :label="'Tiêu đề'" :required="true">
-            <x-admin.form.text name="title" />
+            <x-admin.form.text name="title" x-model="title" />
         </x-admin.panel.item>
 
         {{-- Parent ID --}}
         <x-admin.panel.item :label="'Danh mục cha'">
+            <x-admin.form.select name="parent_id" x-model="parent_id" :options="$catalogs" />
         </x-admin.panel.item>
 
     </x-admin.panel>
@@ -42,3 +42,7 @@
     {{-- /Action buttons --}}
 </form>
 @endsection
+
+@push('scripts')
+<script src="{{ mix('js/admin/pages/catalog/create.js') }}"></script>
+@endpush

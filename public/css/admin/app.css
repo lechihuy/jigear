@@ -660,6 +660,20 @@ img {
   --tw-ring-color: rgb(14 165 233 / var(--tw-ring-opacity));
 }
 
+.form-select{
+  width: 100%;
+  border-radius: 0.5rem;
+  --tw-border-opacity: 1;
+  border-color: rgb(209 213 219 / var(--tw-border-opacity));
+}
+
+.form-select:focus{
+  --tw-border-opacity: 1;
+  border-color: rgb(14 165 233 / var(--tw-border-opacity));
+  --tw-ring-opacity: 1;
+  --tw-ring-color: rgb(14 165 233 / var(--tw-ring-opacity));
+}
+
 .form-checkbox{
   height: 1.25rem;
   width: 1.25rem;

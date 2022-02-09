@@ -26,7 +26,7 @@
         <a href="" class="nav-item">
             <span class="material-icons-outlined">inventory_2</span> {{ __('Sản phẩm') }}
         </a>
-        <a href="{{ route('admin.catalogs.index') }}" class="nav-item {{ str_contains(Route::currentRouteName(), 'admin.catalogs.index') ? '!text-white' : '' }}">
+        <a href="{{ route('admin.catalogs.index') }}" class="nav-item {{ str_contains(Route::currentRouteName(), 'admin.catalogs') ? '!text-white' : '' }}">
             <span class="material-icons-outlined">category</span> {{ __('Danh mục') }}
         </a>
 

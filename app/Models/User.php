@@ -2,10 +2,11 @@
 
 namespace App\Models;
 
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
@@ -43,4 +44,38 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * The fullname of the user.
+     * 
+     * @return string
+     */
+    public function getFullname() 
+    {
+        return $this->first_name . ' ' . $this->last_name;
+    }
+
+    /**
+     * Get the user's fullname.
+     *
+     * @return \Illuminate\Database\Eloquent\Casts\Attribute
+     */
+    protected function fullname(): Attribute
+    {
+        return new Attribute(
+            get: fn () => $this->first_name.' '.$this->last_name,
+        );
+    }
+
+    /**
+     * Determine if the user is a admin.
+     *
+     * @return \Illuminate\Database\Eloquent\Casts\Attribute
+     */
+    protected function isAdmin(): Attribute
+    {
+        return new Attribute(
+            get: fn () => $this->role === 'admin',
+        );
+    }
 }
