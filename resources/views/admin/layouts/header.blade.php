@@ -4,7 +4,8 @@
         type="button" class="ml-5 btn btn-secondary lg:hidden" 
         x-data @click="$store.theme.toggleSidebar()"
     >
-        <span class="material-icons-outlined">menu</span>
+        <span x-show="!$store.theme.shownSidebar" class="material-icons-outlined">menu</span>
+        <span x-show="$store.theme.shownSidebar" class="material-icons-outlined">menu_open</span>
     </button>
 
     {{-- Logo --}}

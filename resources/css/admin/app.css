@@ -42,3 +42,13 @@ img {
 }
 
 @tailwind utilities;
+
+#sidebar .nav-heading {
+  @apply text-xs font-thin text-gray-400 uppercase mb-2 mt-5
+}
+
+#sidebar .nav-item {
+  @apply py-2 text-gray-400 flex items-center gap-2 w-full
+        hover:text-white
+}
+
