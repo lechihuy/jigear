@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Catalog;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreCatalogRequest;
+use App\Http\Requests\Admin\StoreCatalogRequest;
 
 class CatalogController extends Controller
 {
@@ -56,7 +56,9 @@ class CatalogController extends Controller
      */
     public function show($id)
     {
-        //
+        $catalog = Catalog::published()->findOrFail($id);
+
+        return view('admin.catalog.show', ['catalog' => $catalog]);
     }
 
     /**

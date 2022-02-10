@@ -41,6 +41,10 @@ img {
   @apply text-white border bg-sky-500 border-sky-500 hover:bg-sky-600 hover:border-sky-600;
 }
 
+.btn-light {
+  @apply text-gray-500 bg-white border border-gray-300 hover:bg-slate-100;
+}
+
 .btn-secondary {
   @apply text-gray-700 border border-slate-200 bg-slate-200 hover:bg-slate-300 hover:border-slate-300;
 }

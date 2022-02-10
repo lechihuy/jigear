@@ -2,12 +2,13 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Traits\Publishable;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Catalog extends Model
 {
-    use HasFactory;
+    use HasFactory, Publishable;
 
     /**
      * The attributes that are mass assignable.
@@ -18,4 +19,12 @@ class Catalog extends Model
         'title',
         'parent_id',
     ];
+
+    /**
+     * Get the catalog that owns to this catalog.
+     */
+    public function parent()
+    {
+        return $this->belongsTo(static::class);
+    }
 }

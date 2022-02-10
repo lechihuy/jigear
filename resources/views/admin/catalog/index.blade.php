@@ -9,6 +9,6 @@
 @section('content')
     <x-admin.resource
         :name="$title"
-        :prefixRoute="'admin.catalogs.'"
+        prefixRouteName="admin.catalogs."
     />
 @endsection
