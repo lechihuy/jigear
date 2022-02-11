@@ -45,6 +45,8 @@ class CatalogController extends Controller
     {
         $catalog = Catalog::create($request->validated());
 
+        $request->toast('success', __('Tạo danh mục thành công!'));
+
         return response()->json(['catalog' => $catalog]);
     }
 
@@ -56,7 +58,7 @@ class CatalogController extends Controller
      */
     public function show($id)
     {
-        $catalog = Catalog::published()->findOrFail($id);
+        $catalog = Catalog::findOrFail($id);
 
         return view('admin.catalog.show', ['catalog' => $catalog]);
     }

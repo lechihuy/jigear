@@ -26,8 +26,16 @@
     <x-toast />
 
     @stack('scripts')
-    <script>
-        Alpine.start();
-    </script>
+
+    @if (Session::has('toast'))
+        @php $toast = Session::get('toast') @endphp
+        <script>
+            document.addEventListener('alpine:init', () => {
+                Alpine.store('toast').show('{{ $toast["type"] }}', '{{ $toast["message"] }}')
+            })
+        </script>
+    @endif
+    
+    <script>Alpine.start();</script>
 </body>
 </html>

@@ -40,7 +40,7 @@ class LoginController extends Controller
         if (Auth::attempt($this->credentials($request), $request->filled('remember'))) {
             $request->session()->regenerate();
 
-            return response()->json(['message' => __('auth.succeeded')]);
+            return response()->noContent();
         }
 
         return response()->json(['message' => __('auth.failed')], 401);
