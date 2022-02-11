@@ -13,7 +13,7 @@
         </div>
 
         {{-- Login form --}}
-        <form action="" class="bg-white rounded-lg shadow p-7" method="POST" x-data="loginForm" @submit.prevent="submit">
+        <form class="bg-white rounded-lg shadow p-7" method="POST" x-data="loginForm" @submit.prevent="submit">
             {{-- Intro --}}
             <div class="text-center mb-7">
                 <h3 class="text-xl">{{  __('Chào mừng quay lại!') }}</h3>

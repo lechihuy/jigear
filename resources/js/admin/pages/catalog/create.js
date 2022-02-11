@@ -1,18 +1,16 @@
 document.addEventListener('alpine:init', () => {
-  Alpine.data('loginForm', () => ({
-    email: '',
-    password: '',
-    remember: false,
+  Alpine.data('createCatalogForm', () => ({
+    title: '',
+    parent_id: '',
     loading: false,
     submit() {
       this.loading = true;
 
-      axios.post(route('admin.auth.login.store'), {
-        email: this.email,
-        password: this.password,
-        remember: this.remember
+      axios.post(route('admin.catalogs.store'), {
+        title: this.title,
+        parent_id: this.parent_id
       }).then(res => {
-        window.location.href = route('admin.dashboard');
+        window.location.href = route('admin.catalogs.show', { catalog: res.data.catalog.id });
       }).catch(err => {
         Alpine.store('toast').show('danger', err.response.data.message)
       }).finally(() => {

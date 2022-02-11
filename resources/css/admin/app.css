@@ -20,13 +20,17 @@ img {
   @apply w-full border-gray-300 rounded-lg focus:ring-sky-500 focus:border-sky-500;
 }
 
+.form-select {
+  @apply w-full border-gray-300 rounded-lg focus:ring-sky-500 focus:border-sky-500;
+}
+
 .form-checkbox {
   @apply rounded w-5 h-5 border-gray-300 shadow-inner cursor-pointer text-sky-500
         focus:ring-sky-500
 }
 
 .btn {
-  @apply flex items-center justify-center gap-2 px-3 py-2 rounded-lg;
+  @apply inline-flex items-center justify-center gap-1 px-3 py-2 rounded-lg;
 }
 
 .btn-block {
@@ -37,4 +41,22 @@ img {
   @apply text-white border bg-sky-500 border-sky-500 hover:bg-sky-600 hover:border-sky-600;
 }
 
+.btn-light {
+  @apply text-gray-500 bg-white border border-gray-300 hover:bg-slate-100;
+}
+
+.btn-secondary {
+  @apply text-gray-700 border border-slate-200 bg-slate-200 hover:bg-slate-300 hover:border-slate-300;
+}
+
 @tailwind utilities;
+
+#sidebar .nav-heading {
+  @apply text-xs font-thin text-gray-400 uppercase mb-2 mt-5
+}
+
+#sidebar .nav-item {
+  @apply py-2 text-gray-400 flex items-center gap-2 w-full
+        hover:text-white
+}
+
