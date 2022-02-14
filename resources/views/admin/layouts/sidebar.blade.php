@@ -37,16 +37,18 @@
         <a href="" class="nav-item">
             <span class="material-icons-outlined">receipt</span> {{ __('Đơn hàng') }}
         </a>
+
+        <p class="nav-heading">{{ __('Người dùng') }}</p>
         <a href="" class="nav-item">
             <span class="material-icons-outlined">person_pin_circle</span> {{ __('Khách hàng') }}
+        </a>
+        <a href="" class="nav-item">
+            <span class="material-icons-outlined">admin_panel_settings</span> {{ __('Quản trị') }}
         </a>
 
         <p class="nav-heading">{{ __('Hệ thống') }}</p>
         <a href="" class="nav-item">
             <span class="material-icons-outlined">settings</span> {{ __('Cài đặt') }}
-        </a>
-        <a href="" class="nav-item">
-            <span class="material-icons-outlined">admin_panel_settings</span> {{ __('Quản trị') }}
         </a>
 
         <form method="POST" action="{{ route('admin.auth.logout') }}" class="block mt-5">

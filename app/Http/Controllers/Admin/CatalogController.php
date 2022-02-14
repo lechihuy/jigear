@@ -6,9 +6,20 @@ use App\Models\Catalog;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\StoreCatalogRequest;
+use App\Http\Requests\Admin\UpdateCatalogRequest;
 
 class CatalogController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     * 
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth:admin');
+    }
+    
     /**
      * Display a listing of the resource.
      *
@@ -17,6 +28,7 @@ class CatalogController extends Controller
     public function index()
     {
         return view('admin.catalog.index', [
+            'catalogs' => Catalog::latest()->paginate(5)->withQueryString(),
         ]);
     }
 
@@ -71,7 +83,15 @@ class CatalogController extends Controller
      */
     public function edit($id)
     {
-        //
+        $catalog = Catalog::findOrFail($id);
+
+        return view('admin.catalog.edit', [
+            'catalog' => $catalog,
+            'catalogs' => Catalog::all()->map(fn($catalog) => [
+                'label' => $catalog->title,
+                'value' => $catalog->id
+            ])
+        ]);
     }
 
     /**
@@ -81,9 +101,12 @@ class CatalogController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateCatalogRequest $request, $id)
     {
-        //
+        $catalog = Catalog::findOrFail($id);
+        $catalog->update($request->validated());
+
+        return response()->json(['catalog' => $catalog]);
     }
 
     /**

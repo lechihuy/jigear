@@ -7,8 +7,39 @@
 @section('title', $title)
 
 @section('content')
-    <x-admin.resource
-        :name="$title"
-        prefixRouteName="admin.catalogs."
-    />
+
+<x-admin.resource
+    :name="$title"
+    prefixRouteName="admin.catalogs."
+    :items="$catalogs"
+>
+    <x-admin.resource.table>
+        <x-slot:columns>
+            <x-admin.resource.column name="ID" />
+            <x-admin.resource.column name="Tiêu đề" />
+            <x-admin.resource.column name="Danh mục cha" />
+        </x-slot>
+        
+        <x-slot:rows>
+            @foreach ($catalogs as $catalog)
+                <x-admin.resource.row :item="$catalog">
+                    <x-admin.resource.item.text :value="$catalog->id" />
+
+                    <x-admin.resource.item.link 
+                        :url="route('admin.catalogs.show', $catalog)" 
+                        :label="$catalog->title"
+                    />
+
+                    {{-- Parent ID --}}
+                    <x-admin.resource.item.belongs-to 
+                        :owner="$catalog->parent" 
+                        prefixRouteName="admin.catalogs."
+                        display="title" 
+                    />
+                    
+                </x-admin.resource.row>
+            @endforeach
+        </x-slot>
+    </x-admin.resource.table>
+</x-admin.resource>
 @endsection
