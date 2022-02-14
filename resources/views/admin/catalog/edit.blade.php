@@ -1,13 +1,13 @@
 @extends('admin.layouts.app')
 
 @php
-    $title = __('Tạo danh mục');
+    $title = __('Sửa danh mục');
 @endphp
 
 @section('title', $title)
 
 @section('content')
-<form method="POST" x-data="createCatalogForm" @submit.prevent="submit">
+<form method="POST" x-data="editCatalogForm" @submit.prevent="submit">
 
     {{-- Panel --}}
     <x-admin.panel :name="$title">
@@ -32,7 +32,7 @@
         </div>
 
         <div class="ml-auto">
-            <x-admin.button.confirm-creation />
+            <x-admin.button.confirm-update />
         </div>
     </div>
     {{-- /Action buttons --}}
@@ -42,25 +42,25 @@
 @push('scripts')
 <script>
 document.addEventListener('alpine:init', () => {
-  Alpine.data('createCatalogForm', () => ({
-    title: '',
-    parent_id: '',
-    loading: false,
-    submit() {
-      this.loading = true;
-
-      axios.post(route('admin.catalogs.store'), {
-        title: this.title,
-        parent_id: this.parent_id
-      }).then(res => {
-        window.location.href = route('admin.catalogs.show', { catalog: res.data.catalog.id });
-      }).catch(err => {
-        Alpine.store('toast').show('danger', err.response.data.message)
-      }).finally(() => {
-        this.loading = false;
-      })
-    }
-  }));
-});
+    Alpine.data('editCatalogForm', () => ({
+      title: '{{ $catalog->title }}',
+      parent_id: '{{ $catalog->parent_id }}',
+      loading: false,
+      submit() {
+        this.loading = true;
+  
+        axios.put(route('admin.catalogs.update', { catalog: '{{ $catalog->id }}' }), {
+          title: this.title,
+          parent_id: this.parent_id
+        }).then(res => {
+          window.location.href = route('admin.catalogs.show', { catalog: res.data.catalog.id });
+        }).catch(err => {
+          Alpine.store('toast').show('danger', err.response.data.message)
+        }).finally(() => {
+          this.loading = false;
+        })
+      }
+    }));
+  });
 </script>
 @endpush

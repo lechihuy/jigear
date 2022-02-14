@@ -8,7 +8,7 @@
 <div>
     {{-- Panel heading --}}
     <div class="flex items-center mb-3">
-        <h1 class="text-2xl">{{ $name }}</h1>
+        <h1 class="text-2xl text-gray-700">{{ $name }}</h1>
 
         @if ($mode === 'detail')
         <div class="flex items-center gap-2 ml-auto">
