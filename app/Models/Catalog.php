@@ -18,6 +18,7 @@ class Catalog extends Model
     protected $fillable = [
         'title',
         'parent_id',
+        'published'
     ];
 
     /**

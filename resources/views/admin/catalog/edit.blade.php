@@ -22,6 +22,11 @@
             <x-admin.form.select name="parent_id" x-model="parent_id" :options="$catalogs" />
         </x-admin.panel.item>
 
+        {{-- Published --}}
+        <x-admin.panel.item label="Xuất bản">
+            <x-admin.form.boolean name="published" x-model="published" />
+        </x-admin.panel.item>
+
     </x-admin.panel>
     {{-- /Panel --}}
 
@@ -43,24 +48,26 @@
 <script>
 document.addEventListener('alpine:init', () => {
     Alpine.data('editCatalogForm', () => ({
-      title: '{{ $catalog->title }}',
-      parent_id: '{{ $catalog->parent_id }}',
-      loading: false,
-      submit() {
-        this.loading = true;
-  
-        axios.put(route('admin.catalogs.update', { catalog: '{{ $catalog->id }}' }), {
-          title: this.title,
-          parent_id: this.parent_id
-        }).then(res => {
-          window.location.href = route('admin.catalogs.show', { catalog: res.data.catalog.id });
-        }).catch(err => {
-          Alpine.store('toast').show('danger', err.response.data.message)
-        }).finally(() => {
-          this.loading = false;
-        })
-      }
+        title: '{{ $catalog->title }}',
+        parent_id: '{{ $catalog->parent_id }}',
+        published: {{ $catalog->published ? 'true' : 'false' }},
+        loading: false,
+        submit() {
+            this.loading = true;
+    
+            axios.put(route('admin.catalogs.update', { catalog: '{{ $catalog->id }}' }), {
+                title: this.title,
+                parent_id: this.parent_id,
+                published: this.published
+            }).then(res => {
+                window.location.href = route('admin.catalogs.show', { catalog: res.data.catalog.id });
+            }).catch(err => {
+                Alpine.store('toast').show('danger', err.response.data.message)
+            }).finally(() => {
+                this.loading = false;
+            });
+        }
     }));
-  });
+});
 </script>
 @endpush

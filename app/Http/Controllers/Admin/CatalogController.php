@@ -106,6 +106,8 @@ class CatalogController extends Controller
         $catalog = Catalog::findOrFail($id);
         $catalog->update($request->validated());
 
+        $request->toast('success', __('Cập nhật danh mục thành công!'));
+
         return response()->json(['catalog' => $catalog]);
     }
 
