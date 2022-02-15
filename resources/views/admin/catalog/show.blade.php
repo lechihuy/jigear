@@ -13,6 +13,7 @@
     mode="detail" 
     prefixRouteName="admin.catalogs."
     :resourceId="$catalog->id"
+    :resource="$catalog"
 >
 
     {{-- ID --}}

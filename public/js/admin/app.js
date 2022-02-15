@@ -5466,6 +5466,55 @@ module.exports = {
 
 /***/ }),
 
+/***/ "./resources/js/admin/store/confirm-modal.js":
+/*!***************************************************!*\
+  !*** ./resources/js/admin/store/confirm-modal.js ***!
+  \***************************************************/
+/***/ (() => {
+
+document.addEventListener('alpine:init', function () {
+  Alpine.store('confirmModal', {
+    shown: false,
+    url: null,
+    redirect: null,
+    method: null,
+    data: null,
+    loading: false,
+    show: function show(method, url) {
+      var redirect = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
+      this.method = method;
+      this.url = url;
+      this.redirect = redirect;
+      this.shown = true;
+    },
+    confirm: function confirm() {
+      var _this = this;
+
+      this.loading = true;
+      axios({
+        method: this.method,
+        url: this.url,
+        data: this.data
+      }).then(function (res) {
+        var _this$redirect;
+
+        window.location.href = (_this$redirect = _this.redirect) !== null && _this$redirect !== void 0 ? _this$redirect : route('admin.dashboard');
+      })["catch"](function (err) {
+        _this.hide();
+
+        Alpine.store('toast').show('danger', err.response.data.message);
+      })["finally"](function () {
+        _this.loading = false;
+      });
+    },
+    hide: function hide() {
+      this.shown = false;
+    }
+  });
+});
+
+/***/ }),
+
 /***/ "./resources/js/admin/store/theme.js":
 /*!*******************************************!*\
   !*** ./resources/js/admin/store/theme.js ***!
@@ -23062,11 +23111,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _store_theme__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_store_theme__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _store_toast__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./store/toast */ "./resources/js/admin/store/toast.js");
 /* harmony import */ var _store_toast__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_store_toast__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _store_confirm_modal__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./store/confirm-modal */ "./resources/js/admin/store/confirm-modal.js");
+/* harmony import */ var _store_confirm_modal__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_store_confirm_modal__WEBPACK_IMPORTED_MODULE_3__);
 
 window._ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
 window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 window.Alpine = alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"];
+
 
 
 })();

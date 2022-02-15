@@ -13,6 +13,11 @@
     <x-admin.panel :name="$title">
 
         {{-- Title --}}
+        <x-admin.panel.item label="ID">
+            <x-admin.detail.text :value="$catalog->id" />
+        </x-admin.panel.item>
+
+        {{-- Title --}}
         <x-admin.panel.item label="Tiêu đề" :required="true">
             <x-admin.form.text name="title" x-model="title" />
         </x-admin.panel.item>
@@ -33,10 +38,11 @@
     {{-- Action buttons --}}
     <div class="flex items-center mt-5">
         <div class="mr-auto">
-            <x-admin.button.cancel :url="route('admin.catalogs.index')" />
+            <x-admin.button.cancel :url="route('admin.catalogs.show', [$catalog])" />
         </div>
 
-        <div class="ml-auto">
+        <div class="flex items-center gap-2 ml-auto">
+            <x-admin.button.delete prefixRoute="admin.catalogs." :resource="$catalog" />
             <x-admin.button.confirm-update />
         </div>
     </div>

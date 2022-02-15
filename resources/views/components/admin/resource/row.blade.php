@@ -18,8 +18,6 @@
         <a href="{{ route($prefixRouteName . 'edit', $item) }}" class="flex items-center text-gray-400 hover:text-gray-500">
             <span class="material-icons-outlined">drive_file_rename_outline</span>
         </a>
-        <a href="" class="flex items-center text-gray-400 hover:text-gray-500">
-            <span class="material-icons-outlined">delete</span>
-        </a>
+        <x-admin.button.delete prefixRoute="admin.catalogs." :resource="$item" :link="true" :onlyIcon="true" class="flex items-center text-gray-400 hover:text-gray-500" />
     </td>
 </tr>
