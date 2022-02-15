@@ -106,17 +106,25 @@ class CatalogController extends Controller
         $catalog = Catalog::findOrFail($id);
         $catalog->update($request->validated());
 
+        $request->toast('success', __('Cập nhật danh mục thành công!'));
+
         return response()->json(['catalog' => $catalog]);
     }
 
     /**
      * Remove the specified resource from storage.
      *
+     * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-        //
+        $catalog = Catalog::findOrFail($id);
+        $catalog->delete();
+
+        $request->toast('success', __('Xóa danh mục thành công!'));
+
+        return response()->noContent();
     }
 }

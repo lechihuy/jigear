@@ -25,7 +25,8 @@ class UpdateCatalogRequest extends FormRequest
     {
         return [
             'title' => ['required', 'string', 'min:2', 'max:255', "unique:catalogs,title,{$this->catalog}"],
-            'parent_id' => ['nullable', 'exists:catalogs,id']
+            'parent_id' => ['nullable', 'exists:catalogs,id'],
+            'published' => ['required', 'boolean'],
         ];
     }
 }

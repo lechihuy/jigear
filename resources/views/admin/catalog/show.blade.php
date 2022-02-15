@@ -13,6 +13,7 @@
     mode="detail" 
     prefixRouteName="admin.catalogs."
     :resourceId="$catalog->id"
+    :resource="$catalog"
 >
 
     {{-- ID --}}
@@ -31,6 +32,13 @@
             :owner="$catalog->parent" 
             prefixRouteName="admin.catalogs."
             display="title" 
+        />
+    </x-admin.panel.item>
+
+    {{-- Published --}}
+    <x-admin.panel.item label="Xuất bản">
+        <x-admin.detail.boolean
+            :value="$catalog->published" 
         />
     </x-admin.panel.item>
 

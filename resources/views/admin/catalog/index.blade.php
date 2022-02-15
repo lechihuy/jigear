@@ -18,6 +18,7 @@
             <x-admin.resource.column name="ID" />
             <x-admin.resource.column name="Tiêu đề" />
             <x-admin.resource.column name="Danh mục cha" />
+            <x-admin.resource.column name="Xuất bản" align="center" />
         </x-slot>
         
         <x-slot:rows>
@@ -35,6 +36,11 @@
                         :owner="$catalog->parent" 
                         prefixRouteName="admin.catalogs."
                         display="title" 
+                    />
+
+                    {{-- Published --}}
+                    <x-admin.resource.item.boolean 
+                        :value="$catalog->published" 
                     />
                     
                 </x-admin.resource.row>

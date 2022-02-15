@@ -25,7 +25,7 @@ class StoreCatalogRequest extends FormRequest
     {
         return [
             'title' => ['required', 'string', 'min:2', 'max:255', 'unique:catalogs'],
-            'parent_id' => ['nullable', 'exists:catalogs,id']
+            'parent_id' => ['nullable', 'exists:catalogs,id'],
         ];
     }
 }

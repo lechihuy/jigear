@@ -25,6 +25,8 @@
 
     <x-toast />
 
+    <x-confirm-modal />
+
     @stack('scripts')
 
     @if (Session::has('toast'))
