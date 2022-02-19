@@ -24,7 +24,7 @@
 
         {{-- Parent ID --}}
         <x-admin.panel.item label="Danh mục cha">
-            <x-admin.form.select name="parent_id" x-model="parent_id" :options="$catalogs" />
+            <x-admin.form.select name="parent_id" x-model="parent_id" :options="$catalogOptions" />
         </x-admin.panel.item>
 
         {{-- Published --}}

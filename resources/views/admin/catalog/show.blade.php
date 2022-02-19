@@ -42,6 +42,20 @@
         />
     </x-admin.panel.item>
 
+    {{-- Created at --}}
+    <x-admin.panel.item label="Ngày tạo">
+        <x-admin.detail.text
+            :value="$catalog->created_at" 
+        />
+    </x-admin.panel.item>
+
+    {{-- Updated at --}}
+    <x-admin.panel.item label="Lần cập nhật cuối">
+        <x-admin.detail.text
+            :value="$catalog->updated_at" 
+        />
+    </x-admin.panel.item>
+
 </x-admin.panel>
 {{-- /Panel --}}
 

@@ -12,8 +12,18 @@
     :name="$title"
     prefixRouteName="admin.catalogs."
     :items="$catalogs"
+    :hasItems="$hasCatalogs"
+    :hasFilter="$hasFilter"
 >
     <x-admin.resource.table>
+        <x-slot:filter>
+            <x-admin.resource.filter.boolean label="Xuất bản" name="published" :options="[
+                'Xuất bản' => 1,
+                'Ẩn' => 0
+            ]" />
+            <x-admin.resource.filter.select label="Danh mục cha" name="parent_id" :options="$catalogOptions" />
+        </x-slot>
+
         <x-slot:columns>
             <x-admin.resource.column name="ID" />
             <x-admin.resource.column name="Tiêu đề" />

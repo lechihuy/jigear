@@ -15,13 +15,15 @@ class CreateCatalogsTable extends Migration
     {
         Schema::create('catalogs', function (Blueprint $table) {
             $table->id();
-            $table->string('title')->unique();
+            $table->string('title')->fullText();
             $table->text('description')->nullable();
             $table->longText('detail')->nullable();
             $table->boolean('published')->default(false)->index();
             $table->unsignedBigInteger('parent_id')->nullable();
             $table->timestamps();
             $table->softDeletes();
+
+            $table->unique('title');
         });
     }
 

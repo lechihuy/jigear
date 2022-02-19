@@ -4,11 +4,12 @@ namespace App\Models;
 
 use App\Models\Traits\Publishable;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Catalog extends Model
 {
-    use HasFactory, Publishable;
+    use HasFactory, Publishable, SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
