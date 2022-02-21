@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Traits\Sluggable;
 use App\Models\Traits\Publishable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -9,7 +10,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Catalog extends Model
 {
-    use HasFactory, Publishable, SoftDeletes;
+    use HasFactory, Publishable, Sluggable;
 
     /**
      * The attributes that are mass assignable.
@@ -19,7 +20,9 @@ class Catalog extends Model
     protected $fillable = [
         'title',
         'parent_id',
-        'published'
+        'published',
+        'description',
+        'detail'
     ];
 
     /**

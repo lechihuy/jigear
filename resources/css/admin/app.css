@@ -20,6 +20,10 @@ img {
   @apply w-full border-gray-300 rounded-lg focus:ring-sky-500 focus:border-sky-500;
 }
 
+.form-textarea {
+  @apply w-full border-gray-300 rounded-lg focus:ring-sky-500 focus:border-sky-500;
+}
+
 .form-select {
   @apply w-full border-gray-300 rounded-lg focus:ring-sky-500 focus:border-sky-500;
 }

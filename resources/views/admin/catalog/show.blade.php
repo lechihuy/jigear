@@ -42,6 +42,20 @@
         />
     </x-admin.panel.item>
 
+    {{-- Description --}}
+    <x-admin.panel.item label="Mô tả">
+        <x-admin.detail.text
+            :value="$catalog->description" 
+        />
+    </x-admin.panel.item>
+
+    {{-- Description --}}
+    <x-admin.panel.item label="Nội dung chi tiết">
+        <x-admin.detail.trix
+            :value="$catalog->detail" 
+        />
+    </x-admin.panel.item>
+
     {{-- Created at --}}
     <x-admin.panel.item label="Ngày tạo">
         <x-admin.detail.text
