@@ -71,7 +71,7 @@
                     <tr>
                         {{-- <th scope="col" class="w-8 px-3 py-3"></th> --}}
                         {{ $columns }}
-                        <th scope="col" class="relative px-3 py-3"></th>
+                        <th scope="col" class="sticky right-0 px-3 py-3 bg-white w-28"></th>
                     </tr>
                 </thead>
                 <tbody class="bg-white divide-y divide-gray-200">

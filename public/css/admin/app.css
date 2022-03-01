@@ -803,6 +803,11 @@ img {
   position: relative;
 }
 
+.sticky{
+  position: -webkit-sticky;
+  position: sticky;
+}
+
 .top-0{
   top: 0px;
 }
@@ -948,6 +953,10 @@ img {
   display: block;
 }
 
+.inline-block{
+  display: inline-block;
+}
+
 .flex{
   display: flex;
 }
@@ -1034,6 +1043,18 @@ img {
 
 .w-72{
   width: 18rem;
+}
+
+.w-20{
+  width: 5rem;
+}
+
+.w-24{
+  width: 6rem;
+}
+
+.w-28{
+  width: 7rem;
 }
 
 .min-w-\[1000px\]{
@@ -1329,6 +1350,10 @@ img {
   padding: 0px;
 }
 
+.p-1{
+  padding: 0.25rem;
+}
+
 .p-3{
   padding: 0.75rem;
 }
@@ -1413,6 +1438,10 @@ img {
 
 .font-logo{
   font-family: Mochiy Pop P One, sans-serif;
+}
+
+.font-mono{
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
 .text-sm{

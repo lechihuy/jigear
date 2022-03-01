@@ -15,17 +15,21 @@ class CreateProductsTable extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->string('title')->unique();
-            $table->string('sku')->unique();
+            $table->string('title')->fullText();
+            $table->string('sku')->fullText();
             $table->text('description')->nullable();
             $table->longText('detail')->nullable();
             $table->unsignedBigInteger('unit_price')->nullable()->index();
             $table->unsignedBigInteger('stock')->nullable()->index();
+            $table->unsignedBigInteger('catalog_id')->nullable();
             $table->boolean('published')->default(false)->index();
             $table->boolean('purchasable')->default(true)->index();
             $table->json('parameters')->nullable();
             $table->timestamps();
             $table->softDeletes();
+
+            $table->unique('title');
+            $table->unique('sku');
         });
     }
 

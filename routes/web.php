@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\CatalogController;
+use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\Auth\LoginController;
 
@@ -35,6 +36,7 @@ Route::prefix('admin')->name('admin.')->group(function() {
 
     /* Resources management */
     Route::resources([
-        'catalogs' => CatalogController::class
+        'catalogs' => CatalogController::class,
+        'products' => ProductController::class,
     ]);
 });
