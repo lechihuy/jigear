@@ -24,12 +24,22 @@
 
         {{-- Parent ID --}}
         <x-admin.panel.item label="Danh mục cha">
-            <x-admin.form.select name="parent_id" x-model="parent_id" :options="$catalogs" />
+            <x-admin.form.select name="parent_id" x-model="parent_id" :options="$catalogOptions" />
         </x-admin.panel.item>
 
         {{-- Published --}}
         <x-admin.panel.item label="Xuất bản">
             <x-admin.form.boolean name="published" x-model="published" />
+        </x-admin.panel.item>
+
+        {{-- Description --}}
+        <x-admin.panel.item label="Mô tả">
+            <x-admin.form.textarea name="description" x-model="description" />
+        </x-admin.panel.item>
+
+        {{-- Detail --}}
+        <x-admin.panel.item label="Nội dung chi tiết">
+            <x-admin.form.trix name="detail" x-model="detail" id="detail" value="{{ $catalog->detail }}" />
         </x-admin.panel.item>
 
     </x-admin.panel>
@@ -57,14 +67,19 @@ document.addEventListener('alpine:init', () => {
         title: '{{ $catalog->title }}',
         parent_id: '{{ $catalog->parent_id }}',
         published: {{ $catalog->published ? 'true' : 'false' }},
+        description: '{{ $catalog->description }}',
+        detail: '{{ $catalog->detail }}',
         loading: false,
         submit() {
             this.loading = true;
-    
+            this.detail = document.getElementById('detail').value
+            
             axios.put(route('admin.catalogs.update', { catalog: '{{ $catalog->id }}' }), {
                 title: this.title,
                 parent_id: this.parent_id,
-                published: this.published
+                published: this.published,
+                description: this.description,
+                detail: this.detail,
             }).then(res => {
                 window.location.href = route('admin.catalogs.show', { catalog: res.data.catalog.id });
             }).catch(err => {

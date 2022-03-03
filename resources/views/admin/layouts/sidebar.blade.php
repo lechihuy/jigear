@@ -1,4 +1,4 @@
-<aside id="sidebar" class="fixed left-0 min-h-[calc(100vh_-_theme(space.16))] max-h-[calc(100vh_-_theme(space.16))] overflow-auto w-72 top-16 bg-slate-800 lg:block shadow p-5"
+<aside id="sidebar" class="z-20 fixed left-0 min-h-[calc(100vh_-_theme(space.16))] max-h-[calc(100vh_-_theme(space.16))] overflow-auto w-72 top-16 bg-slate-800 lg:block shadow p-5"
     x-data="$store.theme"
     x-show="shownSidebar"
     x-transition:enter="transition ease-out duration-300"
@@ -23,7 +23,7 @@
         </a>
         
         <p class="nav-heading">{{ __('Cửa hàng') }}</p>
-        <a href="" class="nav-item">
+        <a href="{{ route('admin.products.index') }}" class="nav-item {{ str_contains(Route::currentRouteName(), 'admin.products') ? '!text-white' : '' }}">
             <span class="material-icons-outlined">inventory_2</span> {{ __('Sản phẩm') }}
         </a>
         <a href="{{ route('admin.catalogs.index') }}" class="nav-item {{ str_contains(Route::currentRouteName(), 'admin.catalogs') ? '!text-white' : '' }}">

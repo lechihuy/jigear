@@ -6,7 +6,7 @@ use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateCatalogRequest extends FormRequest
+class UpdateProductRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -38,12 +38,18 @@ class UpdateCatalogRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => ['required', 'string', 'min:2', 'max:255', "unique:catalogs,title,{$this->catalog}"],
-            'slug' => ['required', 'string', Rule::unique('slugs')->ignore($this->catalog, 'sluggable_id')],
-            'parent_id' => ['nullable', 'exists:catalogs,id'],
+            'thumbnail' => ['nullable', 'image'],
+            'title' => ['required', 'string', 'min:2', 'max:255', "unique:products,title,{$this->product}"],
+            'sku' => ['required', 'string', 'min:2', 'max:255', "unique:products,sku,{$this->product}"],
+            'slug' => ['required', 'string', Rule::unique('slugs')->ignore($this->product, 'sluggable_id')],
+            'catalog_id' => ['nullable', 'exists:catalogs,id'],
+            'unit_price' => ['nullable', 'numeric', 'min:0'],
+            'stock' => ['nullable', 'integer', 'min:0'],
             'published' => ['required', 'boolean'],
+            'purchasable' => ['required', 'boolean'],
             'description' => ['nullable', 'string'],
             'detail' => ['nullable', 'string'],
+            'parameters' => ['nullable', 'json'],
         ];
     }
 }

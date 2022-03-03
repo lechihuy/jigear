@@ -2,15 +2,16 @@
 
 namespace App\Models;
 
+use App\Models\Catalog;
+use App\Models\Traits\Imaggable;
 use App\Models\Traits\Sluggable;
 use App\Models\Traits\Publishable;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Catalog extends Model
+class Product extends Model
 {
-    use HasFactory, Publishable, Sluggable;
+    use HasFactory, Publishable, Sluggable, Imaggable;
 
     /**
      * The attributes that are mass assignable.
@@ -19,17 +20,22 @@ class Catalog extends Model
      */
     protected $fillable = [
         'title',
-        'parent_id',
+        'sku',
+        'catalog_id',
+        'unit_price',
+        'stock',
         'published',
+        'purchasable',
         'description',
-        'detail'
+        'detail',
+        'parameters'
     ];
 
     /**
-     * Get the catalog that owns to this catalog.
+     * Get the catalog that owns to this product.
      */
-    public function parent()
+    public function catalog()
     {
-        return $this->belongsTo(static::class);
+        return $this->belongsTo(Catalog::class);
     }
 }

@@ -23,12 +23,35 @@ class CatalogController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $perPage = $request->input('per_page', 15);
+        $hasFilter = $request->hasAny(['q', 'published', 'parent_id', 'per_page']);
+
+        $catalogs = Catalog::latest();
+
+        $request->whenHas('q', function ($q) use ($catalogs) {
+            $catalogs->where('title', 'like', "%$q%")->orWhereFullText('title', $q);
+        });
+
+        $request->whenHas('published', function($published) use ($catalogs) {
+            $catalogs->where('published', $published);
+        });
+
+        $request->whenHas('parent_id', function($parentId) use ($catalogs) {
+            $catalogs->where('parent_id', $parentId);
+        });
+
+        $catalogs = $catalogs->paginate($perPage)->withQueryString();
+
         return view('admin.catalog.index', [
-            'catalogs' => Catalog::latest()->paginate(5)->withQueryString(),
+            'catalogs' => $catalogs,
+            'catalogOptions' => Catalog::all()->mapWithKeys(fn($catalog) => [$catalog->title => $catalog->id]),
+            'hasCatalogs' => Catalog::exists(),
+            'hasFilter' => $hasFilter
         ]);
     }
 
@@ -40,9 +63,8 @@ class CatalogController extends Controller
     public function create()
     {
         return view('admin.catalog.create', [
-            'catalogs' => Catalog::all()->map(fn($catalog) => [
-                'label' => $catalog->title,
-                'value' => $catalog->id
+            'catalogOptions' => Catalog::all()->mapWithKeys(fn($catalog) => [
+                $catalog->title => $catalog->id
             ])
         ]);
     }
@@ -87,9 +109,8 @@ class CatalogController extends Controller
 
         return view('admin.catalog.edit', [
             'catalog' => $catalog,
-            'catalogs' => Catalog::all()->map(fn($catalog) => [
-                'label' => $catalog->title,
-                'value' => $catalog->id
+            'catalogOptions' => Catalog::where('id', '!=', $id)->get()->mapWithKeys(fn($catalog) => [
+                $catalog->title => $catalog->id
             ])
         ]);
     }

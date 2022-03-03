@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class FkImageIdColumnToImagablesTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,11 @@ class FkImageIdColumnToImagablesTable extends Migration
      */
     public function up()
     {
-        Schema::table('imagables', function (Blueprint $table) {
-            $table->foreign('image_id')->references('id')->on('images');
+        Schema::create('slugs', function (Blueprint $table) {
+            $table->id();
+            $table->string('slug')->unique();
+            $table->morphs('sluggable');
+            $table->timestamps();
         });
     }
 
@@ -25,8 +28,6 @@ class FkImageIdColumnToImagablesTable extends Migration
      */
     public function down()
     {
-        Schema::table('imagables', function (Blueprint $table) {
-            $table->dropForeign(['image_id']);
-        });
+        Schema::dropIfExists('slugs');
     }
-}
+};

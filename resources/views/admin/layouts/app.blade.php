@@ -11,6 +11,9 @@
     
     @routes
 
+    <link rel="stylesheet" type="text/css" href="{{ asset('trix/trix.css') }}">
+    <script type="text/javascript" src="{{ asset('trix/trix.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('trix/attachment.js') }}"></script>
     <script src="{{ mix('js/admin/app.js') }}"></script>
 </head>
 <body class="bg-gray-100">

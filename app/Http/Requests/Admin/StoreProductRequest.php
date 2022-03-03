@@ -5,7 +5,7 @@ namespace App\Http\Requests\Admin;
 use Illuminate\Support\Str;
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreCatalogRequest extends FormRequest
+class StoreProductRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -37,9 +37,10 @@ class StoreCatalogRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => ['required', 'string', 'min:2', 'max:255', 'unique:catalogs,title'],
+            'title' => ['required', 'string', 'min:2', 'max:255', 'unique:products,title'],
             'slug' => ['required', 'string', 'unique:slugs,slug'],
-            'parent_id' => ['nullable', 'exists:catalogs,id'],
+            'sku' => ['required', 'string', 'min:2', 'max:255', 'unique:products,sku'],
+            'catalog_id' => ['nullable', 'exists:catalogs,id'],
         ];
     }
 }

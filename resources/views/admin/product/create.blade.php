@@ -1,13 +1,13 @@
 @extends('admin.layouts.app')
 
 @php
-    $title = __('Tạo danh mục');
+    $title = __('Tạo sản phẩm');
 @endphp
 
 @section('title', $title)
 
 @section('content')
-<form method="POST" x-data="createCatalogForm" @submit.prevent="submit">
+<form method="POST" x-data="createProductForm" @submit.prevent="submit">
 
     {{-- Panel --}}
     <x-admin.panel :name="$title">
@@ -17,9 +17,14 @@
             <x-admin.form.text name="title" x-model="title" />
         </x-admin.panel.item>
 
-        {{-- Parent ID --}}
-        <x-admin.panel.item label="Danh mục cha">
-            <x-admin.form.select name="parent_id" x-model="parent_id" :options="$catalogOptions" />
+        {{-- Title --}}
+        <x-admin.panel.item label="SKU" :required="true">
+            <x-admin.form.text name="sku" x-model="sku" />
+        </x-admin.panel.item>
+
+        {{-- Catalog ID --}}
+        <x-admin.panel.item label="Danh mục">
+            <x-admin.form.select name="catalog_id" x-model="catalog_id" :options="$catalogOptions" />
         </x-admin.panel.item>
 
     </x-admin.panel>
@@ -42,18 +47,20 @@
 @push('scripts')
 <script>
 document.addEventListener('alpine:init', () => {
-  Alpine.data('createCatalogForm', () => ({
+  Alpine.data('createProductForm', () => ({
     title: '',
-    parent_id: '',
+    sku: '',
+    catalog_id: '',
     loading: false,
     submit() {
       this.loading = true;
 
-      axios.post(route('admin.catalogs.store'), {
+      axios.post(route('admin.products.store'), {
         title: this.title,
-        parent_id: this.parent_id
+        sku: this.sku,
+        catalog_id: this.catalog_id
       }).then(res => {
-        window.location.href = route('admin.catalogs.show', { catalog: res.data.catalog.id });
+        window.location.href = route('admin.products.show', { product: res.data.product.id });
       }).catch(err => {
         Alpine.store('toast').show('danger', err.response.data.message)
       }).finally(() => {

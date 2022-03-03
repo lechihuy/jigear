@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class FkProductIdColumnToCatalogProductTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class FkProductIdColumnToCatalogProductTable extends Migration
      */
     public function up()
     {
-        Schema::table('catalog_product', function (Blueprint $table) {
-            $table->foreign('product_id')->references('id')->on('products');
+        Schema::table('products', function (Blueprint $table) {
+            $table->foreign('catalog_id')->references('id')->on('catalogs');
         });
     }
 
@@ -25,8 +25,8 @@ class FkProductIdColumnToCatalogProductTable extends Migration
      */
     public function down()
     {
-        Schema::table('catalog_product', function (Blueprint $table) {
-            $table->dropForeign(['product_id']);
+        Schema::table('catalogs', function (Blueprint $table) {
+            $table->dropForeign(['catalog_id']);
         });
     }
-}
+};

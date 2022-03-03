@@ -29,6 +29,7 @@
 
         {{-- Navs --}}
         <div class="flex items-center gap-5 ml-auto">
+        
             {{-- User dropdown --}}
             <div class="relative" x-data="{ open: false }">
                 <div @click="open = ! open">

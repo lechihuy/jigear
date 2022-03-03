@@ -20,7 +20,7 @@
     <x-admin.panel.item label="ID">
         <x-admin.detail.text :value="$catalog->id" />
     </x-admin.panel.item>
-    
+
     {{-- Title --}}
     <x-admin.panel.item label="Tiêu đề">
         <x-admin.detail.text :value="$catalog->title" />
@@ -39,6 +39,34 @@
     <x-admin.panel.item label="Xuất bản">
         <x-admin.detail.boolean
             :value="$catalog->published" 
+        />
+    </x-admin.panel.item>
+
+    {{-- Description --}}
+    <x-admin.panel.item label="Mô tả">
+        <x-admin.detail.text
+            :value="$catalog->description" 
+        />
+    </x-admin.panel.item>
+
+    {{-- Description --}}
+    <x-admin.panel.item label="Nội dung chi tiết">
+        <x-admin.detail.trix
+            :value="$catalog->detail" 
+        />
+    </x-admin.panel.item>
+
+    {{-- Created at --}}
+    <x-admin.panel.item label="Ngày tạo">
+        <x-admin.detail.text
+            :value="$catalog->created_at" 
+        />
+    </x-admin.panel.item>
+
+    {{-- Updated at --}}
+    <x-admin.panel.item label="Lần cập nhật cuối">
+        <x-admin.detail.text
+            :value="$catalog->updated_at" 
         />
     </x-admin.panel.item>
 
