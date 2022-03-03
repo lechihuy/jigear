@@ -20,7 +20,7 @@
     <x-admin.panel.item label="ID">
         <x-admin.detail.text :value="$catalog->id" />
     </x-admin.panel.item>
-    
+
     {{-- Title --}}
     <x-admin.panel.item label="Tiêu đề">
         <x-admin.detail.text :value="$catalog->title" />

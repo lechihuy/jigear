@@ -4,14 +4,14 @@
 @tailwind base;
 
 img {
-  -webkit-backface-visibility: hidden;
+  /* -webkit-backface-visibility: hidden;
   transform: translateZ(0);
   image-rendering: pixelated;
   image-rendering: -moz-crisp-edges;
   image-rendering: -o-crisp-edges;
   image-rendering: -webkit-optimize-contrast;
   image-rendering: crisp-edges;
-  -ms-interpolation-mode: nearest-neighbor;
+  -ms-interpolation-mode: nearest-neighbor; */
 }
 
 @tailwind components;

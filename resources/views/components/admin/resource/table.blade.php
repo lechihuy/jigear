@@ -34,18 +34,20 @@
                             {{ __('Làm mới bộ lọc') }}
                         </a>
 
-                        {{ $filter }}
-                        
-                        <div>
-                            <div class="p-2 font-semibold text-gray-500 bg-gray-50">
-                                {{ __('Phân trang') }}
-                            </div>
-                            <div class="flex flex-col gap-2 p-2">
-                                <select name="per_page" class="form-select">
-                                    @foreach ([15, 20, 25, 50, 100] as $perPage)
-                                        <option value="{{ $perPage }}" @selected(request()->input('per_page') == $perPage)>{{ $perPage }}</option>
-                                    @endforeach
-                                </select>
+                        <div class="overflow-auto max-h-96">
+                            {{ $filter }}
+                            
+                            <div>
+                                <div class="p-2 font-semibold text-gray-500 bg-gray-50">
+                                    {{ __('Phân trang') }}
+                                </div>
+                                <div class="flex flex-col gap-2 p-2">
+                                    <select name="per_page" class="form-select">
+                                        @foreach ([15, 20, 25, 50, 100] as $perPage)
+                                            <option value="{{ $perPage }}" @selected(request()->input('per_page') == $perPage)>{{ $perPage }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
                             </div>
                         </div>
 
@@ -71,7 +73,7 @@
                     <tr>
                         {{-- <th scope="col" class="w-8 px-3 py-3"></th> --}}
                         {{ $columns }}
-                        <th scope="col" class="sticky right-0 px-3 py-3 bg-white w-28"></th>
+                        <th scope="col" class="sticky right-0 px-3 py-3 bg-gray-50 w-28"></th>
                     </tr>
                 </thead>
                 <tbody class="bg-white divide-y divide-gray-200">

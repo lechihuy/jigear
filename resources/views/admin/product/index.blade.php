@@ -21,11 +21,16 @@
                 'Xuất bản' => 1,
                 'Ẩn' => 0
             ]" />
+            <x-admin.resource.filter.boolean label="Có thể bán" name="purchasable" :options="[
+                'Có' => 1,
+                'không' => 0
+            ]" />
             <x-admin.resource.filter.select label="Danh mục" name="catalog_id" :options="$catalogOptions" />
         </x-slot>
 
         <x-slot:columns>
             <x-admin.resource.column name="ID" />
+            <x-admin.resource.column name="" align="center" />
             <x-admin.resource.column name="Tiêu đề" />
             <x-admin.resource.column name="SKU" />
             <x-admin.resource.column name="Giá bán" />
@@ -37,6 +42,11 @@
             @foreach ($products as $product)
                 <x-admin.resource.row :item="$product">
                     <x-admin.resource.item.text :value="$product->id" />
+
+                    {{-- Thumbnail --}}
+                    <x-admin.resource.item.thumbnail 
+                        :value="optional($product->thumbnail)->url"
+                    />
 
                     {{-- Title --}}
                     <x-admin.resource.item.link 

@@ -20,7 +20,15 @@
     <x-admin.panel.item label="ID">
         <x-admin.detail.text :value="$product->id" />
     </x-admin.panel.item>
+
+    {{-- # Basic --}}
+    <x-admin.panel.heading value="Cơ bản" />
     
+    {{-- Thumbnail --}}
+    <x-admin.panel.item label="Thumbnail">
+        <x-admin.detail.thumbnail :value="optional($product->thumbnail)->url" />
+    </x-admin.panel.item>
+
     {{-- Title --}}
     <x-admin.panel.item label="Tiêu đề">
         <x-admin.detail.text :value="$product->title" />
@@ -39,6 +47,9 @@
             display="title" 
         />
     </x-admin.panel.item>
+
+    {{-- # Basic --}}
+    <x-admin.panel.heading value="Thông tin bán hàng" />
 
     {{-- Unit price --}}
     <x-admin.panel.item label="Giá bán">
@@ -75,6 +86,13 @@
     <x-admin.panel.item label="Nội dung chi tiết">
         <x-admin.detail.trix
             :value="$product->detail" 
+        />
+    </x-admin.panel.item>
+
+    {{-- Parameters --}}
+    <x-admin.panel.item label="Thông số kỹ thuật">
+        <x-admin.detail.parameter
+            :value="json_decode($product->parameters)" 
         />
     </x-admin.panel.item>
 

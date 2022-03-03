@@ -3,6 +3,7 @@
 namespace App\Models\Traits;
 
 use App\Models\Slug;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Validator;
 
 trait Sluggable
@@ -24,13 +25,13 @@ trait Sluggable
     {
         static::created(function ($model) {
             $model->slug()->create([
-                'slug' => request()->slug
+                'slug' => Str::slug(request()->title)
             ]);
         });
 
         static::updated(function ($model) {
-            $model->slug()->update([
-                'slug' => request()->slug
+            $model->slug->update([
+                'slug' => Str::slug(request()->title)
             ]);
         });
     }

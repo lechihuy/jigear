@@ -38,6 +38,7 @@ class UpdateProductRequest extends FormRequest
     public function rules()
     {
         return [
+            'thumbnail' => ['nullable', 'image'],
             'title' => ['required', 'string', 'min:2', 'max:255', "unique:products,title,{$this->product}"],
             'sku' => ['required', 'string', 'min:2', 'max:255', "unique:products,sku,{$this->product}"],
             'slug' => ['required', 'string', Rule::unique('slugs')->ignore($this->product, 'sluggable_id')],
@@ -48,6 +49,7 @@ class UpdateProductRequest extends FormRequest
             'purchasable' => ['required', 'boolean'],
             'description' => ['nullable', 'string'],
             'detail' => ['nullable', 'string'],
+            'parameters' => ['nullable', 'json'],
         ];
     }
 }

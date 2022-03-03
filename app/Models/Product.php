@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Catalog;
+use App\Models\Traits\Imaggable;
 use App\Models\Traits\Sluggable;
 use App\Models\Traits\Publishable;
 use Illuminate\Database\Eloquent\Model;
@@ -10,7 +11,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Product extends Model
 {
-    use HasFactory, Publishable, Sluggable;
+    use HasFactory, Publishable, Sluggable, Imaggable;
 
     /**
      * The attributes that are mass assignable.
@@ -26,7 +27,8 @@ class Product extends Model
         'published',
         'purchasable',
         'description',
-        'detail'
+        'detail',
+        'parameters'
     ];
 
     /**

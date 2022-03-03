@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Image;
 use App\Models\Catalog;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -27,12 +28,17 @@ class ProductController extends Controller
         $request->whenHas('q', function ($q) use ($products) {
             $products->where(function($query) use ($q) {
                 $query->where('title', 'like', "%$q%")->orWhereFullText('title', $q)
-                    ->orWhere('sku', 'like', "%$q%")->orWhereFullText('sku', $q);
+                    ->orWhere('sku', 'like', "%$q%")
+                    ->orWhere('unit_price', 'like', "%$q%");
             });
         });
 
         $request->whenHas('published', function($published) use ($products) {
             $products->where('published', $published);
+        });
+
+        $request->whenHas('purchasable', function($purchasable) use ($products) {
+            $products->where('purchasable', $purchasable);
         });
 
         $request->whenHas('catalog_id', function($catalogId) use ($products) {
@@ -103,7 +109,7 @@ class ProductController extends Controller
 
         return view('admin.product.edit', [
             'product' => $product,
-            'catalogOptions' => Catalog::where('id', '!=', $id)->get()->mapWithKeys(fn($catalog) => [
+            'catalogOptions' => Catalog::all()->mapWithKeys(fn($catalog) => [
                 $catalog->title => $catalog->id
             ])
         ]);
@@ -120,6 +126,18 @@ class ProductController extends Controller
     {
         $product = Product::findOrFail($id);
         $product->update($request->validated());
+
+        if ($request->hasFile('thumbnail')) {
+            if ($product->thumbnail) {
+                $product->thumbnail->delete();
+            }
+            
+            $thumbnailPath = $request->file('thumbnail')->store('thumbnails');
+            $product->images()->create([
+                'path' => $thumbnailPath,
+                'type' => 'thumbnail',
+            ]);
+        }
 
         $request->toast('success', __('Cập nhật sản phẩm thành công!'));
 
