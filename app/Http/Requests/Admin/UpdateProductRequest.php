@@ -50,6 +50,7 @@ class UpdateProductRequest extends FormRequest
             'description' => ['nullable', 'string'],
             'detail' => ['nullable', 'string'],
             'parameters' => ['nullable', 'json'],
+            'previews.*' => ['nullable'],
         ];
     }
 }

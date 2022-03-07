@@ -18,7 +18,7 @@ document.addEventListener('alpine:init', () => {
 
         fileChosen(e) {
             this.thumbnail = e.target.files[0]
-            this.imageUrl = URL.createObjectURL(e.target.files[0])
+            this.imageUrl = URL.createObjectURL(this.thumbnail)
         },
     }));
 });

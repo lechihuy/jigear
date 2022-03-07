@@ -119,15 +119,16 @@ document.addEventListener('alpine:init', () => {
         description: '{{ $product->description }}',
         detail: '{!! $product->detail !!}',
         parameters: JSON.parse(@json($product->parameters ?? '[]')),
+        previews: @json($product->previews),
         loading: false,
         submit() {
             this.loading = true;
             this.detail = document.getElementById('detail').value
             this.published = this.published ? 1 : 0
             this.purchasable = this.purchasable ? 1 : 0
-            this.parameters = JSON.stringify(this.parameters)
+            const parameters = JSON.stringify(this.parameters)
             let data = new FormData()
-            
+
             data.append('_method', 'PUT')
             data.append('thumbnail', this.thumbnail)
             data.append('title', this.title)
@@ -139,7 +140,11 @@ document.addEventListener('alpine:init', () => {
             data.append('purchasable', this.purchasable)
             data.append('description', this.description)
             data.append('detail', this.detail)
-            data.append('parameters', this.parameters)
+            data.append('parameters', parameters)
+
+            for (const preview of this.previews) {
+                data.append('previews[]', preview instanceof File ? preview : JSON.stringify(preview))
+            }
 
             axios.post(route('admin.products.update', { product: '{{ $product->id }}' }), data, {
                 headers: {

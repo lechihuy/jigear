@@ -12,6 +12,13 @@ class Image extends Model
     use HasFactory;
 
     /**
+     * The accessors to append to the model's array form.
+     *
+     * @var array
+     */
+    protected $appends = ['url'];
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>

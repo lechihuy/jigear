@@ -139,6 +139,18 @@ class ProductController extends Controller
             ]);
         }
 
+        $availablePreviews = collect($request->input('previews'))->map(fn($preview) => json_decode($preview, true));
+        $uploadedPreviews = collect($request->file('previews'));
+        $product->previews()->whereNotIn('id', $availablePreviews->pluck('id')->toArray())->delete();
+
+        $uploadedPreviews->each(function($preview) use ($product) {
+            $previewPath = $preview->store('previews');
+            $product->images()->create([
+                'path' => $previewPath,
+                'type' => 'preview',
+            ]);
+        });
+
         $request->toast('success', __('Cập nhật sản phẩm thành công!'));
 
         return response()->json(['product' => $product]);
