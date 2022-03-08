@@ -44,9 +44,7 @@ body {
   object-fit: cover;
 }
 
-.swiper-button-next,
+.swiper-button-next, 
 .swiper-button-prev {
-    color: white;
-    font-weight: 900;
-    font-size: 40px;
+  color: #fff !important;
 }

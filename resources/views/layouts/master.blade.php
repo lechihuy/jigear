@@ -18,10 +18,11 @@
 </head>
 <body>
     @include('layouts.header')
-    @include('layouts.jumbotron')
     @yield('content')
 
     <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery.min.js"></script>
     <script src="{{ mix('js/swipe.js') }}"></script>
+    <script src="{{ mix('js/app.js') }}">,</script>
 </body>
 </html>

@@ -12,7 +12,7 @@ use App\Http\Controllers\Admin\Auth\LoginController;
 |
 */
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
 

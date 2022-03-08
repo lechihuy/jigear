@@ -1,3 +1,18 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.navbar::before {
+    content: "";
+    border: 15px solid;
+    border-color: transparent transparent transparent #65c8c6;
+    position: absolute;
+    right: -30px;
+    top: -1px;
+    z-index: 40;
+    display: none;
+}
+
+.navbar:hover::before {
+    display: block !important;
+}
