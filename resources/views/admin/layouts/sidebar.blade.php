@@ -29,7 +29,7 @@
         <a href="{{ route('admin.catalogs.index') }}" class="nav-item {{ str_contains(Route::currentRouteName(), 'admin.catalogs') ? '!text-white' : '' }}">
             <span class="material-icons-outlined">category</span> {{ __('Danh mục') }}
         </a>
-        <a href="" class="nav-item {{ str_contains(Route::currentRouteName(), 'admin.parameter_products') ? '!text-white' : '' }}">
+        <a href="{{ route('admin.product-parameter-sets.index') }}" class="nav-item {{ str_contains(Route::currentRouteName(), 'admin.parameter_products') ? '!text-white' : '' }}">
             <span class="material-icons-outlined">drag_indicator</span> {{ __('Thông số sản phẩm') }}
         </a>
 

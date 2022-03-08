@@ -22,6 +22,11 @@ class ProductController extends Controller
     {
         $perPage = $request->input('per_page', 15);
         $hasFilter = $request->hasAny(['q', 'published', 'catalog_id', 'per_page']);
+        $hasSort = $request->hasAny(['sort-id', 'sort-title', 'sort-sku', 'sort-unit_price']);
+
+        if (!$hasSort) {
+            return redirect($request->fullUrlWithQuery(['sort-id' => 'desc']));
+        }
 
         $products = Product::query();
 
