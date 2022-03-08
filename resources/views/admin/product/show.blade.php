@@ -96,6 +96,13 @@
         />
     </x-admin.panel.item>
 
+    {{-- Previews --}}
+    <x-admin.panel.item label="Ảnh xem trước">
+        <x-admin.detail.gallary
+            :value="$product->previews" 
+        />
+    </x-admin.panel.item>
+
     {{-- Created at --}}
     <x-admin.panel.item label="Ngày tạo">
         <x-admin.detail.text

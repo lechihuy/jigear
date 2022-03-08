@@ -21,4 +21,12 @@ trait Imaggable
     {
         return $this->morphOne(Image::class, 'imaggable')->where('type', 'thumbnail');
     }
+
+    /**
+     * Get the one's previews.
+     */
+    public function previews()
+    {
+        return $this->morphMany(Image::class, 'imaggable')->where('type', 'preview');
+    }
 }
