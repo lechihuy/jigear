@@ -12,7 +12,7 @@
     {{-- Panel --}}
     <x-admin.panel :name="$title">
 
-        {{-- Title --}}
+        {{-- ID --}}
         <x-admin.panel.item label="ID">
             <x-admin.detail.text :value="$catalog->id" />
         </x-admin.panel.item>

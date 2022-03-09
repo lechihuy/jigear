@@ -5,9 +5,20 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Models\ProductParameterSet;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\StoreProductParameterSetRequest;
 
 class ProductParameterSetController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     * 
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth:admin');
+    }
+    
     /**
      * Display a listing of the resource.
      *
@@ -57,7 +68,7 @@ class ProductParameterSetController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.product-parameter-set.create');
     }
 
     /**
@@ -66,9 +77,13 @@ class ProductParameterSetController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreProductParameterSetRequest $request)
     {
-        //
+        $productParameterSet = ProductParameterSet::create($request->validated());
+
+        $request->toast('success', __('Tạo bộ thông số sản phẩm thành công!'));
+
+        return response()->json(['product_parameter_set' => $productParameterSet]);
     }
 
     /**
@@ -79,7 +94,13 @@ class ProductParameterSetController extends Controller
      */
     public function show($id)
     {
-        //
+        $productParameterSet = ProductParameterSet::findOrFail($id);
+        $parameters = $productParameterSet->parameters()->paginate(15)->withQueryString();
+
+        return view('admin.product-parameter-set.show', [
+            'productParameterSet' => $productParameterSet,
+            'parameters' => $parameters,
+        ]);
     }
 
     /**
@@ -90,7 +111,7 @@ class ProductParameterSetController extends Controller
      */
     public function edit($id)
     {
-        //
+        
     }
 
     /**
@@ -108,11 +129,17 @@ class ProductParameterSetController extends Controller
     /**
      * Remove the specified resource from storage.
      *
+     * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-        //
+        $productParameterSet = ProductParameterSet::findOrFail($id);
+        $productParameterSet->delete();
+
+        $request->toast('success', __('Xóa bộ thông số sản phẩm thành công!'));
+
+        return response()->noContent();
     }
 }

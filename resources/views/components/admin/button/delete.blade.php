@@ -5,9 +5,11 @@
     'link' => false
 ])
 
+@aware(['parent'])
+
 @php
-    $url = route($prefixRoute.'destroy', $resource);
-    $redirect = route($prefixRoute.'index');
+    $url = route($prefixRoute.'destroy', $parent ? [$parent, $resource] : $resource);
+    $redirect = route($prefixRoute.'index', $parent ? [$parent] : []);
 @endphp
 
 @if ($link)

@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\CatalogController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\Auth\LoginController;
+use App\Http\Controllers\Admin\ProductParameterController;
 use App\Http\Controllers\Admin\ProductParameterSetController;
 
 /*
@@ -40,5 +41,6 @@ Route::prefix('admin')->name('admin.')->group(function() {
         'catalogs' => CatalogController::class,
         'products' => ProductController::class,
         'product-parameter-sets' => ProductParameterSetController::class,
+        'product-parameter-sets.parameters' => ProductParameterController::class,
     ]);
 });

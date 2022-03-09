@@ -3,13 +3,26 @@
     'prefixRouteName',
     'items',
     'hasItems',
-    'hasFilter'
+    'hasFilter',
+    'parent' => null,
+    'parentUrl' => null,
+    'parentDisplay' => null,
+    'parentLabel' => null,
 ])
 
-<div>
+<div class="{{ $attributes->get('class') }}">
     {{-- Resource heading --}}
-    <div class="flex items-center mb-3">
+    <div class="mb-3">
         <h1 class="text-2xl text-gray-700">{{ $name }}</h1>
+        @if ($parent)
+            <div class="mt-2">
+                <a href="{{ $parentUrl }}" class="inline-flex items-center gap-2 px-2 py-1 text-sm rounded-lg bg-slate-200 hover:bg-slate-300">
+                    <span class="font-semibold text-gray-700">{{ __($parentLabel) }}</span>
+                    <span class="text-gray-400">|</span>
+                    <span class="font-semibold text-sky-500">{{ $parent->{$parentDisplay} }}</span>
+                </a>
+            </div>
+        @endif
     </div>
 
     {{-- Tools --}}
@@ -23,7 +36,7 @@
             </div>
         @endif
         <div class="ml-auto">
-            <a href="{{ route($prefixRouteName . 'create') }}" class="btn btn-primary">
+            <a href="{{ route($prefixRouteName . 'create', $parent ? [$parent] : []) }}" class="btn btn-primary">
                 <span class="material-icons-outlined">add_circle_outline</span>
                 <span class="hidden sm:block">{{ __('Tạo mới') }}</span>
             </a>

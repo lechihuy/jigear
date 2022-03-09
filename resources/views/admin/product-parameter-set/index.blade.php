@@ -1,7 +1,7 @@
 @extends('admin.layouts.app')
 
 @php
-    $title = __('Thông số sản phẩm');
+    $title = __('Bộ thông số sản phẩm');
 @endphp
 
 @section('title', $title)
