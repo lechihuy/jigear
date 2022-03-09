@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\ProductParameterSet;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\StoreProductParameterSetRequest;
+use App\Http\Requests\Admin\UpdateProductParameterSetRequest;
 
 class ProductParameterSetController extends Controller
 {
@@ -111,19 +112,28 @@ class ProductParameterSetController extends Controller
      */
     public function edit($id)
     {
-        
+        $productParameterSet = ProductParameterSet::findOrFail($id);
+
+        return view('admin.product-parameter-set.edit', [
+            'productParameterSet' => $productParameterSet,
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\Admin\UpdateProductParameterSetRequest  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateProductParameterSetRequest $request, $id)
     {
-        //
+        $productParameterSet = ProductParameterSet::findOrFail($id);
+        $productParameterSet->update($request->validated());
+
+        $request->toast('success', __('Cập nhật bộ thông số kỹ thuật thành công!'));
+
+        return response()->json(['product_parameter_set' => $productParameterSet]);
     }
 
     /**

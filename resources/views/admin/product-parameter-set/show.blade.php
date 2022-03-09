@@ -26,6 +26,13 @@
         <x-admin.detail.text :value="$productParameterSet->key" />
     </x-admin.panel.item>
 
+    {{-- Parameters --}}
+    <x-admin.panel.item label="Thông số sản phẩm">
+        <x-admin.detail.has-many 
+            :children="$productParameterSet->parameters" 
+            prefixRouteName="admin.product-parameter-sets.parameters."
+        />
+    </x-admin.panel.item>
 
     {{-- Created at --}}
     <x-admin.panel.item label="Ngày tạo">

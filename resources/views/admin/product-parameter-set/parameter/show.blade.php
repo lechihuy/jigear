@@ -30,6 +30,14 @@
         <x-admin.detail.text :value="$parameter->key" />
     </x-admin.panel.item>
 
+    {{-- Product Parameter Set ID --}}
+    <x-admin.panel.item label="Bộ thông số kỹ thuật">
+        <x-admin.detail.belongs-to 
+            :owner="$parameter->set" 
+            prefixRouteName="admin.product-parameter-sets."
+            display="key" 
+        />
+    </x-admin.panel.item>
 
     {{-- Created at --}}
     <x-admin.panel.item label="Ngày tạo">

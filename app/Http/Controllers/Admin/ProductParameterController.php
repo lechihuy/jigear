@@ -157,14 +157,14 @@ class ProductParameterController extends Controller
     public function update(UpdateProductParameterRequest $request, $productParameterSetId, $id)
     {
         $productParameterSet = ProductParameterSet::findOrFail($productParameterSetId);
-        $parameter = $productParameterSet->parameters()
-                        ->where('id', $id)->update($request->validated());
+        $parameter = $productParameterSet->parameters()->findOrFail($id);
+        $parameter->update($request->validated());
         
         $request->toast('success', __('Cập nhật thông số sản phẩm thành công!'));
 
         return response()->json([
             'product_parameter_set' => $productParameterSet,
-            'parameter' => $productParameterSet->parameters()->where('id', $id)->first()
+            'parameter' => $parameter
         ]);
     }
 

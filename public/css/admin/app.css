@@ -1975,6 +1975,14 @@ img {
 
 @media (min-width: 768px){
 
+  .md\:inline-block{
+    display: inline-block;
+  }
+
+  .md\:inline{
+    display: inline;
+  }
+
   .md\:grid-cols-2{
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
