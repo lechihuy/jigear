@@ -1,7 +1,7 @@
 <div class="container mx-auto lg:px-10">
     <div class='px-[20px] py-[10px]'>
         <div class="flex justify-between align-center items-center">
-            <div class="md:hidden">
+            <div show="1" class="btn-menu md:hidden">
                 <span class="material-icons">
                     menu
                 </span>

@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-.navbar::before {
+.menu-item::before {
     content: "";
     border: 15px solid;
     border-color: transparent transparent transparent #65c8c6;
@@ -13,6 +13,6 @@
     display: none;
 }
 
-.navbar:hover::before {
+.menu-item:hover::before {
     display: block !important;
 }

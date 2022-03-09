@@ -632,6 +632,12 @@ select {
 .relative {
   position: relative;
 }
+.top-\[52px\] {
+  top: 52px;
+}
+.left-\[216px\] {
+  left: 216px;
+}
 .top-\[-8px\] {
   top: -8px;
 }
@@ -1175,7 +1181,7 @@ select {
   transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
 }
 
-.navbar::before {
+.menu-item::before {
     content: "";
     border: 15px solid;
     border-color: transparent transparent transparent #65c8c6;
@@ -1186,7 +1192,7 @@ select {
     display: none;
 }
 
-.navbar:hover::before {
+.menu-item:hover::before {
     display: block !important;
 }
 
@@ -1203,10 +1209,6 @@ select {
 .focus\:outline-none:focus {
   outline: 2px solid transparent;
   outline-offset: 2px;
-}
-
-.group:hover .group-hover\:block {
-  display: block;
 }
 
 .group:hover .group-hover\:grid {
