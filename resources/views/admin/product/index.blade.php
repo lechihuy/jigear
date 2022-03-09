@@ -25,15 +25,19 @@
                 'Có' => 1,
                 'không' => 0
             ]" />
+            <x-admin.resource.filter.boolean label="Tồn kho" name="is_stock" :options="[
+                'Hết hàng' => 0,
+                'Còn hàng' => 1,
+            ]" />
             <x-admin.resource.filter.select label="Danh mục" name="catalog_id" :options="$catalogOptions" />
         </x-slot>
 
         <x-slot:columns>
-            <x-admin.resource.column name="ID" />
+            <x-admin.resource.column name="ID" column="id" :sortable="true" />
             <x-admin.resource.column name="" align="center" />
-            <x-admin.resource.column name="Tiêu đề" />
-            <x-admin.resource.column name="SKU" />
-            <x-admin.resource.column name="Giá bán" />
+            <x-admin.resource.column name="Tiêu đề" column="title" :sortable="true" />
+            <x-admin.resource.column name="SKU" column="sku" :sortable="true" />
+            <x-admin.resource.column name="Giá bán" column="unit_price" :sortable="true" />
             <x-admin.resource.column name="Danh mục" />
             <x-admin.resource.column name="Xuất bản" align="center" />
         </x-slot>

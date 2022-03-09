@@ -30,9 +30,15 @@ class CatalogController extends Controller
     {
         $perPage = $request->input('per_page', 15);
         $hasFilter = $request->hasAny(['q', 'published', 'parent_id', 'per_page']);
+        $hasSort = $request->hasAny(['sort-id', 'sort-title']);
 
-        $catalogs = Catalog::latest();
+        if (!$hasSort) {
+            return redirect($request->fullUrlWithQuery(['sort-id' => 'desc']));
+        }
 
+        $catalogs = Catalog::query();
+
+        // Filter
         $request->whenHas('q', function ($q) use ($catalogs) {
             $catalogs->where('title', 'like', "%$q%")->orWhereFullText('title', $q);
         });
@@ -43,6 +49,15 @@ class CatalogController extends Controller
 
         $request->whenHas('parent_id', function($parentId) use ($catalogs) {
             $catalogs->where('parent_id', $parentId);
+        });
+
+        // Sorting
+        $request->whenHas('sort-id', function($sorting) use ($catalogs) {
+            $catalogs->orderBy('id', $sorting);
+        });
+
+        $request->whenHas('sort-title', function($sorting) use ($catalogs) {
+            $catalogs->orderBy('title', $sorting);
         });
 
         $catalogs = $catalogs->paginate($perPage)->withQueryString();

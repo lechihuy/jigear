@@ -13,6 +13,16 @@ use App\Http\Requests\Admin\UpdateProductRequest;
 class ProductController extends Controller
 {
     /**
+     * Create a new controller instance.
+     * 
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth:admin');
+    }
+    
+    /**
      * Display a listing of the resource.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -22,9 +32,15 @@ class ProductController extends Controller
     {
         $perPage = $request->input('per_page', 15);
         $hasFilter = $request->hasAny(['q', 'published', 'catalog_id', 'per_page']);
+        $hasSort = $request->hasAny(['sort-id', 'sort-title', 'sort-sku', 'sort-unit_price']);
 
-        $products = Product::latest();
+        if (!$hasSort) {
+            return redirect($request->fullUrlWithQuery(['sort-id' => 'desc']));
+        }
 
+        $products = Product::query();
+
+        // Filter
         $request->whenHas('q', function ($q) use ($products) {
             $products->where(function($query) use ($q) {
                 $query->where('title', 'like', "%$q%")->orWhereFullText('title', $q)
@@ -41,8 +57,33 @@ class ProductController extends Controller
             $products->where('purchasable', $purchasable);
         });
 
+        $request->whenHas('is_stock', function($isStock) use ($products) {
+            if ((bool) $isStock) {
+                $products->where('stock', '>', 0);
+            } else {
+                $products->where('stock', 0)->orWhereNull('stock');
+            }
+        });
+
         $request->whenHas('catalog_id', function($catalogId) use ($products) {
             $products->where('catalog_id', $catalogId);
+        });
+
+        // Sorting
+        $request->whenHas('sort-id', function($sorting) use ($products) {
+            $products->orderBy('id', $sorting);
+        });
+
+        $request->whenHas('sort-title', function($sorting) use ($products) {
+            $products->orderBy('title', $sorting);
+        });
+
+        $request->whenHas('sort-sku', function($sorting) use ($products) {
+            $products->orderBy('sku', $sorting);
+        });
+
+        $request->whenHas('sort-unit_price', function($sorting) use ($products) {
+            $products->orderBy('unit_price', $sorting);
         });
 
         $products = $products->paginate($perPage)->withQueryString();

@@ -4,7 +4,7 @@
     'filter' => null
 ])
 
-@aware(['prefixRouteName', 'items', 'hasFilter'])
+@aware(['prefixRouteName', 'items', 'hasFilter', 'parent'])
 
 <div class="rounded-lg shadow">
     {{-- Tools --}}
@@ -29,7 +29,7 @@
                     <form method="GET">
 
                         {{-- Refresh filter button --}}
-                        <a href="{{ route($prefixRouteName.'index') }}" class="border-0 rounded-b-none cursor-pointer btn btn-light btn-block">
+                        <a href="{{ route($prefixRouteName.'index', $parent ? [$parent] : []) }}" class="border-0 rounded-b-none cursor-pointer btn btn-light btn-block">
                             <span class="material-icons-outlined">refresh</span>
                             {{ __('Làm mới bộ lọc') }}
                         </a>
@@ -85,7 +85,7 @@
                 <div class="max-w-full text-center text-gray-500 w-96">
                     <span class="text-5xl material-icons-outlined">search_off</span>
                     <p>{{ __('Không tìm thấy kết quả nào.') }}</p>
-                    <a href="{{ route($prefixRouteName.'index') }}" class="mt-5 cursor-pointer btn btn-light">
+                    <a href="{{ route($prefixRouteName.'index', $parent ? [$parent] : []) }}" class="mt-5 cursor-pointer btn btn-light">
                         <span class="material-icons-outlined">refresh</span>
                         {{ __('Làm mới bộ lọc') }}
                     </a>

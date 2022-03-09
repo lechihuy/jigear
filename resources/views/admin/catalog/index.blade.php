@@ -25,8 +25,8 @@
         </x-slot>
 
         <x-slot:columns>
-            <x-admin.resource.column name="ID" />
-            <x-admin.resource.column name="Tiêu đề" />
+            <x-admin.resource.column name="ID" column="id" :sortable="true" />
+            <x-admin.resource.column name="Tiêu đề" column="title" :sortable="true" />
             <x-admin.resource.column name="Danh mục cha" />
             <x-admin.resource.column name="Xuất bản" align="center" />
         </x-slot>
