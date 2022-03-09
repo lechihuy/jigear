@@ -2,13 +2,14 @@
     'prefixRoute',
     'resource',
     'onlyIcon' => false,
-    'link' => false
+    'link' => false,
+    'parent' => null,
 ])
 
 @aware(['parent'])
 
 @php
-    $url = route($prefixRoute.'destroy', $parent ? [$parent, $resource] : $resource);
+    $url = route($prefixRoute.'destroy', $parent ? [$parent, $resource] : [$resource]);
     $redirect = route($prefixRoute.'index', $parent ? [$parent] : []);
 @endphp
 

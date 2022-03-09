@@ -38,7 +38,11 @@
         </div>
 
         <div class="flex items-center gap-2 ml-auto">
-            <x-admin.button.delete prefixRoute="admin.product-parameter-sets.parameters." :resource="$parameter" />
+            <x-admin.button.delete 
+                prefixRoute="admin.product-parameter-sets.parameters." 
+                :resource="$parameter" 
+                :parent="$productParameterSet"
+            />
             <x-admin.button.confirm-update />
         </div>
     </div>
@@ -49,7 +53,7 @@
 @push('scripts')
 <script>
 document.addEventListener('alpine:init', () => {
-    Alpine.data('editCatalogForm', () => ({
+    Alpine.data('editProductParameterForm', () => ({
         key: '{{ $parameter->key }}',
         loading: false,
         submit() {

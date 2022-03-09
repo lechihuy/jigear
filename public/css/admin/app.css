@@ -957,10 +957,6 @@ img {
   margin-left: 1.25rem;
 }
 
-.mt-10{
-  margin-top: 2.5rem;
-}
-
 .mb-3{
   margin-bottom: 0.75rem;
 }
@@ -1378,19 +1374,14 @@ img {
   background-color: rgb(240 249 255 / var(--tw-bg-opacity));
 }
 
-.bg-gray-200{
+.bg-slate-200{
   --tw-bg-opacity: 1;
-  background-color: rgb(229 231 235 / var(--tw-bg-opacity));
+  background-color: rgb(226 232 240 / var(--tw-bg-opacity));
 }
 
 .bg-slate-100{
   --tw-bg-opacity: 1;
   background-color: rgb(241 245 249 / var(--tw-bg-opacity));
-}
-
-.bg-slate-200{
-  --tw-bg-opacity: 1;
-  background-color: rgb(226 232 240 / var(--tw-bg-opacity));
 }
 
 .object-cover{

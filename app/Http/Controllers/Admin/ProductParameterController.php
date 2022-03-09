@@ -164,7 +164,7 @@ class ProductParameterController extends Controller
 
         return response()->json([
             'product_parameter_set' => $productParameterSet,
-            'parameter' => $parameter
+            'parameter' => $productParameterSet->parameters()->where('id', $id)->first()
         ]);
     }
 
