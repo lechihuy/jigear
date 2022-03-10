@@ -27,6 +27,7 @@ class Product extends Model
         'stock',
         'published',
         'purchasable',
+        'brand_id',
         'description',
         'detail',
         'parameters'

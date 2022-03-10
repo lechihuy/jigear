@@ -122,6 +122,7 @@ document.addEventListener('alpine:init', () => {
         stock: '{{ $product->stock }}',
         published: {{ $product->published ? 'true' : 'false' }},
         purchasable: {{ $product->purchasable ? 'true' : 'false' }},
+        brand_id: '{{ $product->brand_id }}',
         description: '{{ $product->description }}',
         detail: '{!! $product->detail !!}',
         parameters: JSON.parse(@json($product->parameters ?? '[]')),
@@ -140,11 +141,11 @@ document.addEventListener('alpine:init', () => {
             data.append('title', this.title)
             data.append('sku', this.sku)
             data.append('catalog_id', this.catalog_id)
-            data.append('brand_id', this.brand_id)
             data.append('unit_price', this.unit_price)
             data.append('stock', this.stock)
             data.append('published', this.published)
             data.append('purchasable', this.purchasable)
+            data.append('brand_id', this.brand_id)
             data.append('description', this.description)
             data.append('detail', this.detail)
             data.append('parameters', parameters)

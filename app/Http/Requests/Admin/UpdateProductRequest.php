@@ -47,6 +47,7 @@ class UpdateProductRequest extends FormRequest
             'stock' => ['nullable', 'integer', 'min:0'],
             'published' => ['required', 'boolean'],
             'purchasable' => ['required', 'boolean'],
+            'brand_id' => ['nullable', 'exists:brands,id'],
             'description' => ['nullable', 'string'],
             'detail' => ['nullable', 'string'],
             'parameters' => ['nullable', 'json'],
