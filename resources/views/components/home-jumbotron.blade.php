@@ -56,7 +56,7 @@
             </ul>        
         </div>
         <div class="lg:col-span-7 lg:h-[400px] h-[300px]">
-            <div class="swiper mySwiper">
+            {{-- <div class="swiper mySwiper">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">
                         <img src="{{ asset('images/jumbotron_1.jpg') }}" class="" alt="">
@@ -73,9 +73,10 @@
                 </div>
                 <div class="swiper-button-next"></div>
                 <div class="swiper-button-prev"></div>
-                <div class="swiper-pagination"></div>
-            </div>
+            </div> --}}
+            
         </div>
+        
     </div>
 </div>
 

@@ -638,12 +638,6 @@ select {
 .left-\[216px\] {
   left: 216px;
 }
-.top-\[-8px\] {
-  top: -8px;
-}
-.left-\[176px\] {
-  left: 176px;
-}
 .top-3 {
   top: 0.75rem;
 }
@@ -1187,7 +1181,7 @@ select {
     border-color: transparent transparent transparent #65c8c6;
     position: absolute;
     right: -30px;
-    top: -1px;
+    top: 1px;
     z-index: 40;
     display: none;
 }
@@ -1209,10 +1203,6 @@ select {
 .focus\:outline-none:focus {
   outline: 2px solid transparent;
   outline-offset: 2px;
-}
-
-.group:hover .group-hover\:grid {
-  display: grid;
 }
 
 @media (min-width: 640px) {
