@@ -2,7 +2,7 @@
     <div class='px-[20px] py-[10px]'>
         <div class="flex justify-between align-center items-center">
             <div show="1" class="btn-menu md:hidden">
-                <span class="material-icons">
+                <span class="material-icons cursor-pointer">
                     menu
                 </span>
             </div>
