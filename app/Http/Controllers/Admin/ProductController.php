@@ -136,7 +136,7 @@ class ProductController extends Controller
     {
         $product = Product::findOrFail($id);
 
-        return view('admin.product.show', ['product' => $product]);
+        return view('admin.product.detail', ['product' => $product]);
     }
 
     /**

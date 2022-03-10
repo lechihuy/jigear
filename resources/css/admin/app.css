@@ -14,6 +14,8 @@ img {
   -ms-interpolation-mode: nearest-neighbor; */
 }
 
+[x-cloak] { display: none !important; }
+
 @tailwind components;
 
 .form-text {

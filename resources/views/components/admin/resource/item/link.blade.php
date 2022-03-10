@@ -3,7 +3,7 @@
     'url',
 ])
 
-<td class="p-3 whitespace-nowrap">
+<td class="p-3 whitespace-nowrap {{ $attributes->get('class') }}">
     @if ($url)
         <a 
             href="{{ $url }}" 

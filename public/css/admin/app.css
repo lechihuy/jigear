@@ -607,6 +607,8 @@ img {
   -ms-interpolation-mode: nearest-neighbor; */
 }
 
+[x-cloak] { display: none !important; }
+
 .container{
   width: 100%;
 }
@@ -1093,8 +1095,20 @@ img {
   width: 5rem;
 }
 
+.w-\[50px\]{
+  width: 50px;
+}
+
+.w-24{
+  width: 6rem;
+}
+
 .min-w-\[1000px\]{
   min-width: 1000px;
+}
+
+.min-w-\[768px\]{
+  min-width: 768px;
 }
 
 .max-w-6xl{
@@ -1109,12 +1123,24 @@ img {
   max-width: 24rem;
 }
 
+.max-w-\[50px\]{
+  max-width: 50px;
+}
+
 .flex-none{
   flex: none;
 }
 
 .flex-grow{
   flex-grow: 1;
+}
+
+.table-auto{
+  table-layout: auto;
+}
+
+.table-fixed{
+  table-layout: fixed;
 }
 
 .origin-top-right{
@@ -1977,10 +2003,6 @@ img {
 
   .md\:inline-block{
     display: inline-block;
-  }
-
-  .md\:inline{
-    display: inline;
   }
 
   .md\:grid-cols-2{

@@ -48,7 +48,7 @@
         />
     </x-admin.panel.item>
 
-    {{-- # Basic --}}
+    {{-- # Sell info --}}
     <x-admin.panel.heading value="Thông tin bán hàng" />
 
     {{-- Unit price --}}

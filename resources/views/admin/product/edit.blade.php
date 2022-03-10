@@ -160,7 +160,6 @@ document.addEventListener('alpine:init', () => {
             }).then(res => {
                 window.location.href = route('admin.products.show', { product: res.data.product.id });
             }).catch(err => {
-                console.log(err)
                 Alpine.store('toast').show('danger', err.response.data.message)
             }).finally(() => {
                 this.loading = false;

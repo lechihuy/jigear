@@ -1,4 +1,5 @@
 <div 
+    x-cloak
     class="fixed top-0 left-0 z-40 flex items-start justify-center w-full h-screen p-5 ite bg-black/70" 
     x-data="$store.confirmModal"
     x-show="shown"

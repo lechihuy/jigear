@@ -23,7 +23,7 @@
                 </button>
 
                 {{-- Filter dropdown --}}
-                <div x-show="open" x-transition class="absolute right-0 z-10 mt-2 origin-top-right bg-white border border-gray-200 rounded-lg shadow-lg w-72 focus:outline-none">
+                <div x-cloak x-show="open" x-transition class="absolute right-0 z-10 mt-2 origin-top-right bg-white border border-gray-200 rounded-lg shadow-lg w-72 focus:outline-none">
                     
                     {{-- Filter form --}}
                     <form method="GET">
