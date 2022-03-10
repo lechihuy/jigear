@@ -131,7 +131,7 @@ class ProductParameterSetController extends Controller
         $productParameterSet = ProductParameterSet::findOrFail($id);
         $productParameterSet->update($request->validated());
 
-        $request->toast('success', __('Cập nhật bộ thông số kỹ thuật thành công!'));
+        $request->toast('success', __('Cập nhật bộ thông số sản phẩm thành công!'));
 
         return response()->json(['product_parameter_set' => $productParameterSet]);
     }

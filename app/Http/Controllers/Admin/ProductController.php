@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Brand;
 use App\Models\Image;
 use App\Models\Catalog;
 use App\Models\Product;
@@ -152,6 +153,9 @@ class ProductController extends Controller
             'product' => $product,
             'catalogOptions' => Catalog::all()->mapWithKeys(fn($catalog) => [
                 $catalog->title => $catalog->id
+            ]),
+            'brandOptions' => Brand::all()->mapWithKeys(fn($brand) => [
+                $brand->name => $brand->id
             ])
         ]);
     }

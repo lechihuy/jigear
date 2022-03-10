@@ -66,6 +66,11 @@
             <x-admin.form.boolean name="purchasable" x-model="purchasable" />
         </x-admin.panel.item>
 
+        {{-- Brand ID --}}
+        <x-admin.panel.item label="Thương hiệu">
+            <x-admin.form.select name="brand_id" x-model="brand_id" :options="$brandOptions" />
+        </x-admin.panel.item>
+
         {{-- Description --}}
         <x-admin.panel.item label="Mô tả">
             <x-admin.form.textarea name="description" x-model="description" />
@@ -82,7 +87,7 @@
         </x-admin.panel.item>
 
         {{-- Parameters --}}
-        <x-admin.panel.item label="Thông số kỹ thuật">
+        <x-admin.panel.item label="Thông số sản phẩm">
             <x-admin.form.parameter name="parameters" x-model="parameters" />
         </x-admin.panel.item>
 
@@ -112,6 +117,7 @@ document.addEventListener('alpine:init', () => {
         title: '{{ $product->title }}',
         sku: '{{ $product->sku }}',
         catalog_id: '{{ $product->catalog_id }}',
+        brand_id: '{{ $product->brand_id }}',
         unit_price: '{{ $product->unit_price }}',
         stock: '{{ $product->stock }}',
         published: {{ $product->published ? 'true' : 'false' }},
@@ -134,6 +140,7 @@ document.addEventListener('alpine:init', () => {
             data.append('title', this.title)
             data.append('sku', this.sku)
             data.append('catalog_id', this.catalog_id)
+            data.append('brand_id', this.brand_id)
             data.append('unit_price', this.unit_price)
             data.append('stock', this.stock)
             data.append('published', this.published)
