@@ -32,6 +32,9 @@
         <a href="{{ route('admin.product-parameter-sets.index') }}" class="nav-item {{ str_contains(Route::currentRouteName(), 'admin.product-parameter-sets') ? '!text-white' : '' }}">
             <span class="material-icons-outlined">drag_indicator</span> {{ __('Bộ thông số sản phẩm') }}
         </a>
+        <a href="{{ route('admin.brands.index') }}" class="nav-item {{ str_contains(Route::currentRouteName(), 'admin.brands') ? '!text-white' : '' }}">
+            <span class="material-icons-outlined">branding_watermark</span> {{ __('Thương hiệu') }}
+        </a>
 
         <p class="nav-heading">{{ __('Quản lý') }}</p>
         <a href="" class="nav-item">

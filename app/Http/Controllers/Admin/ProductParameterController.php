@@ -33,7 +33,7 @@ class ProductParameterController extends Controller
         $productParameterSetDetailUrl = route('admin.product-parameter-sets.show', [$productParameterSetId]);
         
         $perPage = $request->input('per_page', 15);
-        $hasFilter = $request->hasAny(['q', 'key', 'per_page']);
+        $hasFilter = $request->hasAny(['q', 'per_page']);
         $hasSort = $request->hasAny(['sort-id', 'sort-key']);
         
         if (!$hasSort) {

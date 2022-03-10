@@ -28,7 +28,7 @@ class ProductParameterSetController extends Controller
     public function index(Request $request)
     {
         $perPage = $request->input('per_page', 15);
-        $hasFilter = $request->hasAny(['q', 'key', 'per_page']);
+        $hasFilter = $request->hasAny(['q', 'per_page']);
         $hasSort = $request->hasAny(['sort-id', 'sort-key']);
 
         if (!$hasSort) {
@@ -131,7 +131,7 @@ class ProductParameterSetController extends Controller
         $productParameterSet = ProductParameterSet::findOrFail($id);
         $productParameterSet->update($request->validated());
 
-        $request->toast('success', __('Cập nhật bộ thông số kỹ thuật thành công!'));
+        $request->toast('success', __('Cập nhật bộ thông số sản phẩm thành công!'));
 
         return response()->json(['product_parameter_set' => $productParameterSet]);
     }

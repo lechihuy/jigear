@@ -66,6 +66,11 @@
             <x-admin.form.boolean name="purchasable" x-model="purchasable" />
         </x-admin.panel.item>
 
+        {{-- Brand ID --}}
+        <x-admin.panel.item label="Thương hiệu">
+            <x-admin.form.select name="brand_id" x-model="brand_id" :options="$brandOptions" />
+        </x-admin.panel.item>
+
         {{-- Description --}}
         <x-admin.panel.item label="Mô tả">
             <x-admin.form.textarea name="description" x-model="description" />
@@ -82,7 +87,7 @@
         </x-admin.panel.item>
 
         {{-- Parameters --}}
-        <x-admin.panel.item label="Thông số kỹ thuật">
+        <x-admin.panel.item label="Thông số sản phẩm">
             <x-admin.form.parameter name="parameters" x-model="parameters" />
         </x-admin.panel.item>
 
@@ -112,10 +117,12 @@ document.addEventListener('alpine:init', () => {
         title: '{{ $product->title }}',
         sku: '{{ $product->sku }}',
         catalog_id: '{{ $product->catalog_id }}',
+        brand_id: '{{ $product->brand_id }}',
         unit_price: '{{ $product->unit_price }}',
         stock: '{{ $product->stock }}',
         published: {{ $product->published ? 'true' : 'false' }},
         purchasable: {{ $product->purchasable ? 'true' : 'false' }},
+        brand_id: '{{ $product->brand_id }}',
         description: '{{ $product->description }}',
         detail: '{!! $product->detail !!}',
         parameters: JSON.parse(@json($product->parameters ?? '[]')),
@@ -138,6 +145,7 @@ document.addEventListener('alpine:init', () => {
             data.append('stock', this.stock)
             data.append('published', this.published)
             data.append('purchasable', this.purchasable)
+            data.append('brand_id', this.brand_id)
             data.append('description', this.description)
             data.append('detail', this.detail)
             data.append('parameters', parameters)
@@ -153,7 +161,6 @@ document.addEventListener('alpine:init', () => {
             }).then(res => {
                 window.location.href = route('admin.products.show', { product: res.data.product.id });
             }).catch(err => {
-                console.log(err)
                 Alpine.store('toast').show('danger', err.response.data.message)
             }).finally(() => {
                 this.loading = false;

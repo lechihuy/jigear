@@ -31,7 +31,7 @@
     </x-admin.panel.item>
 
     {{-- Product Parameter Set ID --}}
-    <x-admin.panel.item label="Bộ thông số kỹ thuật">
+    <x-admin.panel.item label="Bộ thông số sản phẩm">
         <x-admin.detail.belongs-to 
             :owner="$parameter->set" 
             prefixRouteName="admin.product-parameter-sets."

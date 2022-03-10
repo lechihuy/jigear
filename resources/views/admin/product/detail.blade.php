@@ -48,7 +48,7 @@
         />
     </x-admin.panel.item>
 
-    {{-- # Basic --}}
+    {{-- # Sell info --}}
     <x-admin.panel.heading value="Thông tin bán hàng" />
 
     {{-- Unit price --}}
@@ -75,6 +75,15 @@
         />
     </x-admin.panel.item>
 
+    {{-- Brand --}}
+    <x-admin.panel.item label="Thương hiệu">
+        <x-admin.detail.belongs-to 
+            :owner="$product->brand" 
+            prefixRouteName="admin.brands."
+            display="name" 
+        />
+    </x-admin.panel.item>
+
     {{-- Description --}}
     <x-admin.panel.item label="Mô tả">
         <x-admin.detail.text
@@ -90,7 +99,7 @@
     </x-admin.panel.item>
 
     {{-- Parameters --}}
-    <x-admin.panel.item label="Thông số kỹ thuật">
+    <x-admin.panel.item label="Thông số sản phẩm">
         <x-admin.detail.parameter
             :value="json_decode($product->parameters)" 
         />

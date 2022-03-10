@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\CatalogController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\DashboardController;
@@ -42,5 +43,6 @@ Route::prefix('admin')->name('admin.')->group(function() {
         'products' => ProductController::class,
         'product-parameter-sets' => ProductParameterSetController::class,
         'product-parameter-sets.parameters' => ProductParameterController::class,
+        'brands' => BrandController::class,
     ]);
 });

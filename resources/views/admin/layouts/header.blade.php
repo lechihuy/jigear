@@ -36,7 +36,7 @@
                     <img src="https://ui-avatars.com/api/?name={{ auth()->user()->fullname }}&size=50" class="h-10 rounded-full cursor-pointer" :class="open ? 'ring-2 ring-sky-500 ring-offset-2' : ''">
                 </div>
 
-                <div x-show="open" x-transition class="absolute right-0 mt-2 origin-top-right bg-white rounded-md shadow-lg w-52 ring-1 ring-black ring-opacity-5 focus:outline-none">
+                <div x-cloak x-show="open" x-transition class="absolute right-0 mt-2 origin-top-right bg-white rounded-md shadow-lg w-52 ring-1 ring-black ring-opacity-5 focus:outline-none">
                     <div class="py-1">
                         <a href="#" class="block px-4 py-2 text-sm text-gray-700">{{ __('Hồ sơ') }}</a>
                         <form method="POST" action="{{ route('admin.auth.logout') }}">

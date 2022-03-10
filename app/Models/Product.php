@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Brand;
 use App\Models\Catalog;
 use App\Models\Traits\Imaggable;
 use App\Models\Traits\Sluggable;
@@ -26,6 +27,7 @@ class Product extends Model
         'stock',
         'published',
         'purchasable',
+        'brand_id',
         'description',
         'detail',
         'parameters'
@@ -37,5 +39,13 @@ class Product extends Model
     public function catalog()
     {
         return $this->belongsTo(Catalog::class);
+    }
+
+    /**
+     * Get the brand that owns to this product.
+     */
+    public function brand()
+    {
+        return $this->belongsTo(Brand::class);
     }
 }
