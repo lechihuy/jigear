@@ -55,8 +55,8 @@
                 </li>
             </ul>        
         </div>
-        {{-- <div class="absolute top-[0px] left-[176px]">
-            <ul class="subnav hidden grid-cols-3 px-4 pt-4 z-20 min-h-[400px] min-w-[1280.3px] bg-white">
+        <div class="absolute top-[0px] left-[176px]">
+            <ul class="subnav hidden grid-cols-3 px-4 pt-4 z-40 min-h-[400px] min-w-[1280.3px] bg-white">
                 <li>
                     <p class="text-xl text-red-600">Laptop Gaming</p>
                     <p>Asus</p>
@@ -102,30 +102,7 @@
                     <p>Từ 40 triệu trở lên</p>
                 </li>
             </ul>
-            <ul class="subnav hidden grid-cols-3 px-4 pt-4 z-20 min-h-[400px] min-w-[1280.3px] bg-white">
-                <li>
-                    <p class="text-xl text-red-600">Laptop Gaming</p>
-                    <p>Asus</p>
-                    <p>Aceri</p>
-                    <p>MSI</p>
-                    <p>Macbook</p>
-                </li>
-                <li>
-                    <p class="text-xl text-red-600">Laptop Văn phòng</p>
-                    <p>Asus</p>
-                    <p>Aceri</p>
-                    <p>MSI</p>
-                    <p>Macbook</p>
-                </li>
-                <li>
-                    <p class="text-xl text-red-600">Laptop Gaming theo giá</p>
-                    <p>Dưới 10 triệu</p>
-                    <p>Từ 10 triệu đến 20 triệu</p>
-                    <p>Từ 20 triệu đến 40 triệu</p>
-                    <p>Từ 40 triệu trở lên</p>
-                </li>
-            </ul>
-        </div>         --}}
+        </div>        
         <div class="slider w-full relative lg:col-span-7 lg:h-[400px] h-[340px]">
                 <div class="slider-items">
                     <div class="item active">

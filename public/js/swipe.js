@@ -38,5 +38,9 @@ function next(direction) {
 
   slides[index].classList.add("active");
 }
+
+var autoplayInterval = setInterval(function () {
+  next("next");
+}, 6000);
 /******/ })()
 ;
