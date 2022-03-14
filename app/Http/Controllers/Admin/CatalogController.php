@@ -109,7 +109,7 @@ class CatalogController extends Controller
     {
         $catalog = Catalog::findOrFail($id);
 
-        return view('admin.catalog.show', ['catalog' => $catalog]);
+        return view('admin.catalog.detail', ['catalog' => $catalog]);
     }
 
     /**

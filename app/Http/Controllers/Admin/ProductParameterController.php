@@ -119,7 +119,7 @@ class ProductParameterController extends Controller
         $parameter = $productParameterSet->parameters()->findOrFail($id);
         $productParameterSetDetailUrl = route('admin.product-parameter-sets.show', [$productParameterSetId]);
 
-        return view('admin.product-parameter-set.parameter.show', [
+        return view('admin.product-parameter-set.parameter.detail', [
             'productParameterSet' => $productParameterSet,
             'parameter' => $parameter,
             'productParameterSetDetailUrl' => $productParameterSetDetailUrl,

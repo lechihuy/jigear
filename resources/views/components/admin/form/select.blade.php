@@ -1,10 +1,13 @@
 @props([
     'defaultValue' => null,
     'defaultLabel' => '&mdash;',
-    'options' => []
+    'options' => [],
+    'required' => false,
 ])
-<select class="form-select" {{ $attributes }}>
-    <option value="{{ $defaultValue }}">{!! $defaultLabel !!}</option>
+<select {{ $attributes->merge(['class' => 'form-select']) }}>
+    @if (!$required)
+        <option value="{{ $defaultValue }}">{!! $defaultLabel !!}</option>
+    @endif
     @foreach ($options as $text => $value)
         <option value="{{ $value }}">{{ $text }}</option>
     @endforeach

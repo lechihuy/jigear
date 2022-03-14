@@ -15,19 +15,20 @@ class CreatePromotionsTable extends Migration
     {
         Schema::create('promotions', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->unique();
+            $table->string('name')->fullText();
             $table->string('code')->unique()->nullable();
-            $table->enum('type', ['sale_off', 'voucher'])->index();
+            $table->enum('type', ['voucher', 'sale_off'])->index();
             $table->string('value');
             $table->boolean('is_percent_unit');
-            $table->unsignedBigInteger('max')->nullable();
             $table->boolean('actived')->default(true)->index();
             $table->unsignedBigInteger('init_uses');
             $table->unsignedBigInteger('remaining_uses')->index();
             $table->timestamps();
             $table->softDeletes();
             $table->timestamp('started_at')->useCurrent()->index();
-            $table->timestamp('ended_at')->useCurrent()->nullable()->index();
+            $table->timestamp('ended_at')->nullable()->index();
+
+            $table->unique('name');
         });
     }
 
