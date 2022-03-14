@@ -7,12 +7,9 @@
     <title>@yield('title')</title>
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
     <link rel="stylesheet" href="{{ mix('css/swipe.css') }}">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet">
-      <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
      
 </head>
-<body style="font-family: 'Poppins', sans-serif;">
+<body>
     @include('layouts.header')
     @yield('content')
 
