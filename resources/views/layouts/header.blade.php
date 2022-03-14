@@ -1,4 +1,4 @@
-<header class="bg-stone-700 py-2">
+<header class="py-2 bg-zinc-800">
     <x-container>
         <div class="flex items-center justify-between">
             <div class="btn-menu lg:hidden">
@@ -39,7 +39,7 @@
                     <a href="">Support</a>
                 </li>
             </ul>
-            <div class="flex items-center gap-6 text-white">
+            <div class="flex items-center gap-2 lg:gap-6 text-white">
                 <span class="icon-magnifier text-sm"></span>
                 <span class="icon-bag text-sm"></span>
             </div>
