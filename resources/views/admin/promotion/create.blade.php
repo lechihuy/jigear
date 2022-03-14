@@ -21,7 +21,7 @@
         </x-admin.panel.item>
 
         {{-- Code --}}
-        <x-admin.panel.item label="Mã" :required="true">
+        <x-admin.panel.item label="Mã">
             <x-admin.form.text name="code" x-model="code" />
         </x-admin.panel.item>
 
@@ -57,7 +57,7 @@
         </x-admin.panel.item>
 
         {{-- Init uses --}}
-        <x-admin.panel.item label="Số lần sử dụng" :required="true">
+        <x-admin.panel.item label="Số lượt phát hành" :required="true">
             <x-admin.form.number name="init_uses" x-model="init_uses" />
         </x-admin.panel.item>
 

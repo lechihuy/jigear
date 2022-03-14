@@ -25,4 +25,16 @@ class Promotion extends Model
         'started_at',
         'ended_at',
     ];
+
+    /**
+     * The "booted" method of the model.
+     *
+     * @return void
+     */
+    protected static function booted()
+    {
+        static::creating(function ($promotion) {
+            $promotion->remaining_uses = $promotion->init_uses;
+        });
+    }
 }

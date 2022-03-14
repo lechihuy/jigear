@@ -25,7 +25,7 @@ class StorePromotionRequest extends FormRequest
     {
         return [
             'name' => ['required', 'string'],
-            'code' => ['required', 'string', 'unique:promotions,code'],
+            'code' => ['nullable', 'string', 'unique:promotions,code'],
             'type' => ['required', 'string', 'in:voucher,sale_off'],
             'value' => ['required', 'numeric', 'min:0'],
             'init_uses' => ['required', 'numeric', 'min:1'],

@@ -28,8 +28,8 @@ class PromotionController extends Controller
     public function index(Request $request)
     {
         $perPage = $request->input('per_page', 15);
-        $hasFilter = $request->hasAny(['q', 'type', 'actived', 'per_page']);
-        $hasSort = $request->hasAny(['sort-id', 'sort-name', 'sort-code']);
+        $hasFilter = $request->hasAny(['q', 'type', 'actived', 'is_remaining_uses', 'effect', 'per_page']);
+        $hasSort = $request->hasAny(['sort-id', 'sort-name', 'sort-remaining_uses']);
 
         if (!$hasSort) {
             return redirect($request->fullUrlWithQuery(['sort-id' => 'desc']));
@@ -39,7 +39,8 @@ class PromotionController extends Controller
 
         // Filter
         $request->whenHas('q', function ($q) use ($promotions) {
-            $promotions->where('name', 'like', "%$q%")->orWhereFullText('name', $q);
+            $promotions->where('name', 'like', "%$q%")->orWhereFullText('name', $q)
+                ->where('code', 'like', "%$q%");
         });
 
         $request->whenHas('type', function($type) use ($promotions) {
@@ -48,6 +49,28 @@ class PromotionController extends Controller
 
         $request->whenHas('actived', function($actived) use ($promotions) {
             $promotions->where('actived', $actived);
+        });
+
+        $request->whenHas('is_remaining_uses', function($isRemainingUses) use ($promotions) {
+            $promotions->where('remaining_uses', $isRemainingUses ? '>' : '=', 0);
+        });
+
+        $request->whenHas('effect', function($effect) use ($promotions) {
+            switch ($effect) {
+                case 'no-effect':
+                    $promotions->where('started_at', '>', now());
+                    break;
+                
+                case 'is-in-effect':
+                    $promotions->where('started_at', '<=', now())->where(function($query) {
+                        $query->where('ended_at', '>=', now())->orWhereNull('ended_at');
+                    });
+                    break;
+
+                case 'expire':
+                    $promotions->where('ended_at', '<', now());
+                    break;
+            }
         });
 
         // Sorting
@@ -59,8 +82,8 @@ class PromotionController extends Controller
             $promotions->orderBy('name', $sorting);
         });
 
-        $request->whenHas('sort-code', function($sorting) use ($promotions) {
-            $promotions->orderBy('code', $sorting);
+        $request->whenHas('sort-remaining_uses', function($sorting) use ($promotions) {
+            $promotions->orderBy('remaining_uses', $sorting);
         });
 
         $promotions = $promotions->paginate($perPage)->withQueryString();
@@ -105,7 +128,9 @@ class PromotionController extends Controller
      */
     public function show($id)
     {
-        //
+        $promotion = Promotion::findOrFail($id);
+
+        return view('admin.promotion.detail', ['promotion' => $promotion]);
     }
 
     /**
