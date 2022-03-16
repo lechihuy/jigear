@@ -1,7 +1,7 @@
 <header class="py-2 bg-zinc-800">
     <x-container>
         <div class="flex items-center justify-between">
-            <div class="btn-menu lg:hidden">
+            <div class="lg:hidden">
                 <span class="icon-menu text-white"></span>
             </div>
             <div>

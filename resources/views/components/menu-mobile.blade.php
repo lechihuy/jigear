@@ -1,4 +1,4 @@
-<div class="bg-zinc-900 w-full h-full fixed lg:hidden">
+<div class="bg-zinc-900 w-full h-full fixed lg:hidden" x-data="{ open : false}">
     <div class="px-3 py-2 border-b-[1px]">
         <input type="text" placeholder="Search..." class="w-full h-6 border-b-2 rounded-md bg-zinc-800 border-transparent focus:border-transparent focus:ring-0">
     </div>
