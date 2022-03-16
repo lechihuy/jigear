@@ -1,7 +1,7 @@
 <header class="py-2 bg-zinc-800">
     <x-container>
-        <div class="flex items-center justify-between">
-            <div class="lg:hidden">
+        <div class="flex items-center justify-between" x-data="{ open : false}">
+            <div class="lg:hidden" @click="$store.darkMode.toggle()">
                 <span class="icon-menu text-white"></span>
             </div>
             <div>

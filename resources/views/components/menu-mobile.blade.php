@@ -1,10 +1,10 @@
-<div class="bg-zinc-900 w-full h-full fixed lg:hidden" x-data="{ open : false}">
+<div class="bg-zinc-900 w-full h-full fixed lg:hidden"  x-data="{ open : false }" x-show="open"> 
     <div class="px-3 py-2 border-b-[1px]">
         <input type="text" placeholder="Search..." class="w-full h-6 border-b-2 rounded-md bg-zinc-800 border-transparent focus:border-transparent focus:ring-0">
     </div>
     <x-container>
-        <div class="text-slate-50 text-sm font-thin px-4">
-            <ul class="divide-y">
+        <div class="text-slate-50 text-sm font-thin px-4" >
+            <ul class="divide-y divide-slate-300">
                 <li class="py-3">
                     <a href="">Store</a>
                 </li>
