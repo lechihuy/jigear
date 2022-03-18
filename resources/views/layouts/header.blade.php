@@ -1,8 +1,14 @@
-<header class="py-2 bg-zinc-800">
+<header class="py-2 bg-zinc-800 fixed top-0 left-0 w-full" x-data="$store.menu">
     <x-container>
-        <div class="flex items-center justify-between" x-data="{ open : false}">
-            <div class="lg:hidden" @click="$store.darkMode.toggle()">
-                <span class="icon-menu text-white"></span>
+        <div class="flex items-center justify-between">
+            <div class="lg:hidden flex items-center" @click="toggle">
+                <span x-show="!open" class="material-icons text-white cursor-pointer select-none">
+                    menu
+                </span>
+            
+                <span x-show="open" class="material-icons text-white cursor-pointer select-none">
+                    close
+                </span>
             </div>
             <div>
                 <img class="w-7 h-7 object-cover" src="{{ asset('images/logo.png') }}" alt="">
@@ -45,4 +51,6 @@
             </div>
         </div>
     </x-container>
+
+    <x-menu-mobile />
 </header>

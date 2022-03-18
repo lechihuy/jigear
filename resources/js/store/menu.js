@@ -1,9 +1,9 @@
 document.addEventListener('alpine:init', () => {
-    Alpine.store('dropDown', {
+    Alpine.store('menu', {
         open: false,
         
         toggle() {
-            this.on = !this.on
+            this.open = !this.open
         }
     })
 })

@@ -14,7 +14,7 @@
     @yield('content')
 
     <script src="https://code.jquery.com/jquery.min.js"></script>
-    <script src="{{ mix('js/swipe.js') }}"></script>
-    <script src="{{ mix('js/app.js') }}">,</script>
+    <script src="{{ mix('js/app.js') }}"></script>
+    <script>Alpine.start();</script>
 </body>
 </html>

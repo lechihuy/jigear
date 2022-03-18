@@ -1,16 +1,15 @@
 @import url(https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.5.5/css/simple-line-icons.min.css);
 @import url(https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap);
+@import url(https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp);
 /*
 ! tailwindcss v3.0.17 | MIT License | https://tailwindcss.com
 */
-
 
 
 /*
 1. Prevent padding and border from affecting element width. (https://github.com/mozdevs/cssremedy/issues/4)
 2. Allow adding a border to an element by just adding a border-width. (https://github.com/tailwindcss/tailwindcss/pull/116)
 */
-
 
 
 *,
@@ -23,12 +22,10 @@
 }
 
 
-
 ::before,
 ::after {
   --tw-content: '';
 }
-
 
 
 /*
@@ -37,7 +34,6 @@
 3. Use a more readable tab size.
 4. Use the user's configured `sans` font-family by default.
 */
-
 
 
 html {
@@ -50,19 +46,16 @@ html {
 }
 
 
-
 /*
 1. Remove the margin in all browsers.
 2. Inherit line-height from `html` so users can set them as a class directly on the `html` element.
 */
 
 
-
 body {
   margin: 0; /* 1 */
   line-height: inherit; /* 2 */
 }
-
 
 
 /*
@@ -72,7 +65,6 @@ body {
 */
 
 
-
 hr {
   height: 0; /* 1 */
   color: inherit; /* 2 */
@@ -80,11 +72,9 @@ hr {
 }
 
 
-
 /*
 Add the correct text decoration in Chrome, Edge, and Safari.
 */
-
 
 
 abbr:where([title]) {
@@ -93,11 +83,9 @@ abbr:where([title]) {
 }
 
 
-
 /*
 Remove the default font size and weight for headings.
 */
-
 
 
 h1,
@@ -111,11 +99,9 @@ h6 {
 }
 
 
-
 /*
 Reset links to optimize for opt-in styling instead of opt-out.
 */
-
 
 
 a {
@@ -124,11 +110,9 @@ a {
 }
 
 
-
 /*
 Add the correct font weight in Edge and Safari.
 */
-
 
 
 b,
@@ -137,12 +121,10 @@ strong {
 }
 
 
-
 /*
 1. Use the user's configured `mono` font family by default.
 2. Correct the odd `em` font sizing in all browsers.
 */
-
 
 
 code,
@@ -154,11 +136,9 @@ pre {
 }
 
 
-
 /*
 Add the correct font size in all browsers.
 */
-
 
 
 small {
@@ -166,11 +146,9 @@ small {
 }
 
 
-
 /*
 Prevent `sub` and `sup` elements from affecting the line height in all browsers.
 */
-
 
 
 sub,
@@ -182,17 +160,14 @@ sup {
 }
 
 
-
 sub {
   bottom: -0.25em;
 }
 
 
-
 sup {
   top: -0.5em;
 }
-
 
 
 /*
@@ -202,7 +177,6 @@ sup {
 */
 
 
-
 table {
   text-indent: 0; /* 1 */
   border-color: inherit; /* 2 */
@@ -210,13 +184,11 @@ table {
 }
 
 
-
 /*
 1. Change the font styles in all browsers.
 2. Remove the margin in Firefox and Safari.
 3. Remove default padding in all browsers.
 */
-
 
 
 button,
@@ -233,11 +205,9 @@ textarea {
 }
 
 
-
 /*
 Remove the inheritance of text transform in Edge and Firefox.
 */
-
 
 
 button,
@@ -246,12 +216,10 @@ select {
 }
 
 
-
 /*
 1. Correct the inability to style clickable types in iOS and Safari.
 2. Remove default button styles.
 */
-
 
 
 button,
@@ -264,11 +232,9 @@ button,
 }
 
 
-
 /*
 Use the modern Firefox focus style for all focusable elements.
 */
-
 
 
 :-moz-focusring {
@@ -276,11 +242,9 @@ Use the modern Firefox focus style for all focusable elements.
 }
 
 
-
 /*
 Remove the additional `:invalid` styles in Firefox. (https://github.com/mozilla/gecko-dev/blob/2f9eacd9d3d995c937b4251a5557d95d494c9be1/layout/style/res/forms.css#L728-L737)
 */
-
 
 
 :-moz-ui-invalid {
@@ -288,11 +252,9 @@ Remove the additional `:invalid` styles in Firefox. (https://github.com/mozilla/
 }
 
 
-
 /*
 Add the correct vertical alignment in Chrome and Firefox.
 */
-
 
 
 progress {
@@ -300,11 +262,9 @@ progress {
 }
 
 
-
 /*
 Correct the cursor style of increment and decrement buttons in Safari.
 */
-
 
 
 ::-webkit-inner-spin-button,
@@ -313,12 +273,10 @@ Correct the cursor style of increment and decrement buttons in Safari.
 }
 
 
-
 /*
 1. Correct the odd appearance in Chrome and Safari.
 2. Correct the outline style in Safari.
 */
-
 
 
 [type='search'] {
@@ -327,17 +285,14 @@ Correct the cursor style of increment and decrement buttons in Safari.
 }
 
 
-
 /*
 Remove the inner padding in Chrome and Safari on macOS.
 */
 
 
-
 ::-webkit-search-decoration {
   -webkit-appearance: none;
 }
-
 
 
 /*
@@ -346,12 +301,10 @@ Remove the inner padding in Chrome and Safari on macOS.
 */
 
 
-
 ::-webkit-file-upload-button {
   -webkit-appearance: button; /* 1 */
   font: inherit; /* 2 */
 }
-
 
 
 /*
@@ -359,17 +312,14 @@ Add the correct display in Chrome and Safari.
 */
 
 
-
 summary {
   display: list-item;
 }
 
 
-
 /*
 Removes the default spacing and border for appropriate elements.
 */
-
 
 
 blockquote,
@@ -389,18 +339,15 @@ pre {
 }
 
 
-
 fieldset {
   margin: 0;
   padding: 0;
 }
 
 
-
 legend {
   padding: 0;
 }
-
 
 
 ol,
@@ -412,17 +359,14 @@ menu {
 }
 
 
-
 /*
 Prevent resizing textareas horizontally by default.
 */
 
 
-
 textarea {
   resize: vertical;
 }
-
 
 
 /*
@@ -431,19 +375,16 @@ textarea {
 */
 
 
-
 input::-moz-placeholder, textarea::-moz-placeholder {
   opacity: 1; /* 1 */
   color: #9ca3af; /* 2 */
 }
 
 
-
 input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   opacity: 1; /* 1 */
   color: #9ca3af; /* 2 */
 }
-
 
 
 input::placeholder,
@@ -453,11 +394,9 @@ textarea::placeholder {
 }
 
 
-
 /*
 Set the default cursor for buttons.
 */
-
 
 
 button,
@@ -466,11 +405,9 @@ button,
 }
 
 
-
 /*
 Make sure disabled buttons don't get the pointer cursor.
 */
-
 
 
 :disabled {
@@ -478,13 +415,11 @@ Make sure disabled buttons don't get the pointer cursor.
 }
 
 
-
 /*
 1. Make replaced elements `display: block` by default. (https://github.com/mozdevs/cssremedy/issues/14)
 2. Add `vertical-align: middle` to align replaced elements more sensibly by default. (https://github.com/jensimmons/cssremedy/issues/14#issuecomment-634934210)
    This can trigger a poorly considered lint error in some tools but is included by design.
 */
-
 
 
 img,
@@ -500,11 +435,9 @@ object {
 }
 
 
-
 /*
 Constrain images and videos to the parent width and preserve their intrinsic aspect ratio. (https://github.com/mozdevs/cssremedy/issues/14)
 */
-
 
 
 img,
@@ -514,17 +447,14 @@ video {
 }
 
 
-
 /*
 Ensure the default browser behavior of the `hidden` attribute.
 */
 
 
-
 [hidden] {
   display: none;
 }
-
 
 
 [type='text'],[type='email'],[type='url'],[type='password'],[type='number'],[type='date'],[type='datetime-local'],[type='month'],[type='search'],[type='tel'],[type='time'],[type='week'],[multiple],textarea,select{
@@ -545,7 +475,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 
 
-
 [type='text']:focus, [type='email']:focus, [type='url']:focus, [type='password']:focus, [type='number']:focus, [type='date']:focus, [type='datetime-local']:focus, [type='month']:focus, [type='search']:focus, [type='tel']:focus, [type='time']:focus, [type='week']:focus, [multiple]:focus, textarea:focus, select:focus{
   outline: 2px solid transparent;
   outline-offset: 2px;
@@ -560,12 +489,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 
 
-
 input::-moz-placeholder, textarea::-moz-placeholder{
   color: #6b7280;
   opacity: 1;
 }
-
 
 
 input:-ms-input-placeholder, textarea:-ms-input-placeholder{
@@ -574,12 +501,10 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder{
 }
 
 
-
 input::placeholder,textarea::placeholder{
   color: #6b7280;
   opacity: 1;
 }
-
 
 
 ::-webkit-datetime-edit-fields-wrapper{
@@ -587,11 +512,9 @@ input::placeholder,textarea::placeholder{
 }
 
 
-
 ::-webkit-date-and-time-value{
   min-height: 1.5em;
 }
-
 
 
 select{
@@ -605,7 +528,6 @@ select{
 }
 
 
-
 [multiple]{
   background-image: initial;
   background-position: initial;
@@ -615,7 +537,6 @@ select{
   -webkit-print-color-adjust: unset;
           color-adjust: unset;
 }
-
 
 
 [type='checkbox'],[type='radio']{
@@ -643,17 +564,14 @@ select{
 }
 
 
-
 [type='checkbox']{
   border-radius: 0px;
 }
 
 
-
 [type='radio']{
   border-radius: 100%;
 }
-
 
 
 [type='checkbox']:focus,[type='radio']:focus{
@@ -669,7 +587,6 @@ select{
 }
 
 
-
 [type='checkbox']:checked,[type='radio']:checked{
   border-color: transparent;
   background-color: currentColor;
@@ -679,11 +596,9 @@ select{
 }
 
 
-
 [type='checkbox']:checked{
   background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3e%3c/svg%3e");
 }
-
 
 
 [type='radio']:checked{
@@ -691,12 +606,10 @@ select{
 }
 
 
-
 [type='checkbox']:checked:hover,[type='checkbox']:checked:focus,[type='radio']:checked:hover,[type='radio']:checked:focus{
   border-color: transparent;
   background-color: currentColor;
 }
-
 
 
 [type='checkbox']:indeterminate{
@@ -709,12 +622,10 @@ select{
 }
 
 
-
 [type='checkbox']:indeterminate:hover,[type='checkbox']:indeterminate:focus{
   border-color: transparent;
   background-color: currentColor;
 }
-
 
 
 [type='file']{
@@ -728,11 +639,9 @@ select{
 }
 
 
-
 [type='file']:focus{
   outline: 1px auto -webkit-focus-ring-color;
 }
-
 
 
 *, ::before, ::after{
@@ -788,13 +697,11 @@ body {
 @media (min-width: 640px){
 
 
-
   .container{
     max-width: 640px;
   }
 }
 @media (min-width: 768px){
-
 
 
   .container{
@@ -804,7 +711,6 @@ body {
 @media (min-width: 1024px){
 
 
-
   .container{
     max-width: 1024px;
   }
@@ -812,13 +718,11 @@ body {
 @media (min-width: 1280px){
 
 
-
   .container{
     max-width: 1280px;
   }
 }
 @media (min-width: 1536px){
-
 
 
   .container{
@@ -834,11 +738,21 @@ body {
 .relative{
   position: relative;
 }
+.sticky{
+  position: -webkit-sticky;
+  position: sticky;
+}
 .top-3{
   top: 0.75rem;
 }
 .right-3{
   right: 0.75rem;
+}
+.top-0{
+  top: 0px;
+}
+.left-0{
+  left: 0px;
 }
 .top-1{
   top: 0.25rem;
@@ -849,11 +763,14 @@ body {
 .right-0{
   right: 0px;
 }
-.left-0{
-  left: 0px;
-}
 .top-16{
   top: 4rem;
+}
+.top-2\/4{
+  top: 50%;
+}
+.right-\[300px\]{
+  right: 300px;
 }
 .col-span-12{
   grid-column: span 12 / span 12;
@@ -861,6 +778,21 @@ body {
 .mx-auto{
   margin-left: auto;
   margin-right: auto;
+}
+.-mx-10{
+  margin-left: -2.5rem;
+  margin-right: -2.5rem;
+}
+.-mx-14{
+  margin-left: -3.5rem;
+  margin-right: -3.5rem;
+}
+.-mx-16{
+  margin-left: -4rem;
+  margin-right: -4rem;
+}
+.ml-auto{
+  margin-left: auto;
 }
 .ml-3{
   margin-left: 0.75rem;
@@ -883,9 +815,6 @@ body {
 .mr-auto{
   margin-right: auto;
 }
-.ml-auto{
-  margin-left: auto;
-}
 .ml-5{
   margin-left: 1.25rem;
 }
@@ -894,6 +823,21 @@ body {
 }
 .mb-3{
   margin-bottom: 0.75rem;
+}
+.mt-\[-20px\]{
+  margin-top: -20px;
+}
+.mt-\[-40px\]{
+  margin-top: -40px;
+}
+.mt-\[40px\]{
+  margin-top: 40px;
+}
+.ml-\[-40px\]{
+  margin-left: -40px;
+}
+.-mr-14{
+  margin-right: -3.5rem;
 }
 .block{
   display: block;
@@ -919,9 +863,6 @@ body {
 .h-3{
   height: 0.75rem;
 }
-.h-6{
-  height: 1.5rem;
-}
 .h-7{
   height: 1.75rem;
 }
@@ -939,6 +880,9 @@ body {
 }
 .h-5{
   height: 1.25rem;
+}
+.h-20{
+  height: 5rem;
 }
 .max-h-\[calc\(100vh_-_theme\(space\.16\)\)\]{
   max-height: calc(100vh - 4rem);
@@ -982,6 +926,21 @@ body {
 .w-5{
   width: 1.25rem;
 }
+.w-1\/4{
+  width: 25%;
+}
+.w-1\/5{
+  width: 20%;
+}
+.w-10{
+  width: 2.5rem;
+}
+.w-20{
+  width: 5rem;
+}
+.w-16{
+  width: 4rem;
+}
 .max-w-sm{
   max-width: 24rem;
 }
@@ -1002,6 +961,14 @@ body {
   --tw-translate-x: 0px;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
+.translate-y-0{
+  --tw-translate-y: 0px;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+.-translate-y-full{
+  --tw-translate-y: -100%;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
 .scale-90{
   --tw-scale-x: .9;
   --tw-scale-y: .9;
@@ -1015,13 +982,11 @@ body {
 @-webkit-keyframes spin{
 
 
-
   to{
     transform: rotate(360deg);
   }
 }
 @keyframes spin{
-
 
 
   to{
@@ -1044,11 +1009,21 @@ body {
 .resize{
   resize: both;
 }
+.snap-x{
+  -ms-scroll-snap-type: x var(--tw-scroll-snap-strictness);
+      scroll-snap-type: x var(--tw-scroll-snap-strictness);
+}
+.snap-center{
+  scroll-snap-align: center;
+}
 .grid-cols-12{
   grid-template-columns: repeat(12, minmax(0, 1fr));
 }
 .flex-col{
   flex-direction: column;
+}
+.flex-nowrap{
+  flex-wrap: nowrap;
 }
 .items-center{
   align-items: center;
@@ -1058,9 +1033,6 @@ body {
 }
 .justify-between{
   justify-content: space-between;
-}
-.justify-around{
-  justify-content: space-around;
 }
 .gap-4{
   gap: 1rem;
@@ -1082,9 +1054,9 @@ body {
   border-top-width: calc(1px * calc(1 - var(--tw-divide-y-reverse)));
   border-bottom-width: calc(1px * var(--tw-divide-y-reverse));
 }
-.divide-slate-300 > :not([hidden]) ~ :not([hidden]){
+.divide-zinc-700 > :not([hidden]) ~ :not([hidden]){
   --tw-divide-opacity: 1;
-  border-color: rgb(203 213 225 / var(--tw-divide-opacity));
+  border-color: rgb(63 63 70 / var(--tw-divide-opacity));
 }
 .divide-gray-100 > :not([hidden]) ~ :not([hidden]){
   --tw-divide-opacity: 1;
@@ -1095,6 +1067,12 @@ body {
 }
 .overflow-hidden{
   overflow: hidden;
+}
+.overflow-x-auto{
+  overflow-x: auto;
+}
+.whitespace-nowrap{
+  white-space: nowrap;
 }
 .rounded-2xl{
   border-radius: 1rem;
@@ -1111,14 +1089,15 @@ body {
 .rounded-lg{
   border-radius: 0.5rem;
 }
-.border-b-\[1px\]{
+.border-b{
   border-bottom-width: 1px;
 }
 .border-b-2{
   border-bottom-width: 2px;
 }
-.border-b{
-  border-bottom-width: 1px;
+.border-zinc-700{
+  --tw-border-opacity: 1;
+  border-color: rgb(63 63 70 / var(--tw-border-opacity));
 }
 .border-transparent{
   border-color: transparent;
@@ -1187,6 +1166,19 @@ body {
   --tw-bg-opacity: 1;
   background-color: rgb(15 23 42 / var(--tw-bg-opacity));
 }
+.bg-black{
+  --tw-bg-opacity: 1;
+  background-color: rgb(0 0 0 / var(--tw-bg-opacity));
+}
+.bg-black\/50{
+  background-color: rgb(0 0 0 / 0.5);
+}
+.bg-gray-700\/50{
+  background-color: rgb(55 65 81 / 0.5);
+}
+.bg-gray-900\/50{
+  background-color: rgb(17 24 39 / 0.5);
+}
 .object-cover{
   -o-object-fit: cover;
      object-fit: cover;
@@ -1254,6 +1246,9 @@ body {
 .pr-5{
   padding-right: 1.25rem;
 }
+.pl-10{
+  padding-left: 2.5rem;
+}
 .text-left{
   text-align: left;
 }
@@ -1283,6 +1278,18 @@ body {
   font-size: 1.25rem;
   line-height: 1.75rem;
 }
+.text-4xl{
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+}
+.text-8xl{
+  font-size: 6rem;
+  line-height: 1;
+}
+.text-6xl{
+  font-size: 3.75rem;
+  line-height: 1;
+}
 .font-medium{
   font-weight: 500;
 }
@@ -1297,6 +1304,12 @@ body {
 }
 .font-semibold{
   font-weight: 600;
+}
+.leading-10{
+  line-height: 2.5rem;
+}
+.leading-\[80px\]{
+  line-height: 80px;
 }
 .text-zinc-900{
   --tw-text-opacity: 1;
@@ -1401,10 +1414,6 @@ body {
 .ring-offset-2{
   --tw-ring-offset-width: 2px;
 }
-.drop-shadow-lg{
-  --tw-drop-shadow: drop-shadow(0 10px 8px rgb(0 0 0 / 0.04)) drop-shadow(0 4px 3px rgb(0 0 0 / 0.1));
-  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
-}
 .transition{
   transition-property: color, background-color, border-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-text-decoration-color, -webkit-backdrop-filter;
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
@@ -1415,11 +1424,20 @@ body {
 .duration-300{
   transition-duration: 300ms;
 }
+.duration-500{
+  transition-duration: 500ms;
+}
+.duration-1000{
+  transition-duration: 1000ms;
+}
 .ease-out{
   transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
 }
 .ease-in{
   transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
+}
+.ease-in-out{
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .menu-item::before {
@@ -1457,14 +1475,26 @@ body {
   box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
 }
 
-@media (min-width: 640px){
+.group:hover .group-hover\:block{
+  display: block;
+}
 
+.group:hover .group-hover\:scale-100{
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.group:hover .group-hover\:opacity-100{
+  opacity: 1;
+}
+
+@media (min-width: 640px){
 
 
   .sm\:flex{
     display: flex;
   }
-
 
 
   .sm\:w-72{
@@ -1475,11 +1505,9 @@ body {
 @media (min-width: 1024px){
 
 
-
   .lg\:col-span-3{
     grid-column: span 3 / span 3;
   }
-
 
 
   .lg\:col-span-9{
@@ -1487,11 +1515,9 @@ body {
   }
 
 
-
   .lg\:mb-0{
     margin-bottom: 0px;
   }
-
 
 
   .lg\:block{
@@ -1499,11 +1525,9 @@ body {
   }
 
 
-
   .lg\:flex{
     display: flex;
   }
-
 
 
   .lg\:hidden{
@@ -1511,11 +1535,9 @@ body {
   }
 
 
-
   .lg\:w-\[980px\]{
     width: 980px;
   }
-
 
 
   .lg\:gap-6{
@@ -1523,11 +1545,9 @@ body {
   }
 
 
-
   .lg\:p-7{
     padding: 1.75rem;
   }
-
 
 
   .lg\:px-10{
@@ -1536,11 +1556,9 @@ body {
   }
 
 
-
   .lg\:pl-72{
     padding-left: 18rem;
   }
-
 
 
   .lg\:text-4xl{
