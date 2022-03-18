@@ -26,11 +26,6 @@
         <x-admin.detail.text :value="$promotion->name" />
     </x-admin.panel.item>
 
-    {{-- Code --}}
-    <x-admin.panel.item label="Mã">
-        <x-admin.detail.code :value="$promotion->code" />
-    </x-admin.panel.item>
-
     {{-- Type --}}
     <x-admin.panel.item label="Loại">
         <x-admin.detail.select 

@@ -39,8 +39,7 @@ class PromotionController extends Controller
 
         // Filter
         $request->whenHas('q', function ($q) use ($promotions) {
-            $promotions->where('name', 'like', "%$q%")->orWhereFullText('name', $q)
-                ->where('code', 'like', "%$q%");
+            $promotions->where('name', 'like', "%$q%")->orWhereFullText('name', $q);
         });
 
         $request->whenHas('type', function($type) use ($promotions) {
@@ -141,7 +140,11 @@ class PromotionController extends Controller
      */
     public function edit($id)
     {
-        //
+        $promotion = Promotion::findOrFail($id);
+
+        return view('admin.promotion.edit', [
+            'promotion' => $promotion,
+        ]);
     }
 
     /**

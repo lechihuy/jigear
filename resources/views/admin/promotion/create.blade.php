@@ -20,11 +20,6 @@
             <x-admin.form.text name="name" x-model="name" />
         </x-admin.panel.item>
 
-        {{-- Code --}}
-        <x-admin.panel.item label="Mã">
-            <x-admin.form.text name="code" x-model="code" />
-        </x-admin.panel.item>
-
         {{-- Type --}}
         <x-admin.panel.item label="Loại" :required="true">
             <x-admin.form.select 
@@ -40,6 +35,11 @@
 
 		{{-- # Promotion Info --}}
     	<x-admin.panel.heading value="Thông tin khuyến mãi" />
+
+        {{-- Promotionable type --}}
+		<x-admin.panel.item label="Áp dụng">
+            <x-admin.form.promotionable name="promotionable_type" x-model="promotionable_type" />
+        </x-admin.panel.item>
 
 		{{-- Value --}}
 		<x-admin.panel.item label="Giá trị" :required="true">
@@ -93,8 +93,8 @@
 document.addEventListener('alpine:init', () => {
   Alpine.data('createPromotionForm', () => ({
     name: '',
-    code: '',
     type: 'voucher',
+    promotionable_type: 'for-all',
     init_uses: 1,
 	value: '',
 	is_percent_unit: 0,
@@ -108,7 +108,6 @@ document.addEventListener('alpine:init', () => {
 
       	axios.post(route('admin.promotions.store'), {
 			name: this.name,
-			code: this.code,
             type: this.type,
 			init_uses: initUses,
 			value: value,
