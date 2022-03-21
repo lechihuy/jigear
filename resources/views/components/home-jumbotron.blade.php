@@ -5,21 +5,12 @@
         </div>
     </x-container>
 
-    <x-slider class="gap-4">
-        <x-slider.item class="bg-white rounded-lg shadow w-96 h-96">
-            
-        </x-slider.item>
-        <x-slider.item class="bg-white rounded-lg shadow w-72 h-96">
-            1
-        </x-slider.item>
-        <x-slider.item class="bg-white rounded-lg shadow w-72 h-96">
-            2
-        </x-slider.item>
-        <x-slider.item class="bg-white rounded-lg shadow w-72 h-96">
-            3
-        </x-slider.item>
-        <x-slider.item class="bg-white rounded-lg shadow w-72 h-96">
-            4
-        </x-slider.item>
+    <x-slider class="gap-10">
+        @for ($i = 0; $i < 11; $i++)
+            <x-slider.item class="w-28">
+                <img src="{{ asset('images/item_menu_mac.png') }}" alt="">
+                <p class="text-center pt-4 font-medium text-sm">MacBook</p>
+            </x-slider.item>
+        @endfor
     </x-slider>
 </div>
