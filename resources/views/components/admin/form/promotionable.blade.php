@@ -19,9 +19,13 @@
 
     <div class="w-full">
         <label class="block mb-2 font-semibold text-gray-700">Chọn danh mục</label>
-        <x-admin.form.select :searchable="true" :options="[
-            'Máy tính' => 1,
-            'iPhone' => 2
-        ]" />
+        <x-admin.form.select 
+            :searchable="true" 
+            :options="[
+                'Máy tính' => 1,
+                'iPhone' => 2
+            ]" 
+            x-model="promotionables"
+        />
     </div>
 </div>

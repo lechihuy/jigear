@@ -37,19 +37,15 @@
         </a>
 
         <p class="nav-heading">{{ __('Quản lý') }}</p>
-        <a href="{{ route('admin.promotions.index') }}" class="nav-item {{ str_contains(Route::currentRouteName(), 'admin.promotions') ? '!text-white' : '' }}">
+        {{-- <a href="{{ route('admin.promotions.index') }}" class="nav-item {{ str_contains(Route::currentRouteName(), 'admin.promotions') ? '!text-white' : '' }}">
             <span class="material-icons-outlined">tips_and_updates</span> {{ __('Khuyến mãi') }}
-        </a>
+        </a> --}}
         <a href="" class="nav-item">
             <span class="material-icons-outlined">receipt</span> {{ __('Đơn hàng') }}
         </a>
 
-        <p class="nav-heading">{{ __('Người dùng') }}</p>
-        <a href="" class="nav-item">
-            <span class="material-icons-outlined">person_pin_circle</span> {{ __('Khách hàng') }}
-        </a>
-        <a href="" class="nav-item">
-            <span class="material-icons-outlined">admin_panel_settings</span> {{ __('Quản trị') }}
+        <a href="{{ route('admin.users.index') }}" class="nav-item {{ str_contains(Route::currentRouteName(), 'admin.users') ? '!text-white' : '' }}">
+            <span class="material-icons-outlined">person_pin_circle</span> {{ __('Người dùng') }}
         </a>
 
         <p class="nav-heading">{{ __('Hệ thống') }}</p>

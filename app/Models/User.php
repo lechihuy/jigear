@@ -78,4 +78,16 @@ class User extends Authenticatable
             get: fn () => $this->role === 'admin',
         );
     }
+
+    /**
+     * Get gender label of the user.
+     *
+     * @return \Illuminate\Database\Eloquent\Casts\Attribute
+     */
+    protected function genderText(): Attribute
+    {
+        return new Attribute(
+            get: fn () => $this->gender ? __('Nữ') : __('Nam'),
+        );
+    }
 }

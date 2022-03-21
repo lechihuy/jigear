@@ -38,7 +38,11 @@
 
         {{-- Promotionable type --}}
 		<x-admin.panel.item label="Áp dụng">
-            <x-admin.form.promotionable name="promotionable_type" x-model="promotionable_type" />
+            <x-admin.form.promotionable 
+                name="promotionable_type" 
+                x-model="promotionable_type" 
+                x-modelable="promotionables"
+            />
         </x-admin.panel.item>
 
 		{{-- Value --}}
@@ -95,6 +99,7 @@ document.addEventListener('alpine:init', () => {
     name: '',
     type: 'voucher',
     promotionable_type: 'for-all',
+    promotionables: [],
     init_uses: 1,
 	value: '',
 	is_percent_unit: 0,
@@ -102,6 +107,7 @@ document.addEventListener('alpine:init', () => {
 	ended_at: '',
     loading: false,
     submit() {
+        console.log(this.promotionables)
       	this.loading = true;
         const value = this.value ? Number(this.value) : null
         const initUses = this.init_uses ? Number(this.init_uses) : null
