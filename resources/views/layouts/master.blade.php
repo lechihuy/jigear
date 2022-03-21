@@ -11,6 +11,7 @@
 <body>
     @include('layouts.header')
     @yield('content')
+    @include('layouts.footer')
 
     <script src="https://code.jquery.com/jquery.min.js"></script>
     <script src="{{ mix('js/app.js') }}"></script>
