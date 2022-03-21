@@ -5,7 +5,7 @@
             <p class="text-zinc-500">Xem tất cả</p>
             
         </div>
-        <div class="grid grid-cols-3 gap-4">
+        <div class="grid grid-cols-2 lg:grid-cols-3 gap-4">
             <div class="bg-white h-full rounded-2xl shadow-lg">
                 <p class="px-6 pt-6 font-normal text-2xl">MacBook Air</p>
                 <img src="{{ asset('images/mac_1.jpg') }}" alt="">
@@ -89,30 +89,30 @@
             <p class="font-medium text-2xl">Loud and clear. Unparalleled choices for rich, high-quality sound.</p>
         </div>
         <div class="flex flex-nowrap gap-4">
-            <div class="bg-white rounded-2xl shadow-lg px-6 py-6 w-2/5">
+            <div class="bg-white rounded-2xl shadow-lg px-6 py-6 w-2/5 relative">
                 <div class="break-words absolute">
-                    <p class="pt-6 font-semibold text-xl">
+                    <p class="pt-6 font-semibold text-xl w-56">
                         Get 6 months of Apple Music free.
                      </p>
-                     <p>Included with purchase of select AirPods and Beats products, and HomePod mini.**</p>
+                     <p class="text-sm pt-2">Included with purchase of select AirPods and Beats products, and HomePod mini.** </p>
                 </div>
                 <img src="{{ asset('images/sound_1.jfif') }}" alt="">
             </div>
             <div class="bg-white rounded-2xl shadow-lg px-6 py-6 w-1/3">
-                <span class="material-icons text-5xl text-rose-600">
-                    inventory
-                </span>
-                <p class="pt-6 font-medium text-xl break-words">
-                    Choose fast, free delivery or <span class="text-rose-600 font-semibold">two-hour courier delivery.</span>
-                </p>
+                <img src="{{ asset('images/sound_2.jfif') }}" alt="" class="py-6">
+                <div>
+                    <p class="font-medium text-sm text-orange-500">Free Engraving</p>
+                    <p class="font-medium">AirPods (3rd generation)</p>
+                    <p class="pt-6 text-zinc-700">4.000.000đ</p>
+                </div>
             </div>
             <div class="bg-white rounded-2xl shadow-lg px-6 py-6 w-1/3">
-                <span class="material-icons text-5xl text-orange-500">
-                    insert_emoticon
-                </span>
-                <p class="pt-6 font-medium text-xl break-words">
-                    Make them yours. <span class="text-orange-500 font-semibold">Engrave a mix of emoji, names, and numbers for free.</span>
-                </p>
+                <img src="{{ asset('images/sound_2.jfif') }}" alt="" class="py-6">
+                <div>
+                    <p class="font-medium text-sm text-orange-500">Free Engraving</p>
+                    <p class="font-medium">AirPods (3rd generation)</p>
+                    <p class="pt-6 text-zinc-700">4.000.000đ</p>
+                </div>
             </div>
         </div>
     </x-container>
