@@ -86,6 +86,20 @@
 <div class="bg-gray-100 pt-24">
     <x-container>
         <div class="pb-4">
+        <p class="font-medium text-2xl">Loud and clear. Unparalleled choices for rich, high-quality sound.</p>
+    </div>
+    </x-container>
+    <x-slider class="gap-10">
+        <x-slider.item class="">
+            <div class="break-words bg-[url('{{ asset('images/sound_1.jfif') }}')] h-[400px] w-1/2">
+                <p class="pt-6 font-semibold text-xl break-words">Get 6 months of Apple Music free.</p>
+                <p class="text-sm pt-2 break-words">Included with purchase of select AirPods and Beats products, and HomePod mini.** </p>
+            </div>
+        </x-slider.item>
+
+    </x-slider>
+    {{-- <x-container>
+        <div class="pb-4">
             <p class="font-medium text-2xl">Loud and clear. Unparalleled choices for rich, high-quality sound.</p>
         </div>
         <div class="flex flex-nowrap gap-4">
@@ -115,5 +129,5 @@
                 </div>
             </div>
         </div>
-    </x-container>
+    </x-container> --}}
 </div>

@@ -15,6 +15,11 @@ Route::get('/', function () {
     return view('home');
 });
 
+Route::get('/login', function() {
+    return view('auth.login');
+});
+
+
 
 /*
 |--------------------------------------------------------------------------
