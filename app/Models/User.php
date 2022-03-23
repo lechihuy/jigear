@@ -46,6 +46,20 @@ class User extends Authenticatable
     ];
 
     /**
+     * The "booted" method of the model.
+     *
+     * @return void
+     */
+    protected static function booted()
+    {
+        static::creating(function ($model) {
+            if ($model->role === 'admin') {
+                $model->email_verified_at = now();
+            }
+        });
+    }
+
+    /**
      * The fullname of the user.
      * 
      * @return string
@@ -87,7 +101,11 @@ class User extends Authenticatable
     protected function genderText(): Attribute
     {
         return new Attribute(
-            get: fn () => $this->gender ? __('Nữ') : __('Nam'),
+            get: fn () => match($this->gender) {
+                '0' => __('Nam'),
+                '1' => __('Nữ'),
+                '2' => __('Khác')
+            }
         );
     }
 }

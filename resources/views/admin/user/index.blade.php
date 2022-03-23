@@ -18,7 +18,7 @@
     <x-admin.resource.table>
         <x-slot:filter>
             <x-admin.resource.filter.boolean label="Quyền" name="role" :options="[
-                'Khách hàng' => 'user',
+                'Khách hàng' => 'customer',
                 'Quản trị viên' => 'admin'
             ]" />
 
@@ -58,7 +58,7 @@
                     {{-- Role --}}
                     <x-admin.resource.item.select
                         :options="[
-                            'user' => [
+                            'customer' => [
                                 'type' => 'light',
                                 'label' => 'Khách hàng'
                             ],

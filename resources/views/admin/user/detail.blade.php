@@ -30,7 +30,7 @@
     <x-admin.panel.item label="Quyền">
         <x-admin.detail.select 
             :options="[
-                'user' => [
+                'customer' => [
                     'type' => 'light',
                     'label' => 'Người dùng'
                 ],
