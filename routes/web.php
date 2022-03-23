@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\PromotionController;
 use App\Http\Controllers\Admin\Auth\LoginController;
+use App\Http\Controllers\Admin\DeliveryAddressController;
 use App\Http\Controllers\Admin\ProductParameterController;
 use App\Http\Controllers\Admin\ProductParameterSetController;
 
@@ -50,5 +51,6 @@ Route::prefix('admin')->name('admin.')->group(function() {
         // 'promotions' => PromotionController::class,
         'orders' => OrderController::class,
         'users' => UserController::class,
+        'users.delivery-addresses' => DeliveryAddressController::class,
     ]);
 });

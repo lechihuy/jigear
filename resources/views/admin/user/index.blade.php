@@ -22,9 +22,9 @@
                 'Quản trị viên' => 'admin'
             ]" />
 
-            <x-admin.resource.filter.boolean label="Kích hoạt" name="is_email_verified" :options="[
-                'Đã kích hoạt' => 1,
-                'Chưa kích hoạt' => 0
+            <x-admin.resource.filter.boolean label="Xác minh" name="is_email_verified" :options="[
+                'Đã xác minh' => 1,
+                'Chưa xác minh' => 0
             ]" />
         </x-slot>
 

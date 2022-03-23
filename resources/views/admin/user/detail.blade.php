@@ -59,12 +59,22 @@
     </x-admin.panel.item>
 
     {{-- Email verified --}}
-    <x-admin.panel.item label="Kích hoạt">
+    <x-admin.panel.item label="Xác minh">
         <x-admin.detail.boolean
             :value="$user->email_verified_at" 
         />
     </x-admin.panel.item>
 
+    {{-- Parameters --}}
+    @if ($user->isCustomer)
+    <x-admin.panel.item label="Địa chỉ giao hàng">
+        <x-admin.detail.has-many 
+            :children="$user->deliveryAddresses" 
+            prefixRouteName="admin.users.delivery-addresses."
+        />
+    </x-admin.panel.item>
+    @endif
+    
     {{-- Created at --}}
     <x-admin.panel.item label="Ngày tạo">
         <x-admin.detail.text

@@ -24,6 +24,7 @@ class User extends Authenticatable
         'last_name',
         'gender',
         'role',
+        'email_verified_at',
     ];
 
     /**
@@ -94,6 +95,18 @@ class User extends Authenticatable
     }
 
     /**
+     * Determine if the user is a customer.
+     *
+     * @return \Illuminate\Database\Eloquent\Casts\Attribute
+     */
+    protected function isCustomer(): Attribute
+    {
+        return new Attribute(
+            get: fn () => $this->role === 'customer',
+        );
+    }
+
+    /**
      * Get gender label of the user.
      *
      * @return \Illuminate\Database\Eloquent\Casts\Attribute
@@ -107,5 +120,13 @@ class User extends Authenticatable
                 '2' => __('Khác')
             }
         );
+    }
+
+    /**
+     * Get the delivery addresses that belongs to this user.
+     */
+    public function deliveryAddresses()
+    {
+        return $this->hasMany(DeliveryAddress::class, 'customer_id');
     }
 }
