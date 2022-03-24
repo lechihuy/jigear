@@ -9,7 +9,7 @@
         @for ($i = 0; $i < 11; $i++)
             <x-slider.item class="w-28">
                 <img src="{{ asset('images/item_menu_mac.png') }}" alt="">
-                <p class="text-center pt-4 font-medium text-sm">MacBook</p>
+                <p class="text-center pt-4 font-medium text-sm`">MacBook</p>
             </x-slider.item>
         @endfor
     </x-slider>
