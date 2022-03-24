@@ -1,4 +1,4 @@
-<header class="fixed flex items-center w-full h-16 bg-white border-b border-gray-300 shadow">
+<header class="fixed z-10 flex items-center w-full h-16 bg-white border-b border-gray-300">
     {{-- Toggle sidebar button --}}
     <button 
         type="button" class="ml-5 btn btn-secondary lg:hidden" 
