@@ -784,6 +784,9 @@ body {
 .mt-4{
   margin-top: 1rem;
 }
+.mr-6{
+  margin-right: 1.5rem;
+}
 .ml-auto{
   margin-left: auto;
 }
@@ -879,6 +882,9 @@ body {
 }
 .w-96{
   width: 24rem;
+}
+.w-44{
+  width: 11rem;
 }
 .w-3\/5{
   width: 60%;
@@ -1174,9 +1180,6 @@ body {
 .bg-gray-900\/50{
   background-color: rgb(17 24 39 / 0.5);
 }
-.bg-\[url\(\'http\:\/\/127\.0\.0\.1\:8000\/images\/sound_1\.jfif\'\)\]{
-  background-image: url('http://127.0.0.1:8000/images/sound_1.jfif');
-}
 .object-cover{
   -o-object-fit: cover;
      object-fit: cover;
@@ -1196,6 +1199,10 @@ body {
 .py-2{
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
+}
+.py-3{
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
 }
 .px-3{
   padding-left: 0.75rem;
@@ -1225,28 +1232,21 @@ body {
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
 }
-.py-3{
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
-}
 .px-5{
   padding-left: 1.25rem;
   padding-right: 1.25rem;
 }
-.pt-36{
-  padding-top: 9rem;
-}
 .pt-2{
   padding-top: 0.5rem;
+}
+.pb-4{
+  padding-bottom: 1rem;
 }
 .pt-4{
   padding-top: 1rem;
 }
 .pt-28{
   padding-top: 7rem;
-}
-.pb-4{
-  padding-bottom: 1rem;
 }
 .pt-6{
   padding-top: 1.5rem;
