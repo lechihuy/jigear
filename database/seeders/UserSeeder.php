@@ -43,5 +43,20 @@ class UserSeeder extends Seeder
             'email_verified_at' => now(),
             'role' => 'admin',
         ]);
+
+        $customer = User::create([
+            'email' => 'guest@gmail.com',
+            'password' => bcrypt('password'),
+            'first_name' => 'Khách',
+            'last_name' => 'Hàng',
+            'gender' => '0',
+            'email_verified_at' => now(),
+            'role' => 'customer',
+        ]);
+
+        $customer->deliveryAddresses()->create([
+            'address' => '144/15 Bình Lợi, Bình Thạnh',
+            'phone_number' => '0933160483'
+        ]);
     }
 }
