@@ -1,19 +1,19 @@
-<header class="py-2 bg-zinc-800 fixed top-0 left-0 w-full" x-data="$store.menu">
+<header class="py-2 bg-zinc-800 fixed top-0 left-0 w-full z-[3]" x-data="$store.menu">
     <x-container>
         <div class="flex items-center justify-between">
-            <div class="lg:hidden flex items-center" @click="toggle">
-                <span x-show="!open" class="material-icons text-white cursor-pointer select-none">
+            <div class="flex items-center lg:hidden" @click="toggle">
+                <span x-show="!open" class="text-white cursor-pointer select-none material-icons">
                     menu
                 </span>
             
-                <span x-show="open" class="material-icons text-white cursor-pointer select-none">
+                <span x-show="open" class="text-white cursor-pointer select-none material-icons">
                     close
                 </span>
             </div>
             <div>
-                <img class="w-7 h-7 object-cover" src="{{ asset('images/logo.png') }}" alt="">
+                <img class="object-cover w-7 h-7" src="{{ asset('images/logo.png') }}" alt="">
             </div>
-            <ul class="hidden lg:flex items-center justify-between gap-8 font-thin align-center text-slate-50 text-xs">
+            <ul class="items-center justify-between hidden gap-8 text-xs font-thin lg:flex align-center text-slate-50">
                 <li>
                     <a href="">Store</a>
                 </li>
@@ -45,9 +45,9 @@
                     <a href="">Support</a>
                 </li>
             </ul>
-            <div class="flex items-center gap-2 lg:gap-6 text-white">
-                <span class="icon-magnifier text-sm"></span>
-                <span class="icon-bag text-sm"></span>
+            <div class="flex items-center gap-2 text-white lg:gap-6">
+                <span class="text-sm icon-magnifier"></span>
+                <span class="text-sm icon-bag"></span>
             </div>
         </div>
     </x-container>
