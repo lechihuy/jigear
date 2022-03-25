@@ -89,13 +89,25 @@
         <p class="text-2xl font-medium">Loud and clear. Unparalleled choices for rich, high-quality sound.</p>
     </div>
     </x-container>
-    <x-slider class="gap-10">
-        <x-slider.item class="">
-            <div class="whitespace-normal h-[400px] w-1/2" style="background: url({{ asset('images/sound_1.jfif') }})">
+    <x-slider class="gap-6">
+        <x-slider.item class="w-96 h-[500px] pb-0">
+            <div class="shadow-lg rounded-2xl whitespace-normal  px-4 w-full h-full" style="background: url({{ asset('images/sound_1.jfif') }})">
                 <p class="pt-6 text-xl font-semibold">Get 6 months of Apple Music free.</p>
                 <p class="pt-2 text-sm">Included with purchase of select AirPods and Beats products, and HomePod mini.** </p>
             </div>
         </x-slider.item>
+        @for ($i = 0; $i < 11; $i++)
+            <x-slider.item class="">
+                <div class=" w-64 h-[500px] px-6 py-6 bg-white shadow-lg rounded-2xl">
+                    <img src="{{ asset('images/sound_2.jfif') }}" alt="" class="py-6 text-center max-w-full h-auto">
+                    <div class="pt-14">
+                        <p class="text-sm font-medium text-orange-500">Free Engraving</p>
+                        <p class="font-medium">AirPods (3rd generation)</p>
+                        <p class="pt-16 text-zinc-700">4.000.000đ</p>
+                    </div>
+                </div>
+            </x-slider.item>
+        @endfor
 
     </x-slider>
     {{-- <x-container>
