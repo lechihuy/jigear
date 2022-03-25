@@ -10,7 +10,7 @@
         <input type="text" placeholder="Search..." class="w-full py-2 border-b-2 rounded-md bg-zinc-800 border-transparent focus:border-transparent focus:ring-0">
     </div>
     <x-container>
-        <div class="text-slate-50 text-sm font-thin px-4" >
+        <div class="text-slate-50 text-sm font-thin after:px-4" >
             <ul class="divide-y divide-zinc-700">
                 <li class="py-3">
                     <a href="">Store</a>
