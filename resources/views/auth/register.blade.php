@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @include('layouts.header')
-<div class="bg-white min-h-screen Flex items-center">
+<div class="bg-white min-h-screen flex items-center">
     <x-container>
         <div class="w-1/2 mx-auto">
             <h1 class="py-2 text-2xl font-medium text-zinc-600 text-center">Create Your Apple ID</h1>

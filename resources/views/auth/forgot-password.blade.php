@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @include('layouts.header')
-<div class="bg-white min-h-screen Flex items-center">
+<div class="bg-white min-h-screen flex items-center">
     <x-container>
         <div class="mx-auto w-1/2">
             <h1 class="text-center py-2 text-2xl font-medium text-zinc-600">Forgot your password?</h1>

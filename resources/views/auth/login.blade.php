@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @include('layouts.header')
-<div class="bg-white min-h-screen Flex items-center">
+<div class="bg-white min-h-screen flex items-center">
     <x-container>
         <div class="text-center">
             <h1 class="py-2 text-2xl font-medium text-zinc-600">Sign in to Apple Store</h1>
@@ -17,6 +17,5 @@
                 </p>
             </div>
         </div>
-
     </x-container>
 </div>
