@@ -36,7 +36,7 @@ class Image extends Model
         return $this->morphTo();
     }
 
-     /**
+    /**
      * The "booted" method of the model.
      *
      * @return void

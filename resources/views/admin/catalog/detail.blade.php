@@ -49,7 +49,7 @@
         />
     </x-admin.panel.item>
 
-    {{-- Description --}}
+    {{-- Detail --}}
     <x-admin.panel.item label="Nội dung chi tiết">
         <x-admin.detail.trix
             :value="$catalog->detail" 

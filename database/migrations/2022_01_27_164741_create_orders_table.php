@@ -17,7 +17,6 @@ class CreateOrdersTable extends Migration
             $table->id();
             $table->string('code')->unique();
             $table->unsignedBigInteger('customer_id');
-            $table->unsignedBigInteger('promotion_id')->nullable();
             $table->enum('status', ['pending', 'delivering', 'succeeded', 'canceled'])->index();
             $table->unsignedBigInteger('total')->index();
             $table->unsignedBigInteger('sub_total');

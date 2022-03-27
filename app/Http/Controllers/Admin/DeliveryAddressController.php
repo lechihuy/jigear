@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\ProductParameterSet;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\StoreProductParameterRequest;
 use App\Http\Requests\Admin\UpdateProductParameterRequest;
 
-class ProductParameterController extends Controller
+class DeliveryAddressController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -24,65 +25,70 @@ class ProductParameterController extends Controller
      * Display a listing of the resource.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $productParameterSetId
+     * @param  int  $userId
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request, $productParameterSetId)
+    public function index(Request $request, $userId)
     {
-        $productParameterSet = ProductParameterSet::findOrFail($productParameterSetId);
-        $productParameterSetDetailUrl = route('admin.product-parameter-sets.show', [$productParameterSetId]);
+        $user = User::findOrFail($userId);
+        $userDetailUrl = route('admin.users.show', [$userId]);
         
         $perPage = $request->input('per_page', 15);
         $hasFilter = $request->hasAny(['q', 'per_page']);
-        $hasSort = $request->hasAny(['sort-id', 'sort-key']);
+        $hasSort = $request->hasAny(['sort-id', 'sort-address', 'sort-phone_number']);
         
         if (!$hasSort) {
             return redirect($request->fullUrlWithQuery(['sort-id' => 'desc']));
         }
 
-        $parameters = $productParameterSet->parameters();
+        $deliveryAddresses = $user->deliveryAddresses();
 
         // Filter
-        $request->whenHas('q', function ($q) use ($parameters) {
-            $parameters->where(function($query) use ($q) {
-                $query->where('key', 'like', "%$q%")->orWhereFullText('key', $q);
+        $request->whenHas('q', function ($q) use ($deliveryAddresses) {
+            $deliveryAddresses->where(function($query) use ($q) {
+                $query->where('address', 'like', "%$q%")->orWhereFullText('address', $q)
+                    ->orWhere('phone_number', 'like', "%$q%");
             });
         });
         
         // Sorting
-        $request->whenHas('sort-id', function($sorting) use ($parameters) {
-            $parameters->orderBy('id', $sorting);
+        $request->whenHas('sort-id', function($sorting) use ($deliveryAddresses) {
+            $deliveryAddresses->orderBy('id', $sorting);
         });
 
-        $request->whenHas('sort-key', function($sorting) use ($parameters) {
-            $parameters->orderBy('key', $sorting);
+        $request->whenHas('sort-address', function($sorting) use ($deliveryAddresses) {
+            $deliveryAddresses->orderBy('address', $sorting);
+        });
+
+        $request->whenHas('sort-phone_number', function($sorting) use ($deliveryAddresses) {
+            $deliveryAddresses->orderBy('phone_number', $sorting);
         });
         
-        $parameters = $parameters->paginate(15)->withQueryString();
+        $deliveryAddresses = $deliveryAddresses->paginate(15)->withQueryString();
 
-        return view('admin.product-parameter-set.parameter.index', [
-            'productParameterSet' => $productParameterSet,
-            'parameters' => $parameters,
-            'hasParameters' => $productParameterSet->parameters()->exists(),
+        return view('admin.user.delivery-address.index', [
+            'user' => $user,
+            'deliveryAddresses' => $deliveryAddresses,
+            'hasDeliveryAddresses' => $user->deliveryAddresses()->exists(),
             'hasFilter' => $hasFilter,
-            'productParameterSetDetailUrl' => $productParameterSetDetailUrl,
+            'userDetailUrl' => $userDetailUrl,
         ]);
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @param  int  $productParameterSetId
+     * @param  int  $user
      * @return \Illuminate\Http\Response
      */
-    public function create($productParameterSetId)
+    public function create($user)
     {
-        $productParameterSet = ProductParameterSet::findOrFail($productParameterSetId);
-        $productParameterSetDetailUrl = route('admin.product-parameter-sets.show', [$productParameterSetId]);
+        $user = User::findOrFail($user);
+        $userDetailUrl = route('admin.users.show', [$user]);
 
-        return view('admin.product-parameter-set.parameter.create', [
-            'productParameterSet' => $productParameterSet,
-            'productParameterSetDetailUrl' => $productParameterSetDetailUrl,
+        return view('admin.user.delivery-address.create', [
+            'user' => $user,
+            'userDetailUrl' => $userDetailUrl,
         ]);
     }
 

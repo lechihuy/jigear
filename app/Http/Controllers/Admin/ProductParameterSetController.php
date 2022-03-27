@@ -98,7 +98,7 @@ class ProductParameterSetController extends Controller
         $productParameterSet = ProductParameterSet::findOrFail($id);
         $parameters = $productParameterSet->parameters()->paginate(15)->withQueryString();
 
-        return view('admin.product-parameter-set.show', [
+        return view('admin.product-parameter-set.detail', [
             'productParameterSet' => $productParameterSet,
             'parameters' => $parameters,
         ]);

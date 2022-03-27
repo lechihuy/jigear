@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class FkPromotionIdColumnToProductPromotionTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class FkPromotionIdColumnToProductPromotionTable extends Migration
      */
     public function up()
     {
-        Schema::table('product_promotion', function (Blueprint $table) {
-            $table->foreign('promotion_id')->references('id')->on('promotions');
+        Schema::table('promotion_order', function (Blueprint $table) {
+            $table->foreign('promotion_id')->references('id')->on('promotions')->onDelete('cascade');
         });
     }
 
@@ -25,8 +25,8 @@ class FkPromotionIdColumnToProductPromotionTable extends Migration
      */
     public function down()
     {
-        Schema::table('product_promotion', function (Blueprint $table) {
+        Schema::table('promotion_order', function (Blueprint $table) {
             $table->dropForeign(['promotion_id']);
         });
     }
-}
+};

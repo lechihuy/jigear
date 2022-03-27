@@ -24,6 +24,7 @@ class User extends Authenticatable
         'last_name',
         'gender',
         'role',
+        'email_verified_at',
     ];
 
     /**
@@ -44,6 +45,20 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * The "booted" method of the model.
+     *
+     * @return void
+     */
+    protected static function booted()
+    {
+        static::creating(function ($model) {
+            if ($model->role === 'admin') {
+                $model->email_verified_at = now();
+            }
+        });
+    }
 
     /**
      * The fullname of the user.
@@ -77,5 +92,41 @@ class User extends Authenticatable
         return new Attribute(
             get: fn () => $this->role === 'admin',
         );
+    }
+
+    /**
+     * Determine if the user is a customer.
+     *
+     * @return \Illuminate\Database\Eloquent\Casts\Attribute
+     */
+    protected function isCustomer(): Attribute
+    {
+        return new Attribute(
+            get: fn () => $this->role === 'customer',
+        );
+    }
+
+    /**
+     * Get gender label of the user.
+     *
+     * @return \Illuminate\Database\Eloquent\Casts\Attribute
+     */
+    protected function genderText(): Attribute
+    {
+        return new Attribute(
+            get: fn () => match($this->gender) {
+                '0' => __('Nam'),
+                '1' => __('Nữ'),
+                '2' => __('Khác')
+            }
+        );
+    }
+
+    /**
+     * Get the delivery addresses that belongs to this user.
+     */
+    public function deliveryAddresses()
+    {
+        return $this->hasMany(DeliveryAddress::class, 'customer_id');
     }
 }

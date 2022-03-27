@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class FkPromotionIdColumnToOrdersTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,9 @@ class FkPromotionIdColumnToOrdersTable extends Migration
      */
     public function up()
     {
-        Schema::table('orders', function (Blueprint $table) {
-            $table->foreign('promotion_id')->references('id')->on('promotions');
+        Schema::create('promotion_order', function (Blueprint $table) {
+            $table->unsignedBigInteger('promotion_id');
+            $table->unsignedBigInteger('order_id');
         });
     }
 
@@ -25,8 +26,6 @@ class FkPromotionIdColumnToOrdersTable extends Migration
      */
     public function down()
     {
-        Schema::table('orders', function (Blueprint $table) {
-            $table->dropForeign(['promotion_id']);
-        });
+        Schema::dropIfExists('promotion_order');
     }
-}
+};
