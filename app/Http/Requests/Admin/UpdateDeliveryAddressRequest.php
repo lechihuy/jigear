@@ -5,7 +5,7 @@ namespace App\Http\Requests\Admin;
 use App\Rules\PhoneNumber;
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreDeliveryAddressRequest extends FormRequest
+class UpdateDeliveryAddressRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

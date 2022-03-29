@@ -4,10 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Models\DeliveryAddress;
 use App\Models\ProductParameterSet;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\StoreProductParameterRequest;
-use App\Http\Requests\Admin\UpdateProductParameterRequest;
+use App\Http\Requests\Admin\StoreDeliveryAddressRequest;
+use App\Http\Requests\Admin\UpdateDeliveryAddressRequest;
 
 class DeliveryAddressController extends Controller
 {
@@ -95,82 +96,82 @@ class DeliveryAddressController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  App\Http\Requests\Admin\StoreProductParameterRequest  $request
-     * @param  int  $productParameterSetId
+     * @param  App\Http\Requests\Admin\StoreDeliveryAddressRequest  $request
+     * @param  int  $userId
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreProductParameterRequest $request, $productParameterSetId)
+    public function store(StoreDeliveryAddressRequest $request, $userId)
     {
-        $productParameterSet = ProductParameterSet::findOrFail($productParameterSetId);
-        $parameter = $productParameterSet->parameters()->create($request->validated());
+        $user = User::findOrFail($userId);
+        $deliveryAddress = $user->deliveryAddresses()->create($request->validated());
 
-        $request->toast('success', __('Tạo thông số sản phẩm thành công!'));
+        $request->toast('success', __('Tạo địa chỉ giao hàng thành công!'));
 
         return response()->json([
-            'product_parameter_set' => $productParameterSet,
-            'parameter' => $parameter
+            'user' => $user,
+            'delivery_address' => $deliveryAddress
         ]);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $productParameterSetId
+     * @param  int  $userId
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($productParameterSetId, $id)
+    public function show($userId, $id)
     {
-        $productParameterSet = ProductParameterSet::findOrFail($productParameterSetId);
-        $parameter = $productParameterSet->parameters()->findOrFail($id);
-        $productParameterSetDetailUrl = route('admin.product-parameter-sets.show', [$productParameterSetId]);
+        $user = User::findOrFail($userId);
+        $deliveryAddress = $user->deliveryAddresses()->findOrFail($id);
+        $userDetailUrl = route('admin.users.show', [$userId]);
 
-        return view('admin.product-parameter-set.parameter.detail', [
-            'productParameterSet' => $productParameterSet,
-            'parameter' => $parameter,
-            'productParameterSetDetailUrl' => $productParameterSetDetailUrl,
+        return view('admin.user.delivery-address.detail', [
+            'user' => $user,
+            'deliveryAddress' => $deliveryAddress,
+            'userDetailUrl' => $userDetailUrl,
         ]);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $productParameterSetId
+     * @param  int  $userId
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($productParameterSetId, $id)
+    public function edit($userId, $id)
     {
-        $productParameterSet = ProductParameterSet::findOrFail($productParameterSetId);
-        $parameter = $productParameterSet->parameters()->findOrFail($id);
-        $productParameterSetDetailUrl = route('admin.product-parameter-sets.show', [$productParameterSetId]);
+        $user = User::findOrFail($userId);
+        $deliveryAddress = $user->deliveryAddresses()->findOrFail($id);
+        $userDetailUrl = route('admin.users.show', [$userId]);
 
-        return view('admin.product-parameter-set.parameter.edit', [
-            'productParameterSet' => $productParameterSet,
-            'parameter' => $parameter,
-            'productParameterSetDetailUrl' => $productParameterSetDetailUrl,
+        return view('admin.user.delivery-address.edit', [
+            'user' => $user,
+            'deliveryAddress' => $deliveryAddress,
+            'userDetailUrl' => $userDetailUrl,
         ]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\Admin\UpdateProductParameterRequest  $request
-     * @param  int  $productParameterSetId
+     * @param  \App\Http\Requests\Admin\UpdateDeliveryAddressRequest  $request
+     * @param  int  $userId
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateProductParameterRequest $request, $productParameterSetId, $id)
+    public function update(UpdateDeliveryAddressRequest $request, $userId, $id)
     {
-        $productParameterSet = ProductParameterSet::findOrFail($productParameterSetId);
-        $parameter = $productParameterSet->parameters()->findOrFail($id);
-        $parameter->update($request->validated());
+        $user = User::findOrFail($userId);
+        $deliveryAddress = $user->deliveryAddresses()->findOrFail($id);
+        $deliveryAddress->update($request->validated());
         
-        $request->toast('success', __('Cập nhật thông số sản phẩm thành công!'));
+        $request->toast('success', __('Cập nhật địa chỉ giao hàng thành công!'));
 
         return response()->json([
-            'product_parameter_set' => $productParameterSet,
-            'parameter' => $parameter
+            'user' => $user,
+            'delivery_address' => $deliveryAddress
         ]);
     }
 
@@ -178,17 +179,17 @@ class DeliveryAddressController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  \Illuminate\Http\Response  $request
-     * @param  int  $productParameterSetId
+     * @param  int  $userId
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request, $productParameterSetId, $id)
+    public function destroy(Request $request, $userId, $id)
     {
-        $productParameterSet = ProductParameterSet::findOrFail($productParameterSetId);
-        $parameter = $productParameterSet->parameters()->findOrFail($id);
+        $user = User::findOrFail($userId);
+        $deliveryAddress = $user->deliveryAddresses()->findOrFail($id);
         $parameter->delete();
 
-        $request->toast('success', __('Xóa thông số sản phẩm thành công!'));
+        $request->toast('success', __('Xóa địa chỉ giao hàng thành công!'));
 
         return response()->noContent();
     }

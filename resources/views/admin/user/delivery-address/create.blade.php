@@ -14,7 +14,7 @@
         :name="$title"
         :parent="$user"
         :parentUrl="$userDetailUrl"
-        parentDisplay="key"
+        parentDisplay="email"
         parentLabel="Người dùng"
     >
 
@@ -65,7 +65,8 @@ document.addEventListener('alpine:init', () => {
             user: {{ $user->id }} 
         }), {
             address: this.address,
-            phone_number: this.phone_number
+            phone_number: this.phone_number,
+            is_default: this.is_default
         }).then(res => {
             window.location.href = route('admin.users.delivery-addresses.show', { 
                 user: res.data.user.id,
