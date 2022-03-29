@@ -55,7 +55,7 @@
             <p class="text-2xl font-medium">The Apple difference. Even more reasons to shop with us.</p>
         </div>
     </x-container>
-    <x-slider class="gap-4">
+    <x-slider class="gap-4 py-4">
         @for($i = 0; $i < 8; $i++) 
             <x-slider.item class="w-72">
                 <div class="px-6 py-6 bg-white shadow-lg rounded-2xl">
@@ -77,7 +77,7 @@
         <p class="text-2xl font-medium">Loud and clear. Unparalleled choices for rich, high-quality sound.</p>
     </div>
     </x-container>
-    <x-slider class="gap-6">
+    <x-slider class="gap-6 py-4">
         <x-slider.item class="w-96 h-[500px] pb-0">
             <div class="shadow-lg rounded-2xl whitespace-normal  px-4 w-full h-full" style="background: url({{ asset('images/sound_1.jfif') }})">
                 <p class="pt-6 text-xl font-semibold">Get 6 months of Apple Music free.</p>

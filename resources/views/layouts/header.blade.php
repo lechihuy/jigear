@@ -1,4 +1,4 @@
-<header class="py-2 bg-zinc-800 fixed top-0 left-0 w-full z-[3]" x-data="$store.menu">
+<header class="flex items-center h-10 bg-zinc-800 fixed top-0 left-0 w-full z-[3]" x-data="$store.menu">
     <x-container>
         <div class="flex items-center justify-between">
             <div class="flex items-center lg:hidden" @click="toggle">
@@ -45,10 +45,12 @@
                     <a href="">Support</a>
                 </li>
             </ul>
-            <div class="flex items-center gap-2 text-white lg:gap-6" >
+            <div class="flex items-center gap-4 text-white lg:gap-6">
                 <span class="text-sm icon-magnifier"></span>
-                <span class="text-sm icon-bag relative cursor-pointer select-none" @click="toggle">
-                    <ul class="absolute w-64 bg-white -left-32 top-10 rounded-3xl border border-zinc-300" x-show="open">
+                <div class="relative">
+                    <span class="text-sm icon-bag cursor-pointer select-none" @click="toggleBag">
+                    </span>
+                    <ul class="absolute bg-white top-10 rounded-lg border border-zinc-300 w-64 -right-3 lg:w-64" x-show="openBag">
                         <li class="py-10 w-full text-center text-zinc-500 font-medium">Your Bag is empty</li>
                         <li class="text-sky-600 flex items-center gap-2 pr-52 py-4 border-t border-zinc-200 mx-4">
                             <span class="material-icons-outlined text-xl">
@@ -63,7 +65,7 @@
                             <a href="">Register</a>
                         </li>
                     </ul>
-                </span>
+                </div>
             </div>
         </div>
     </x-container>

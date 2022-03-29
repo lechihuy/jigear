@@ -3441,6 +3441,10 @@ document.addEventListener('alpine:init', function () {
     open: false,
     toggle: function toggle() {
       this.open = !this.open;
+    },
+    openBag: false,
+    toggleBag: function toggleBag() {
+      this.openBag = !this.openBag;
     }
   });
 });

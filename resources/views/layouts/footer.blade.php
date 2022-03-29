@@ -1,6 +1,6 @@
 <div class="bg-gray-100 pt-6">
     <x-container>
-        <div class="grid grid-cols-1 gap-4 text-center lg:text-left lg:grid-cols-3 lg:gap-36 border-solid border-t-2 border-zinc-200 pt-4">
+        <div class="grid grid-cols-1 gap-4 text-center lg:text-left lg:grid-cols-3 lg:gap-36 pt-4 @if(isset($isSeparated)) border-solid border-t-2 border-zinc-200 @endif">
             <div>
                 <ul>
                     <li class="font-medium text-base">Suport</li>

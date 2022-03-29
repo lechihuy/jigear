@@ -1,5 +1,7 @@
 @extends('layouts.master')
-@include('layouts.header')
+
+@section('title', 'home')
+@section('content')
 <div class="bg-white min-h-screen flex items-center">
     <x-container>
         <div class="mx-auto w-1/2">
@@ -23,3 +25,4 @@
 
     </x-container>
 </div>
+@endsection

@@ -10,7 +10,9 @@
 </head>
 <body>
     @include('layouts.header')
-    @yield('content')
+    <div class="pt-10">
+        @yield('content')
+    </div>
     @include('layouts.footer')
 
     <script src="https://code.jquery.com/jquery.min.js"></script>
