@@ -45,7 +45,7 @@
                     <a href="">Support</a>
                 </li>
             </ul>
-            <div class="flex items-center gap-2 text-white lg:gap-6">
+            <div class="flex items-center gap-2 text-white lg:gap-6" >
                 <span class="text-sm icon-magnifier"></span>
                 <span class="text-sm icon-bag relative cursor-pointer select-none" @click="toggle">
                     <ul class="absolute w-64 bg-white -left-32 top-10 rounded-3xl border border-zinc-300" x-show="open">
