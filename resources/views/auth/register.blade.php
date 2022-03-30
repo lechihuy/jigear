@@ -27,7 +27,7 @@
             </div>
             <button
                 type="submit"
-                class="w-full text-center py-3 rounded bg-sky-500 text-black my-4"
+                class="w-full text-center py-3 rounded bg-blue-600 text-white my-4"
                 >Create Account
             </button>
         </div>
