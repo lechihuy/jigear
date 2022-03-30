@@ -22,6 +22,10 @@
 >
     <x-admin.resource.table>
         <x-slot:filter>
+            <x-admin.resource.filter.boolean label="Mặc định" name="is_default" :options="[
+                'Có' => 1,
+                'Không' => 0
+            ]" />
         </x-slot>
 
         <x-slot:columns>

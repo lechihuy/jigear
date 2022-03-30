@@ -51,6 +51,10 @@ class DeliveryAddressController extends Controller
                     ->orWhere('phone_number', 'like', "%$q%");
             });
         });
+
+        $request->whenHas('is_default', function($isDefault) use ($deliveryAddresses) {
+            $deliveryAddresses->where('is_default', $isDefault);
+        });
         
         // Sorting
         $request->whenHas('sort-id', function($sorting) use ($deliveryAddresses) {
