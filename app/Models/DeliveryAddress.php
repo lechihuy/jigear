@@ -18,5 +18,20 @@ class DeliveryAddress extends Model
         'customer_id',
         'address',
         'phone_number',
+        'is_default'
     ];
+
+    /**
+     * The "booted" method of the model.
+     *
+     * @return void
+     */
+    protected static function booted()
+    {
+        static::saving(function ($model) {
+            static::where('customer_id', $model->customer_id)->where('is_default', 1)->update([
+                'is_default' => 0
+            ]);
+        });
+    }
 }
