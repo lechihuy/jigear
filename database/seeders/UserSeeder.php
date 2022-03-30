@@ -15,7 +15,7 @@ class UserSeeder extends Seeder
     public function run()
     {
         User::create([
-            'email' => 'huy@jigear.com',
+            'email' => 'huy@jigear.xyz',
             'password' => bcrypt('password'),
             'first_name' => 'Lê',
             'last_name' => 'Chí Huy',
@@ -25,7 +25,7 @@ class UserSeeder extends Seeder
         ]);
 
         User::create([
-            'email' => 'hao@jigear.com',
+            'email' => 'hao@jigear.xyz',
             'password' => bcrypt('password'),
             'first_name' => 'Bùi',
             'last_name' => 'Nhật Hào',
@@ -35,7 +35,7 @@ class UserSeeder extends Seeder
         ]);
 
         User::create([
-            'email' => 'tan@jigear.com',
+            'email' => 'tan@jigear.xyz',
             'password' => bcrypt('password'),
             'first_name' => 'Nguyễn',
             'last_name' => 'Hoàng Tấn',
