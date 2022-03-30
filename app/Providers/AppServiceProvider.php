@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Option;
 use Illuminate\Http\Request;
 use Laravel\Sanctum\Sanctum;
 use Illuminate\Support\ServiceProvider;
@@ -35,5 +36,11 @@ class AppServiceProvider extends ServiceProvider
             'product' => 'App\Models\Product',
             'brand' => 'App\Models\Brand',
         ]);
+
+        if (! app()->runningInConsole()) {
+            Option::whereNotNull('config')->get()->map(function($option) {
+                config([$option->config => $option->value]);
+            });
+        }
     }
 }

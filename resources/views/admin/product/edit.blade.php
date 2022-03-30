@@ -47,8 +47,8 @@
         <x-admin.panel.heading value="Thông tin bán hàng" />
 
         {{-- Unit price --}}
-        <x-admin.panel.item label="Giá bán">
-            <x-admin.form.number name="unit_price" x-model="unit_price" />
+        <x-admin.panel.item label="Giá bán" :required="true">
+            <x-admin.form.currency name="unit_price" x-model="unit_price" min="0" />
         </x-admin.panel.item>
 
         {{-- Stock --}}

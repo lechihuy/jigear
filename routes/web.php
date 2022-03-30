@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\CatalogController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\OrderItemController;
 use App\Http\Controllers\Admin\PromotionController;
@@ -55,4 +56,8 @@ Route::prefix('admin')->name('admin.')->group(function() {
         'users' => UserController::class,
         'users.delivery-addresses' => DeliveryAddressController::class,
     ]);
+
+    /* Setting */
+    Route::get('/setting', [SettingController::class, 'showSettingForm'])->name('setting');
+    Route::put('/setting', [SettingController::class, 'store'])->name('setting.update');
 });

@@ -18,6 +18,7 @@ class OptionSeeder extends Seeder
         Option::create([
             'key' => 'app_name',
             'value' => 'Jigear',
+            'config' => 'app.name',
         ]);
 
         Option::create([

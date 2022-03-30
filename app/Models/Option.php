@@ -17,6 +17,7 @@ class Option extends Model
     protected $fillable = [
         'key',
         'value',
+        'config'
     ];
 
     /**

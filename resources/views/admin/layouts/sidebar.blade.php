@@ -49,7 +49,7 @@
         </a>
 
         <p class="nav-heading">{{ __('Hệ thống') }}</p>
-        <a href="" class="nav-item">
+        <a href="{{ route('admin.setting') }}" class="nav-item {{ str_contains(Route::currentRouteName(), 'admin.setting') ? '!text-white' : '' }}">
             <span class="material-icons-outlined">settings</span> {{ __('Cài đặt') }}
         </a>
 
