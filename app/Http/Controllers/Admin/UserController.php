@@ -43,7 +43,11 @@ class UserController extends Controller
         $request->whenHas('q', function ($q) use ($users) {
             $users->where('email', 'like', "%$q%")
                 ->orWhere('first_name', 'like', "%$q%")
-                ->orWhere('last_name', 'like', "%$q%");
+                ->orWhere('last_name', 'like', "%$q%")
+                ->orWhereHas('deliveryAddresses', function($query) use ($q) {
+                    $query->whereFulltext('address', $q)->orWhere('address', 'like', "%$q%")
+                        ->orWhere('phone_number', 'like', "%$q%");
+                });
         });
 
         $request->whenHas('role', function($role) use ($users) {

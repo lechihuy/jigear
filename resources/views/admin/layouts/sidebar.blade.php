@@ -40,7 +40,7 @@
         {{-- <a href="{{ route('admin.promotions.index') }}" class="nav-item {{ str_contains(Route::currentRouteName(), 'admin.promotions') ? '!text-white' : '' }}">
             <span class="material-icons-outlined">tips_and_updates</span> {{ __('Khuyến mãi') }}
         </a> --}}
-        <a href="" class="nav-item">
+        <a href="{{ route('admin.orders.index') }}" class="nav-item {{ str_contains(Route::currentRouteName(), 'admin.orders') ? '!text-white' : '' }}">
             <span class="material-icons-outlined">receipt</span> {{ __('Đơn hàng') }}
         </a>
 

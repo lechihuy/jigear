@@ -16,19 +16,20 @@ class CreateOrdersTable extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->string('code')->unique();
-            $table->unsignedBigInteger('customer_id');
-            $table->enum('status', ['pending', 'delivering', 'succeeded', 'canceled'])->index();
+            $table->unsignedBigInteger('customer_id')->nullable();
+            $table->enum('status', ['pending', 'delivering', 'succeed', 'canceled'])
+                ->default('pending')->index();
             $table->unsignedBigInteger('total')->index();
             $table->unsignedBigInteger('sub_total');
             $table->unsignedBigInteger('shipping_fee');
-            $table->unsignedBigInteger('discount');
-            $table->enum('payment_method', ['cod', 'banking'])->index();
-            $table->string('first_name')->index();
-            $table->string('last_name')->index();
-            $table->text('address');
-            $table->string('phone_number')->index();
+            $table->unsignedBigInteger('discount')->default(0);
+            $table->enum('payment_method', ['cod', 'banking'])->index()->nullable();
+            $table->string('first_name')->index()->nullable();
+            $table->string('last_name')->index()->nullable();
+            $table->enum('gender', [0, 1, 2])->index()->nullable();
+            $table->text('address')->fullText()->nullable();
+            $table->string('phone_number')->index()->nullable();
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 

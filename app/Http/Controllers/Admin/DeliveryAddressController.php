@@ -191,7 +191,7 @@ class DeliveryAddressController extends Controller
     {
         $user = User::findOrFail($userId);
         $deliveryAddress = $user->deliveryAddresses()->findOrFail($id);
-        $parameter->delete();
+        $deliveryAddress->delete();
 
         $request->toast('success', __('Xóa địa chỉ giao hàng thành công!'));
 
