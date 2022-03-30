@@ -32,15 +32,15 @@
         <a href="{{ route('admin.product-parameter-sets.index') }}" class="nav-item {{ str_contains(Route::currentRouteName(), 'admin.product-parameter-sets') ? '!text-white' : '' }}">
             <span class="material-icons-outlined">drag_indicator</span> {{ __('Bộ thông số sản phẩm') }}
         </a>
-        <a href="{{ route('admin.brands.index') }}" class="nav-item {{ str_contains(Route::currentRouteName(), 'admin.brands') ? '!text-white' : '' }}">
+        {{-- <a href="{{ route('admin.brands.index') }}" class="nav-item {{ str_contains(Route::currentRouteName(), 'admin.brands') ? '!text-white' : '' }}">
             <span class="material-icons-outlined">branding_watermark</span> {{ __('Thương hiệu') }}
-        </a>
+        </a> --}}
 
         <p class="nav-heading">{{ __('Quản lý') }}</p>
         {{-- <a href="{{ route('admin.promotions.index') }}" class="nav-item {{ str_contains(Route::currentRouteName(), 'admin.promotions') ? '!text-white' : '' }}">
             <span class="material-icons-outlined">tips_and_updates</span> {{ __('Khuyến mãi') }}
         </a> --}}
-        <a href="" class="nav-item">
+        <a href="{{ route('admin.orders.index') }}" class="nav-item {{ str_contains(Route::currentRouteName(), 'admin.orders') ? '!text-white' : '' }}">
             <span class="material-icons-outlined">receipt</span> {{ __('Đơn hàng') }}
         </a>
 
@@ -49,7 +49,7 @@
         </a>
 
         <p class="nav-heading">{{ __('Hệ thống') }}</p>
-        <a href="" class="nav-item">
+        <a href="{{ route('admin.setting') }}" class="nav-item {{ str_contains(Route::currentRouteName(), 'admin.setting') ? '!text-white' : '' }}">
             <span class="material-icons-outlined">settings</span> {{ __('Cài đặt') }}
         </a>
 

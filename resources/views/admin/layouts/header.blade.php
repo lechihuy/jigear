@@ -12,7 +12,7 @@
     <a class="flex items-center flex-none gap-2 px-5 sm:w-72">
         <img src="{{ asset('images/logo-icon.png') }}" class="h-10">
         <div class="flex-col hidden sm:flex">
-            <span class="text-xl text-gray-900 font-logo">Jigear</span>
+            <span class="text-xl text-gray-900 font-logo">{{ config('app.name') }}</span>
             <small class="text-xs text-gray-500">Administration</small>
         </div>
     </a>

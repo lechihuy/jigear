@@ -47,8 +47,8 @@
         <x-admin.panel.heading value="Thông tin bán hàng" />
 
         {{-- Unit price --}}
-        <x-admin.panel.item label="Giá bán">
-            <x-admin.form.number name="unit_price" x-model="unit_price" />
+        <x-admin.panel.item label="Giá bán" :required="true">
+            <x-admin.form.currency name="unit_price" x-model="unit_price" min="0" />
         </x-admin.panel.item>
 
         {{-- Stock --}}
@@ -67,9 +67,9 @@
         </x-admin.panel.item>
 
         {{-- Brand ID --}}
-        <x-admin.panel.item label="Thương hiệu">
+        {{-- <x-admin.panel.item label="Thương hiệu">
             <x-admin.form.select name="brand_id" x-model="brand_id" :options="$brandOptions" />
-        </x-admin.panel.item>
+        </x-admin.panel.item> --}}
 
         {{-- Description --}}
         <x-admin.panel.item label="Mô tả">

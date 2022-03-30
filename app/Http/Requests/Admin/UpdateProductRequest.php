@@ -43,7 +43,7 @@ class UpdateProductRequest extends FormRequest
             'sku' => ['required', 'string', 'min:2', 'max:255', "unique:products,sku,{$this->product}"],
             'slug' => ['required', 'string', Rule::unique('slugs')->ignore($this->product, 'sluggable_id')],
             'catalog_id' => ['nullable', 'exists:catalogs,id'],
-            'unit_price' => ['nullable', 'numeric', 'min:0'],
+            'unit_price' => ['required', 'numeric', 'min:0'],
             'stock' => ['nullable', 'integer', 'min:0'],
             'published' => ['required', 'boolean'],
             'purchasable' => ['required', 'boolean'],

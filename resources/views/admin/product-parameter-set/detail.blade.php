@@ -34,6 +34,9 @@
         />
     </x-admin.panel.item>
 
+    {{-- # Timestamps --}}
+    <x-admin.panel.heading value="Thời gian" />
+
     {{-- Created at --}}
     <x-admin.panel.item label="Ngày tạo">
         <x-admin.detail.text

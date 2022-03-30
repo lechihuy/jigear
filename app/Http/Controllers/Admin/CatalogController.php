@@ -87,7 +87,7 @@ class CatalogController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreCatalogRequest $request
+     * @param  \App\Http\Requests\Admin\StoreCatalogRequest $request
      * @return \Illuminate\Http\Response
      */
     public function store(StoreCatalogRequest $request)

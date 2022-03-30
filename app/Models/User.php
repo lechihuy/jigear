@@ -114,12 +114,24 @@ class User extends Authenticatable
     protected function genderText(): Attribute
     {
         return new Attribute(
-            get: fn () => match($this->gender) {
-                '0' => __('Nam'),
-                '1' => __('Nữ'),
-                '2' => __('Khác')
-            }
+            get: fn () => static::resolveGenderText($this->gender)
         );
+    }
+
+    /**
+     * Resolve the gender label from given data.
+     * 
+     * @param  mixed  $gender
+     * @return string
+     */
+    public static function resolveGenderText($gender)
+    {
+        return match($gender) {
+            '0' => __('Nam'),
+            '1' => __('Nữ'),
+            '2' => __('Khác'),
+            default => null
+        };
     }
 
     /**

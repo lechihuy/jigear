@@ -51,6 +51,10 @@ class DeliveryAddressController extends Controller
                     ->orWhere('phone_number', 'like', "%$q%");
             });
         });
+
+        $request->whenHas('is_default', function($isDefault) use ($deliveryAddresses) {
+            $deliveryAddresses->where('is_default', $isDefault);
+        });
         
         // Sorting
         $request->whenHas('sort-id', function($sorting) use ($deliveryAddresses) {
@@ -79,12 +83,12 @@ class DeliveryAddressController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @param  int  $user
+     * @param  int  $userId
      * @return \Illuminate\Http\Response
      */
-    public function create($user)
+    public function create($userId)
     {
-        $user = User::findOrFail($user);
+        $user = User::findOrFail($userId);
         $userDetailUrl = route('admin.users.show', [$user]);
 
         return view('admin.user.delivery-address.create', [
@@ -178,7 +182,7 @@ class DeliveryAddressController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \Illuminate\Http\Response  $request
+     * @param  \Illuminate\Http\Request  $request
      * @param  int  $userId
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -187,7 +191,7 @@ class DeliveryAddressController extends Controller
     {
         $user = User::findOrFail($userId);
         $deliveryAddress = $user->deliveryAddresses()->findOrFail($id);
-        $parameter->delete();
+        $deliveryAddress->delete();
 
         $request->toast('success', __('Xóa địa chỉ giao hàng thành công!'));
 
