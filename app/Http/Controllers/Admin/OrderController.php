@@ -43,6 +43,14 @@ class OrderController extends Controller
             $orders->where('code', 'like', "%$q%");
         });
 
+        $request->whenHas('status', function($status) use ($orders) {
+            $orders->where('status', $status);
+        });
+
+        $request->whenHas('customer_id', function($customerId) use ($orders) {
+            $orders->where('customer_id', $customerId);
+        });
+
         // Sorting
         $request->whenHas('sort-id', function($sorting) use ($orders) {
             $orders->orderBy('id', $sorting);
@@ -53,7 +61,10 @@ class OrderController extends Controller
         return view('admin.order.index', [
             'orders' => $orders,
             'hasOrders' => Order::exists(),
-            'hasFilter' => $hasFilter
+            'hasFilter' => $hasFilter,
+            'userOptions' => User::where('role', 'customer')->get()->mapWithKeys(fn($user) => [
+                $user->email => $user->id
+            ])
         ]);
     }
 
@@ -82,6 +93,14 @@ class OrderController extends Controller
         $data = $request->validated();
         $order = new Order;
         $order->customer_id = $data['customer_id'];
+
+        // Auto get customer information
+        if ($order->customer_id) {
+            $order->first_name = $order->customer->first_name;
+            $order->last_name = $order->customer->last_name;
+            $order->gender = $order->customer->gender;
+        }
+
         $order->calculateBill();
         $order->save();
 
@@ -98,7 +117,9 @@ class OrderController extends Controller
      */
     public function show($id)
     {
-        //
+        $order = Order::findOrFail($id);
+
+        return view('admin.order.detail', ['order' => $order]);
     }
 
     /**

@@ -67,9 +67,9 @@
         </x-admin.panel.item>
 
         {{-- Brand ID --}}
-        <x-admin.panel.item label="Thương hiệu">
+        {{-- <x-admin.panel.item label="Thương hiệu">
             <x-admin.form.select name="brand_id" x-model="brand_id" :options="$brandOptions" />
-        </x-admin.panel.item>
+        </x-admin.panel.item> --}}
 
         {{-- Description --}}
         <x-admin.panel.item label="Mô tả">

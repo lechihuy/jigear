@@ -17,11 +17,19 @@
 >
     <x-admin.resource.table>
         <x-slot:filter>
+            <x-admin.resource.filter.boolean label="Trạng thái" name="status" :options="[
+                'Đang đợi duyệt' => 'pending',
+                'Đang giao' => 'delivering',
+                'Đã giao' => 'succeed',
+                'Đã hủy' => 'canceled'
+            ]" />
+            <x-admin.resource.filter.select label="Khách hàng" name="customer_id" :options="$userOptions" />
         </x-slot>
 
         <x-slot:columns>
             <x-admin.resource.column name="ID" column="id" :sortable="true" />
             <x-admin.resource.column name="Mã" column="code" :sortable="true" />
+            <x-admin.resource.column name="Khách hàng" column="customer" />
             <x-admin.resource.column name="Trạng thái" column="status" />
             <x-admin.resource.column name="Tổng tiền" column="total" :sortable="true" />
         </x-slot>
@@ -31,10 +39,13 @@
                 <x-admin.resource.row :item="$order">
                     <x-admin.resource.item.text :value="$order->id" />
 
-                    {{-- Code --}}
-                    <x-admin.resource.item.link 
-                        :url="route('admin.orders.show', $order)" 
-                        :label="$order->code"
+                    <x-admin.resource.item.code :value="$order->code" />
+
+                    {{-- Customer ID --}}
+                    <x-admin.resource.item.belongs-to 
+                        :owner="$order->customer" 
+                        prefixRouteName="admin.users."
+                        display="email" 
                     />
 
                     {{-- Status --}}
@@ -62,7 +73,6 @@
 
                     {{-- Total --}}
                     <x-admin.resource.item.currency :value="$order->total" />
-
                 </x-admin.resource.row>
             @endforeach
         </x-slot>

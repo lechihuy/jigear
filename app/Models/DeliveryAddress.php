@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class DeliveryAddress extends Model
 {
@@ -22,6 +23,13 @@ class DeliveryAddress extends Model
     ];
 
     /**
+     * All of the relationships to be touched.
+     *
+     * @var array
+     */
+    protected $touches = ['customer'];
+
+    /**
      * The "booted" method of the model.
      *
      * @return void
@@ -33,5 +41,13 @@ class DeliveryAddress extends Model
                 'is_default' => 0
             ]);
         });
+    }
+
+    /**
+     * Get the customer that belongs to the delivery address.
+     */
+    public function customer()
+    {
+        return $this->belongsTo(User::class);
     }
 }

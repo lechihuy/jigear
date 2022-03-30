@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\CatalogController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\OrderItemController;
 use App\Http\Controllers\Admin\PromotionController;
 use App\Http\Controllers\Admin\Auth\LoginController;
 use App\Http\Controllers\Admin\DeliveryAddressController;
@@ -50,6 +51,7 @@ Route::prefix('admin')->name('admin.')->group(function() {
         'brands' => BrandController::class,
         // 'promotions' => PromotionController::class,
         'orders' => OrderController::class,
+        'orders.items' => OrderItemController::class,
         'users' => UserController::class,
         'users.delivery-addresses' => DeliveryAddressController::class,
     ]);

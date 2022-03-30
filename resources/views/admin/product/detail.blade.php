@@ -20,9 +20,6 @@
     <x-admin.panel.item label="ID">
         <x-admin.detail.text :value="$product->id" />
     </x-admin.panel.item>
-
-    {{-- # Basic --}}
-    <x-admin.panel.heading value="Cơ bản" />
     
     {{-- Thumbnail --}}
     <x-admin.panel.item label="Thumbnail">
@@ -76,13 +73,13 @@
     </x-admin.panel.item>
 
     {{-- Brand --}}
-    <x-admin.panel.item label="Thương hiệu">
+    {{-- <x-admin.panel.item label="Thương hiệu">
         <x-admin.detail.belongs-to 
             :owner="$product->brand" 
             prefixRouteName="admin.brands."
             display="name" 
         />
-    </x-admin.panel.item>
+    </x-admin.panel.item> --}}
 
     {{-- Description --}}
     <x-admin.panel.item label="Mô tả">
@@ -111,6 +108,9 @@
             :value="$product->previews" 
         />
     </x-admin.panel.item>
+
+    {{-- # Timestamps --}}
+    <x-admin.panel.heading value="Thời gian" />
 
     {{-- Created at --}}
     <x-admin.panel.item label="Ngày tạo">
