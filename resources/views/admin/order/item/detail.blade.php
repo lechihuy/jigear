@@ -20,6 +20,11 @@
     parentLabel="Đơn hàng"
 >
 
+    {{-- ID --}}
+    <x-admin.panel.item label="ID">
+        <x-admin.detail.text :value="$item->id" />
+    </x-admin.panel.item>
+
     {{-- Thumbnail --}}
     <x-admin.panel.item label="Thumbnail">
         <x-admin.detail.thumbnail :value="optional($item->product->thumbnail)->url" />

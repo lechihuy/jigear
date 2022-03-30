@@ -17,6 +17,25 @@
         parentDisplay="code"
         parentLabel="Đơn hàng"
     >
+
+        {{-- ID --}}
+        <x-admin.panel.item label="ID">
+            <x-admin.detail.text :value="$item->id" />
+        </x-admin.panel.item>
+
+        {{-- Thumbnail --}}
+        <x-admin.panel.item label="Thumbnail">
+            <x-admin.detail.thumbnail :value="optional($item->product->thumbnail)->url" />
+        </x-admin.panel.item>
+
+        {{-- Product --}}
+        <x-admin.panel.item label="Sản phẩm">
+            <x-admin.detail.belongs-to 
+                :owner="$item->product" 
+                prefixRouteName="admin.products."
+                display="title" 
+            />
+        </x-admin.panel.item>
         
         {{-- Quantity --}}
         <x-admin.panel.item label="Số lượng">
