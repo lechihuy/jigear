@@ -114,13 +114,13 @@
                         <label class="flex items-center p-4 border-2 border-solid border-zinc-300 rounded cursor-pointer focus:bg-black"
                             :class="value == 1 ? 'border-blue-500' : ''"
                         >
-                            <input type="radio" name="address" value="1" x-model="value">
+                            <input type="radio" name="payments" value="1" x-model="value">
                             <p class="pl-4">Cash On Delivery</p>
                         </label>
                         <label class="flex items-center p-4 border border-solid border-zinc-300 rounded cursor-pointer"
                             :class="value == 2 ? 'border-blue-500' : ''"
                         >
-                            <input type="radio" name="address" value="2" x-model="value">
+                            <input type="radio" name="payments" value="2" x-model="value">
                             <p class="pl-4">Internet Bankings</p>
                         </label>
                     </div>
