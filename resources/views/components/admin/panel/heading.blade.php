@@ -1,0 +1,1 @@
+<h3 class="px-3 py-2 font-semibold bg-sky-50">{{ __($value) }}</h3>

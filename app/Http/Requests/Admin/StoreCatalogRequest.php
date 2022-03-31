@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Admin;
 
+use Illuminate\Support\Str;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreCatalogRequest extends FormRequest
@@ -17,6 +18,18 @@ class StoreCatalogRequest extends FormRequest
     }
 
     /**
+     * Prepare the data for validation.
+     *
+     * @return void
+     */
+    protected function prepareForValidation()
+    {
+        $this->merge([
+            'slug' => $this->slug ? $this->slug : Str::slug($this->title)
+        ]);
+    }
+
+    /**
      * Get the validation rules that apply to the request.
      *
      * @return array
@@ -24,8 +37,9 @@ class StoreCatalogRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => ['required', 'string', 'min:2', 'max:255', 'unique:catalogs'],
-            'parent_id' => ['nullable', 'exists:catalogs,id']
+            'title' => ['required', 'string', 'min:2', 'max:255', 'unique:catalogs,title'],
+            'slug' => ['required', 'string', 'unique:slugs,slug'],
+            'parent_id' => ['nullable', 'exists:catalogs,id'],
         ];
     }
 }

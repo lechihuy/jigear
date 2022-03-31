@@ -21,4 +21,3 @@ mix.postCss('resources/css/admin/app.css', 'public/css/admin', [
   ])
   .js('resources/js/admin/app.js', 'public/js/admin/app.js')
 
-

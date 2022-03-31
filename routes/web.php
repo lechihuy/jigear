@@ -1,9 +1,19 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\BrandController;
+use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\CatalogController;
+use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\OrderItemController;
+use App\Http\Controllers\Admin\PromotionController;
 use App\Http\Controllers\Admin\Auth\LoginController;
+use App\Http\Controllers\Admin\DeliveryAddressController;
+use App\Http\Controllers\Admin\ProductParameterController;
+use App\Http\Controllers\Admin\ProductParameterSetController;
 
 /*
 |--------------------------------------------------------------------------
@@ -64,6 +74,34 @@ Route::prefix('admin')->name('admin.')->group(function() {
 
     /* Resources management */
     Route::resources([
-        'catalogs' => CatalogController::class
+        'catalogs' => CatalogController::class,
+        'products' => ProductController::class,
+        'product-parameter-sets' => ProductParameterSetController::class,
+        'product-parameter-sets.parameters' => ProductParameterController::class,
+        'brands' => BrandController::class,
+        // 'promotions' => PromotionController::class,
+        'orders' => OrderController::class,
+        'orders.items' => OrderItemController::class,
+        'users' => UserController::class,
+        'users.delivery-addresses' => DeliveryAddressController::class,
     ]);
+
+    /* Setting */
+    Route::get('/setting', [SettingController::class, 'showSettingForm'])->name('setting');
+    Route::put('/setting', [SettingController::class, 'store'])->name('setting.update');
+
+    /* Statistics */
+    Route::prefix('statistics')->name('statistics.')->group(function() {
+        Route::get('/orders/total', [OrderController::class, 'statisticTotalOrder'])->name('orders.total');
+        Route::get('/orders/revenue', [OrderController::class, 'statisticRevenue'])->name('orders.revenue');
+        Route::get('/orders/status', [OrderController::class, 'statisticOrderStatus'])->name('orders.status');
+
+        Route::get('/products/total', [ProductController::class, 'statisticTotalProduct'])->name('products.total');
+        Route::get('/products/status', [ProductController::class, 'statisticStatusProduct'])->name('products.status');
+        Route::get('/products/stock', [ProductController::class, 'statisticStockProduct'])->name('products.stock');
+
+        Route::get('/users/total', [UserController::class, 'statisticTotalUser'])->name('users.total');
+        Route::get('/users/role', [UserController::class, 'statisticRoleUser'])->name('users.role');
+        Route::get('/users/stock', [UserController::class, 'statisticTotalCustomerOrdered'])->name('users.ordered');
+    });
 });
