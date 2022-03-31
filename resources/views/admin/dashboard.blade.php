@@ -8,12 +8,11 @@
     </div>
 
     <div class="grid grid-cols-3 gap-5">
-        <x-admin.card.counter 
-            label="Tổng đơn hàng"
-            counter="89"
-            trend="+0.12"
-        />
-        <div class="bg-white">2</div>
-        <div class="bg-white">3</div>
+        <x-admin.card.counter route="admin.statistics.orders.total" label="Tổng đơn hàng" />
+        <x-admin.card.counter route="admin.statistics.orders.revenue" label="Doanh thu" />
+    </div>
+
+    <div class="mb-3 mt-7">
+        <h1 class="text-2xl text-gray-700">{{ __('Sản phẩm') }}</h1>
     </div>
 @endsection

@@ -63,6 +63,7 @@ Route::prefix('admin')->name('admin.')->group(function() {
 
     /* Statistics */
     Route::prefix('statistics')->name('statistics.')->group(function() {
-        Route::get('/order', [OrderController::class, 'statistic'])->name('order');
+        Route::get('/orders/total', [OrderController::class, 'statisticTotalOrder'])->name('orders.total');
+        Route::get('/orders/revenue', [OrderController::class, 'statisticRevenue'])->name('orders.revenue');
     });
 });

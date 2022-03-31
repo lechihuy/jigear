@@ -61,11 +61,11 @@
                             ],
                             'succeed' => [
                                 'type' => 'success',
-                                'label' => 'Đã giao'
+                                'label' => 'Thành công'
                             ],
                             'canceled' => [
                                 'type' => 'danger',
-                                'label' => 'Đã hủy  '
+                                'label' => 'Đã hủy'
                             ]
                         ]" 
                         :value="$order->status"

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Order;
 use Illuminate\Http\Request;
@@ -178,5 +179,36 @@ class OrderController extends Controller
         $request->toast('success', __('Xóa đơn hàng thành công!'));
 
         return response()->noContent();
+    }
+
+    public function statisticTotalOrder(Request $request) 
+    {
+        $counter = match ($request->period) {
+            'today' => Order::whereDate('created_at', Carbon::today())->count(),
+            'this-month' => Order::whereYear('created_at', Carbon::now()->year)->whereMonth('created_at', Carbon::now()->month)->count(),
+            'this-year' => Order::whereYear('created_at', Carbon::now())->count(),
+            'all' => Order::count(),
+        };
+
+        return response()->json([
+            'counter' => $counter,
+        ]);
+    }
+
+    public function statisticRevenue(Request $request) 
+    {
+        $counter = match ($request->period) {
+            'today' => Order::whereDate('created_at', Carbon::today())->where('status', 'succeed')->sum('total'),
+            'this-month' => Order::whereYear('created_at', Carbon::now()->year)
+                ->whereMonth('created_at', Carbon::now()->month)
+                ->where('status', 'succeed')
+                ->sum('total'),
+            'this-year' => Order::whereYear('created_at', Carbon::now())->where('status', 'succeed')->sum('total'),
+            'all' => Order::where('status', 'succeed')->sum('total'),
+        };
+
+        return response()->json([
+            'counter' => option('currency') . number_format($counter, 0),
+        ]);
     }
 }

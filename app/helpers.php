@@ -7,3 +7,4 @@ if (! function_exists('option')) {
         return Option::get($key, $default);
     }
 }
+      

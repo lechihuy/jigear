@@ -40,7 +40,7 @@
                 ],
                 'succeed' => [
                     'type' => 'success',
-                    'label' => 'Đã giao'
+                    'label' => 'Thành công'
                 ],
                 'canceled' => [
                     'type' => 'danger',
