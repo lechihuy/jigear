@@ -141,4 +141,12 @@ class User extends Authenticatable
     {
         return $this->hasMany(DeliveryAddress::class, 'customer_id');
     }
+
+    /**
+     * Get the orderss that belongs to this user.
+     */
+    public function orders()
+    {
+        return $this->hasMany(Order::class, 'customer_id');
+    }
 }

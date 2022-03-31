@@ -245,4 +245,32 @@ class OrderController extends Controller
             'trend' => $trend
         ]);
     }
+
+    public function statisticOrderStatus(Request $request)
+    {
+        return response()->json([
+            'labels' => [
+                [
+                    'name' => __('đang đợi duyệt'),
+                    'class' => 'bg-yellow-100',
+                    'counter' => Order::where('status', 'pending')->count(),
+                ],
+                [
+                    'name' => __('đang giao'),
+                    'class' => 'bg-sky-100',
+                    'counter' => Order::where('status', 'delivering')->count(),
+                ],
+                [
+                    'name' => __('thành công'),
+                    'class' => 'bg-green-100',
+                    'counter' => Order::where('status', 'succeed')->count(),
+                ],
+                [
+                    'name' => __('đã hủy'),
+                    'class' => 'bg-gray-100',
+                    'counter' => Order::where('status', 'canceled')->count(),
+                ]
+            ]
+        ]);
+    }
 }

@@ -221,4 +221,52 @@ class ProductController extends Controller
 
         return response()->noContent();
     }
+
+    public function statisticTotalProduct()
+    {
+        return response()->json([
+            'counter' => Product::count(),
+        ]);
+    }
+
+    public function statisticStatusProduct()
+    {
+        return response()->json([
+            'labels' => [
+                [
+                    'name' => __('xuất bản'),
+                    'class' => 'bg-green-100',
+                    'counter' => Product::published()->count(),
+                ],
+                [
+                    'name' => __('ẩn'),
+                    'class' => 'bg-gray-100',
+                    'counter' => Product::where('published', 0)->count(),
+                ],
+            ]
+        ]);
+    }
+
+    public function statisticStockProduct()
+    {
+        return response()->json([
+            'labels' => [
+                [
+                    'name' => __('còn hàng'),
+                    'class' => 'bg-green-100',
+                    'counter' => Product::inStock()->count(),
+                ],
+                [
+                    'name' => __('gần hết hàng'),
+                    'class' => 'bg-yellow-100',
+                    'counter' => Product::where('stock', '<', 10)->count(),
+                ],
+                [
+                    'name' => __('hết hàng'),
+                    'class' => 'bg-red-100',
+                    'counter' => Product::where('stock', 0)->count(),
+                ],
+            ]
+        ]);
+    }
 }
