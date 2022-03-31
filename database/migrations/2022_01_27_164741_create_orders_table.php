@@ -24,11 +24,12 @@ class CreateOrdersTable extends Migration
             $table->unsignedBigInteger('shipping_fee');
             $table->unsignedBigInteger('discount')->default(0);
             $table->enum('payment_method', ['cod', 'banking'])->index()->nullable();
-            $table->string('first_name')->index()->nullable();
-            $table->string('last_name')->index()->nullable();
+            $table->string('first_name')->nullable();
+            $table->string('last_name')->nullable();
+            $table->string('email')->nullable();
             $table->enum('gender', [0, 1, 2])->index()->nullable();
             $table->text('address')->fullText()->nullable();
-            $table->string('phone_number')->index()->nullable();
+            $table->string('phone_number')->nullable();
             $table->timestamps();
         });
     }

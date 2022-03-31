@@ -26,11 +26,10 @@ class Product extends Model
         'unit_price',
         'stock',
         'published',
-        'purchasable',
-        'brand_id',
         'description',
         'detail',
-        'parameters'
+        'parameters',
+        'created_at',
     ];
 
     /**
@@ -47,15 +46,6 @@ class Product extends Model
     public function brand()
     {
         return $this->belongsTo(Brand::class);
-    }
-
-    /**
-     * @param  \Illuminate\Database\Eloquent\Builder  $query
-     * @return \Illuminate\Database\Eloquent\Builder
-     */
-    public function scopePurchasable($query)
-    {
-        return $query->where('purchasable', 1);
     }
 
     /**

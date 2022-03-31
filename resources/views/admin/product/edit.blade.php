@@ -33,6 +33,11 @@
             <x-admin.form.text name="title" x-model="title" />
         </x-admin.panel.item>
 
+        {{-- Slug --}}
+        <x-admin.panel.item label="URL thân thiện">
+            <x-admin.form.text name="slug" x-model="slug" :placeholder="__('Có thể để trống để tự động tạo theo tiêu đề')" />
+        </x-admin.panel.item>
+
         {{-- SKU --}}
         <x-admin.panel.item label="SKU" :required="true">
             <x-admin.form.text name="sku" x-model="sku" />
@@ -52,24 +57,14 @@
         </x-admin.panel.item>
 
         {{-- Stock --}}
-        <x-admin.panel.item label="Tồn kho">
-            <x-admin.form.number name="stock" x-model="stock" />
+        <x-admin.panel.item label="Tồn kho" :required="true">
+            <x-admin.form.number name="stock" x-model="stock" min="0" />
         </x-admin.panel.item>
 
         {{-- Published --}}
         <x-admin.panel.item label="Xuất bản">
             <x-admin.form.boolean name="published" x-model="published" />
         </x-admin.panel.item>
-
-        {{-- Purchasable --}}
-        <x-admin.panel.item label="Có thể bán">
-            <x-admin.form.boolean name="purchasable" x-model="purchasable" />
-        </x-admin.panel.item>
-
-        {{-- Brand ID --}}
-        {{-- <x-admin.panel.item label="Thương hiệu">
-            <x-admin.form.select name="brand_id" x-model="brand_id" :options="$brandOptions" />
-        </x-admin.panel.item> --}}
 
         {{-- Description --}}
         <x-admin.panel.item label="Mô tả">
@@ -89,6 +84,14 @@
         {{-- Parameters --}}
         <x-admin.panel.item label="Thông số sản phẩm">
             <x-admin.form.parameter name="parameters" x-model="parameters" />
+        </x-admin.panel.item>
+
+        {{-- # Timestamps --}}
+        <x-admin.panel.heading value="Thời gian" />
+
+        {{-- Created at --}}
+        <x-admin.panel.item label="Ngày tạo" :required="true">
+            <x-admin.form.timestamp x-model="created_at" name="created_at" step="1" />
         </x-admin.panel.item>
 
     </x-admin.panel>
@@ -115,18 +118,19 @@ document.addEventListener('alpine:init', () => {
     Alpine.data('editProductForm', () => ({
         thumbnail: '',
         title: '{{ $product->title }}',
+        slug: '{{ $product->slug->slug }}',
         sku: '{{ $product->sku }}',
         catalog_id: '{{ $product->catalog_id }}',
         brand_id: '{{ $product->brand_id }}',
         unit_price: '{{ $product->unit_price }}',
         stock: '{{ $product->stock }}',
         published: {{ $product->published ? 'true' : 'false' }},
-        purchasable: {{ $product->purchasable ? 'true' : 'false' }},
         brand_id: '{{ $product->brand_id }}',
         description: '{{ $product->description }}',
         detail: '{!! $product->detail !!}',
         parameters: JSON.parse(@json($product->parameters ?? '[]')),
         previews: @json($product->previews),
+        created_at: '{{ Carbon\Carbon::parse($product->created_at)->format("Y-m-d\TH:i") }}',
         loading: false,
         submit() {
             this.loading = true;
@@ -139,16 +143,17 @@ document.addEventListener('alpine:init', () => {
             data.append('_method', 'PUT')
             data.append('thumbnail', this.thumbnail)
             data.append('title', this.title)
+            data.append('slug', this.slug)
             data.append('sku', this.sku)
             data.append('catalog_id', this.catalog_id)
             data.append('unit_price', this.unit_price)
             data.append('stock', this.stock)
             data.append('published', this.published)
-            data.append('purchasable', this.purchasable)
             data.append('brand_id', this.brand_id)
             data.append('description', this.description)
             data.append('detail', this.detail)
             data.append('parameters', parameters)
+            data.append('created_at', this.created_at)
 
             for (const preview of this.previews) {
                 data.append('previews[]', preview instanceof File ? preview : JSON.stringify(preview))

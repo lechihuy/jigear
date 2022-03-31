@@ -21,11 +21,7 @@
                 'Xuất bản' => 1,
                 'Ẩn' => 0
             ]" />
-            <x-admin.resource.filter.boolean label="Có thể bán" name="purchasable" :options="[
-                'Có' => 1,
-                'không' => 0
-            ]" />
-            <x-admin.resource.filter.boolean label="Tồn kho" name="is_stock" :options="[
+            <x-admin.resource.filter.boolean label="Tồn kho" name="in_stock" :options="[
                 'Hết hàng' => 0,
                 'Còn hàng' => 1,
             ]" />

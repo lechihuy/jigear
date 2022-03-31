@@ -186,4 +186,36 @@ class UserController extends Controller
 
         return response()->noContent();
     }
+
+    public function statisticTotalUser()
+    {
+        return response()->json([
+            'counter' => User::count(),
+        ]);
+    }
+
+    public function statisticRoleUser()
+    {
+        return response()->json([
+            'labels' => [
+                [
+                    'name' => __('khách hàng'),
+                    'class' => 'bg-gray-100',
+                    'counter' => User::where('role', 'customer')->count(),
+                ],
+                [
+                    'name' => __('quản trị viên'),
+                    'class' => 'bg-red-100',
+                    'counter' => User::where('role', 'admin')->count(),
+                ],
+            ]
+        ]);
+    }
+
+    public function statisticTotalCustomerOrdered()
+    {
+        return response()->json([
+            'counter' => User::where('role', 'customer')->whereHas('orders')->count(),
+        ]);
+    }
 }

@@ -1,7 +1,10 @@
 @props([
     'types' => [
         'danger' => 'text-red-800 bg-red-100',
-        'light' => 'text-gray-700 bg-gray-100'
+        'warning' => 'text-yellow-800 bg-yellow-100',
+        'primary' => 'text-sky-700 bg-sky-100',
+        'success' => 'text-green-700 bg-green-100',
+        'light' => 'text-gray-700 bg-gray-100',
     ],
     'options',
     'value'

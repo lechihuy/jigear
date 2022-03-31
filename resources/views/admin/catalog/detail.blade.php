@@ -21,9 +21,19 @@
         <x-admin.detail.text :value="$catalog->id" />
     </x-admin.panel.item>
 
+    {{-- Thumbnail --}}
+    <x-admin.panel.item label="Thumbnail">
+        <x-admin.detail.thumbnail :value="optional($catalog->thumbnail)->url" />
+    </x-admin.panel.item>
+
     {{-- Title --}}
     <x-admin.panel.item label="Tiêu đề">
         <x-admin.detail.text :value="$catalog->title" />
+    </x-admin.panel.item>
+
+    {{-- Slug --}}
+    <x-admin.panel.item label="URL thân thiện">
+        <x-admin.detail.text :value="$catalog->slug->slug" />
     </x-admin.panel.item>
 
     {{-- Parent ID --}}

@@ -7,7 +7,7 @@
 ])
 
 @php
-    $componentId = str_replace(Str::uuid(), '-', '');
+    $componentId = str_replace('-', '', Str::uuid());
 @endphp
 
 @if (!$searchable)
@@ -16,7 +16,7 @@
             <option value="{{ $defaultValue }}">{!! $defaultLabel !!}</option>
         @endif
         @foreach ($options as $text => $value)
-            <option value="{{ $value }}">{{ $text }}</option>
+            <option value="{{ $value }}">{!! $text !!}</option>
         @endforeach
     </select>
 @else

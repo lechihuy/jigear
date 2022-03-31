@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Catalog;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\StoreCatalogRequest;
@@ -141,6 +142,24 @@ class CatalogController extends Controller
     {
         $catalog = Catalog::findOrFail($id);
         $catalog->update($request->validated());
+
+        if ($request->slug != $catalog->slug->slug) {
+            $catalog->slug->update([
+                'slug' => Str::slug($request->slug ?? $catalog->title)
+            ]);
+        }
+
+        if ($request->hasFile('thumbnail')) {
+            if ($catalog->thumbnail) {
+                $catalog->thumbnail->delete();
+            }
+            
+            $thumbnailPath = $request->file('thumbnail')->store('thumbnails');
+            $catalog->images()->create([
+                'path' => $thumbnailPath,
+                'type' => 'thumbnail',
+            ]);
+        }
 
         $request->toast('success', __('Cập nhật danh mục thành công!'));
 

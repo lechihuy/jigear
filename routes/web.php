@@ -60,4 +60,19 @@ Route::prefix('admin')->name('admin.')->group(function() {
     /* Setting */
     Route::get('/setting', [SettingController::class, 'showSettingForm'])->name('setting');
     Route::put('/setting', [SettingController::class, 'store'])->name('setting.update');
+
+    /* Statistics */
+    Route::prefix('statistics')->name('statistics.')->group(function() {
+        Route::get('/orders/total', [OrderController::class, 'statisticTotalOrder'])->name('orders.total');
+        Route::get('/orders/revenue', [OrderController::class, 'statisticRevenue'])->name('orders.revenue');
+        Route::get('/orders/status', [OrderController::class, 'statisticOrderStatus'])->name('orders.status');
+
+        Route::get('/products/total', [ProductController::class, 'statisticTotalProduct'])->name('products.total');
+        Route::get('/products/status', [ProductController::class, 'statisticStatusProduct'])->name('products.status');
+        Route::get('/products/stock', [ProductController::class, 'statisticStockProduct'])->name('products.stock');
+
+        Route::get('/users/total', [UserController::class, 'statisticTotalUser'])->name('users.total');
+        Route::get('/users/role', [UserController::class, 'statisticRoleUser'])->name('users.role');
+        Route::get('/users/stock', [UserController::class, 'statisticTotalCustomerOrdered'])->name('users.ordered');
+    });
 });

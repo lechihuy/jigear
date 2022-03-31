@@ -25,13 +25,13 @@ trait Sluggable
     {
         static::created(function ($model) {
             $model->slug()->create([
-                'slug' => Str::slug($model->title)
+                'slug' => Str::slug(request()->slug ?? $model->title)
             ]);
         });
 
         static::updated(function ($model) {
             $model->slug->update([
-                'slug' => Str::slug($model->title)
+                'slug' => Str::slug(request()->slug ?? $model->title)
             ]);
         });
     }

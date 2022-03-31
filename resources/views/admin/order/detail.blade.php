@@ -26,6 +26,31 @@
         <x-admin.detail.code :value="$order->code" />
     </x-admin.panel.item>
 
+    {{-- Status --}}
+    <x-admin.panel.item label="Trạng thái">
+        <x-admin.detail.select
+            :options="[
+                'pending' => [
+                    'type' => 'warning',
+                    'label' => 'Đang đợi duyệt'
+                ],
+                'delivering' => [
+                    'type' => 'primary',
+                    'label' => 'Đang giao'
+                ],
+                'succeed' => [
+                    'type' => 'success',
+                    'label' => 'Thành công'
+                ],
+                'canceled' => [
+                    'type' => 'danger',
+                    'label' => 'Đã hủy  '
+                ]
+            ]" 
+            :value="$order->status"
+        />
+    </x-admin.panel.item>
+
     {{-- Order items --}}
     <x-admin.panel.item label="Mục đơn hàng">
         <x-admin.detail.has-many 
@@ -44,6 +69,11 @@
             prefixRouteName="admin.users."
             display="email" 
         />
+    </x-admin.panel.item>
+
+    {{-- Email --}}
+    <x-admin.panel.item label="Email">
+        <x-admin.detail.text :value="$order->email" />
     </x-admin.panel.item>
 
     {{-- First name --}}

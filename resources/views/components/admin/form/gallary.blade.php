@@ -1,5 +1,5 @@
 @php
-    $componentId = str_replace(Str::uuid(), '-', '');
+    $componentId = str_replace('-', '', Str::uuid());
 @endphp
 
 <div class="flex flex-wrap w-full gap-2" x-data="gallaryFormControl{{ $componentId }}">
