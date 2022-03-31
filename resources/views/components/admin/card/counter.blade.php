@@ -22,6 +22,17 @@
         <span x-cloak x-show="!loading" class="text-3xl text-gray-900" x-text="counter"></span>
         <div x-cloak x-show="loading" class="h-8 rounded animate-pulse bg-slate-100"></div>
     </div>
+
+     <div class="flex items-center">
+        <p x-cloak x-show="!loading && trend[0] == '+'" class="flex items-center gap-1 text-green-500">
+            <span class="material-icons-outlined">trending_up</span> <span x-text="trend[1] + '%'"></span>
+        </p>
+        <p x-cloak x-show="!loading && trend[0] == '-'" class="flex items-center gap-1 text-red-500">
+            <span class="material-icons-outlined">trending_down</span> <span x-text="trend[1] + '%'"></span>
+        </p>
+        <div x-cloak x-show="loading" class="h-6 rounded animate-pulse bg-slate-100"></div>
+    </div>
+    
 </div>
 
 @push('scripts')
@@ -43,6 +54,7 @@ document.addEventListener('alpine:init', () => {
             }}).then(res => {
                 const data = res.data
                 this.counter = data.counter
+                this.trend = data.trend
             }).catch(err => {
                 Alpine.store('toast').show('danger', 'Try again!')
             }).finally(() => {

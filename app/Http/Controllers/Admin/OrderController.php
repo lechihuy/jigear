@@ -185,13 +185,30 @@ class OrderController extends Controller
     {
         $counter = match ($request->period) {
             'today' => Order::whereDate('created_at', Carbon::today())->count(),
-            'this-month' => Order::whereYear('created_at', Carbon::now()->year)->whereMonth('created_at', Carbon::now()->month)->count(),
+            'this-month' => Order::whereYear('created_at', Carbon::now())->whereMonth('created_at', Carbon::now())->count(),
             'this-year' => Order::whereYear('created_at', Carbon::now())->count(),
             'all' => Order::count(),
         };
 
+        $trend = match ($request->period) {
+            'today' => calculate_trend(
+                Order::whereDate('created_at', Carbon::today())->count(),
+                Order::whereDate('created_at', Carbon::yesterday())->count(),
+            ),
+            'this-month' => calculate_trend(
+                Order::whereYear('created_at', Carbon::now())->whereMonth('created_at', Carbon::now())->count(),
+                Order::whereYear('created_at', Carbon::now())->whereMonth('created_at', Carbon::now()->startOfMonth()->subMonth())->count(),
+            ),
+            'this-year' => calculate_trend(
+                Order::whereYear('created_at', Carbon::now())->count(),
+                Order::whereYear('created_at', Carbon::now()->subYear())->count(),
+            ),
+            'all' => ['+', 0],
+        };
+
         return response()->json([
             'counter' => $counter,
+            'trend' => $trend
         ]);
     }
 
@@ -199,16 +216,33 @@ class OrderController extends Controller
     {
         $counter = match ($request->period) {
             'today' => Order::whereDate('created_at', Carbon::today())->where('status', 'succeed')->sum('total'),
-            'this-month' => Order::whereYear('created_at', Carbon::now()->year)
-                ->whereMonth('created_at', Carbon::now()->month)
+            'this-month' => Order::whereYear('created_at', Carbon::now())
+                ->whereMonth('created_at', Carbon::now())
                 ->where('status', 'succeed')
                 ->sum('total'),
             'this-year' => Order::whereYear('created_at', Carbon::now())->where('status', 'succeed')->sum('total'),
             'all' => Order::where('status', 'succeed')->sum('total'),
         };
 
+        $trend = match ($request->period) {
+            'today' => calculate_trend(
+                Order::whereDate('created_at', Carbon::today())->where('status', 'succeed')->sum('total'),
+                Order::whereDate('created_at', Carbon::yesterday())->where('status', 'succeed')->sum('total'),
+            ),
+            'this-month' => calculate_trend(
+                Order::whereYear('created_at', Carbon::now())->whereMonth('created_at', Carbon::now())->where('status', 'succeed')->sum('total'),
+                Order::whereYear('created_at', Carbon::now())->whereMonth('created_at', Carbon::now()->startOfMonth()->subMonth())->where('status', 'succeed')->sum('total'),
+            ),
+            'this-year' => calculate_trend(
+                Order::whereYear('created_at', Carbon::now())->where('status', 'succeed')->sum('total'),
+                Order::whereYear('created_at', Carbon::now()->subYear())->where('status', 'succeed')->sum('total'),
+            ),
+            'all' => ['+', 0],
+        };
+
         return response()->json([
             'counter' => option('currency') . number_format($counter, 0),
+            'trend' => $trend
         ]);
     }
 }
