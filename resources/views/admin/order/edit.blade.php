@@ -108,6 +108,14 @@
         <x-admin.panel.item label="Phí vận chuyển">
             <x-admin.form.currency name="shipping_fee" x-model="shipping_fee" />
         </x-admin.panel.item>
+
+        {{-- # Timestamps --}}
+        <x-admin.panel.heading value="Thời gian" />
+
+        {{-- Created at --}}
+        <x-admin.panel.item label="Ngày tạo" :required="true">
+            <x-admin.form.timestamp x-model="created_at" name="created_at" step="1" />
+        </x-admin.panel.item>
         
     </x-admin.panel>
     {{-- /Panel --}}
@@ -135,11 +143,12 @@ document.addEventListener('alpine:init', () => {
         email: '{{ $order->email }}',
         first_name: '{{ $order->first_name }}',
         last_name: '{{ $order->last_name }}',
-        gender: '{{ $order->gender }}',
+        gender: '{{ $order->gender ?? 0 }}',
         deliveryAddress: '',
         address: '{{ $order->address }}',
         phone_number: '{{ $order->phone_number }}',
         shipping_fee: '{{ $order->shipping_fee }}',
+        created_at: '{{ Carbon\Carbon::parse($order->created_at)->format("Y-m-d\TH:i") }}',
         loading: false,
         setDeliveryAddress() {
             const deliveryAddress = this.deliveryAddress.split('||')
@@ -158,6 +167,7 @@ document.addEventListener('alpine:init', () => {
                 address: this.address,
                 phone_number: this.phone_number,
                 shipping_fee: this.shipping_fee,
+                created_at: this.created_at,
             }).then(res => {
                 window.location.href = route('admin.orders.show', { order: res.data.order.id });
             }).catch(err => {

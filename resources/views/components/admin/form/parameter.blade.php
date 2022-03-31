@@ -3,7 +3,7 @@
 ])
 
 @php
-    $componentId = str_replace(Str::uuid(), '-', '');
+    $componentId = str_replace('-', '', Str::uuid());
     $sets = \App\Models\ProductParameterSet::all();
 @endphp
 

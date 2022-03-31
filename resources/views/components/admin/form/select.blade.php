@@ -7,7 +7,7 @@
 ])
 
 @php
-    $componentId = str_replace(Str::uuid(), '-', '');
+    $componentId = str_replace('-', '', Str::uuid());
 @endphp
 
 @if (!$searchable)

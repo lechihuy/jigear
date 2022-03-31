@@ -4,7 +4,7 @@
 ])
 
 @php
-    $componentId = str_replace(Str::uuid(), '-', '');
+    $componentId = str_replace('-', '', Str::uuid());
 @endphp
 
 <div class="p-5 bg-white rounded-lg shadow" x-data="counterCard{{ $componentId }}">

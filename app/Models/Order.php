@@ -29,6 +29,7 @@ class Order extends Model
         'phone_number',
         'payment_method',
         'shipping_fee',
+        'created_at',
     ];
 
     /**

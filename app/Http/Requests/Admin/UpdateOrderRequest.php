@@ -34,6 +34,7 @@ class UpdateOrderRequest extends FormRequest
             'address' => ['required', 'string'],
             'phone_number' => ['required', new PhoneNumber],
             'shipping_fee' => ['required', 'numeric', 'min:0'],
+            'created_at' => ['required', 'date', 'before_or_equal:now'],
         ];
     }
 }
