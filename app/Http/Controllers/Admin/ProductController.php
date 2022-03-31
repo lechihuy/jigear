@@ -257,7 +257,7 @@ class ProductController extends Controller
                     'counter' => Product::inStock()->count(),
                 ],
                 [
-                    'name' => __('gần hết hàng'),
+                    'name' => __('gần hết hàng (< 10)'),
                     'class' => 'bg-yellow-100',
                     'counter' => Product::where('stock', '<', 10)->count(),
                 ],
