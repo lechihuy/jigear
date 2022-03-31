@@ -25,7 +25,7 @@ class StoreCatalogRequest extends FormRequest
     protected function prepareForValidation()
     {
         $this->merge([
-            'slug' => Str::slug($this->title),
+            'slug' => $this->slug ? $this->slug : Str::slug($this->title)
         ]);
     }
 

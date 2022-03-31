@@ -17,9 +17,23 @@
             <x-admin.detail.text :value="$catalog->id" />
         </x-admin.panel.item>
 
+        {{-- Thumbnail --}}
+        <x-admin.panel.item label="Thumbnail">
+            <x-admin.form.thumbnail 
+                name="thumbnail" 
+                x-model="thumbnail" 
+                :url="optional($catalog->thumbnail)->url" 
+            />
+        </x-admin.panel.item>
+
         {{-- Title --}}
         <x-admin.panel.item label="Tiêu đề" :required="true">
             <x-admin.form.text name="title" x-model="title" />
+        </x-admin.panel.item>
+
+        {{-- Slug --}}
+        <x-admin.panel.item label="URL thân thiện">
+            <x-admin.form.text name="slug" x-model="slug" :placeholder="__('Có thể để trống để tự động tạo theo tiêu đề')" />
         </x-admin.panel.item>
 
         {{-- Parent ID --}}
@@ -64,7 +78,9 @@
 <script>
 document.addEventListener('alpine:init', () => {
     Alpine.data('editCatalogForm', () => ({
+        thumbnail: '',
         title: '{{ $catalog->title }}',
+        slug: '{{ $catalog->slug->slug }}',
         parent_id: '{{ $catalog->parent_id }}',
         published: {{ $catalog->published ? 'true' : 'false' }},
         description: '{{ $catalog->description }}',
@@ -73,13 +89,22 @@ document.addEventListener('alpine:init', () => {
         submit() {
             this.loading = true;
             this.detail = document.getElementById('detail').value
+            this.published = this.published ? 1 : 0
             
-            axios.put(route('admin.catalogs.update', { catalog: '{{ $catalog->id }}' }), {
-                title: this.title,
-                parent_id: this.parent_id,
-                published: this.published,
-                description: this.description,
-                detail: this.detail,
+            let data = new FormData()
+            data.append('_method', 'PUT')
+            data.append('thumbnail', this.thumbnail)
+            data.append('title', this.title)
+            data.append('slug', this.slug)
+            data.append('parent_id', this.parent_id),
+            data.append('published', this.published),
+            data.append('description', this.description),
+            data.append('detail', this.detail),
+            
+            axios.post(route('admin.catalogs.update', { catalog: '{{ $catalog->id }}' }), data, {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
             }).then(res => {
                 window.location.href = route('admin.catalogs.show', { catalog: res.data.catalog.id });
             }).catch(err => {

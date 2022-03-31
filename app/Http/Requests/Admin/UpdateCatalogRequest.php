@@ -26,7 +26,7 @@ class UpdateCatalogRequest extends FormRequest
     protected function prepareForValidation()
     {
         $this->merge([
-            'slug' => Str::slug($this->title),
+            'slug' => $this->slug ? $this->slug : Str::slug($this->title)
         ]);
     }
 
@@ -38,6 +38,7 @@ class UpdateCatalogRequest extends FormRequest
     public function rules()
     {
         return [
+            'thumbnail' => ['nullable', 'image'],
             'title' => ['required', 'string', 'min:2', 'max:255', "unique:catalogs,title,{$this->catalog}"],
             'slug' => ['required', 'string', Rule::unique('slugs')->ignore($this->catalog, 'sluggable_id')],
             'parent_id' => ['nullable', 'exists:catalogs,id'],
