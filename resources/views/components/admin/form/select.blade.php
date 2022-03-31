@@ -16,7 +16,7 @@
             <option value="{{ $defaultValue }}">{!! $defaultLabel !!}</option>
         @endif
         @foreach ($options as $text => $value)
-            <option value="{{ $value }}">{{ $text }}</option>
+            <option value="{{ $value }}">{!! $text !!}</option>
         @endforeach
     </select>
 @else

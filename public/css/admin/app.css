@@ -896,6 +896,16 @@ img {
   margin-right: auto;
 }
 
+.my-4{
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.my-3{
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
 .ml-1{
   margin-left: 0.25rem;
 }
@@ -932,6 +942,22 @@ img {
   margin-top: -1px;
 }
 
+.mb-3{
+  margin-bottom: 0.75rem;
+}
+
+.mt-5{
+  margin-top: 1.25rem;
+}
+
+.mr-auto{
+  margin-right: auto;
+}
+
+.ml-auto{
+  margin-left: auto;
+}
+
 .ml-3{
   margin-left: 0.75rem;
 }
@@ -952,28 +978,12 @@ img {
   margin-bottom: 1rem;
 }
 
-.mt-5{
-  margin-top: 1.25rem;
-}
-
-.mr-auto{
-  margin-right: auto;
-}
-
-.ml-auto{
-  margin-left: auto;
-}
-
 .ml-5{
   margin-left: 1.25rem;
 }
 
 .mt-1{
   margin-top: 0.25rem;
-}
-
-.mb-3{
-  margin-bottom: 0.75rem;
 }
 
 .block{
@@ -1112,6 +1122,10 @@ img {
   width: 7rem;
 }
 
+.w-24{
+  width: 6rem;
+}
+
 .min-w-\[1000px\]{
   min-width: 1000px;
 }
@@ -1202,6 +1216,10 @@ img {
 
 .grid-cols-1{
   grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+
+.grid-cols-3{
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .grid-cols-12{
@@ -1592,6 +1610,11 @@ img {
   line-height: 1.75rem;
 }
 
+.text-2xl{
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
 .text-5xl{
   font-size: 3rem;
   line-height: 1;
@@ -1610,11 +1633,6 @@ img {
 .text-xs{
   font-size: 0.75rem;
   line-height: 1rem;
-}
-
-.text-2xl{
-  font-size: 1.5rem;
-  line-height: 2rem;
 }
 
 .font-semibold{

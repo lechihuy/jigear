@@ -60,4 +60,9 @@ Route::prefix('admin')->name('admin.')->group(function() {
     /* Setting */
     Route::get('/setting', [SettingController::class, 'showSettingForm'])->name('setting');
     Route::put('/setting', [SettingController::class, 'store'])->name('setting.update');
+
+    /* Statistics */
+    Route::prefix('statistics')->name('statistics.')->group(function() {
+        Route::get('/order', [OrderController::class, 'statistic'])->name('order');
+    });
 });

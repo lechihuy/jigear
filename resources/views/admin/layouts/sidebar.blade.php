@@ -18,7 +18,7 @@
 
     {{-- Navs --}}
     <nav>
-        <a href="" class="nav-item">
+        <a href="{{ route('admin.dashboard') }}" class="nav-item {{ str_contains(Route::currentRouteName(), 'admin.dashboard') ? '!text-white' : '' }}">
             <span class="material-icons-outlined">space_dashboard</span> {{ __('Dashboard') }}
         </a>
         

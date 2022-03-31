@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use App\Models\User;
-use App\Models\Option;
 use App\Models\OrderItem;
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
@@ -21,6 +20,15 @@ class Order extends Model
     protected $fillable = [
         'code',
         'customer_id',
+        'status',
+        'email',
+        'first_name',
+        'last_name',
+        'gender',
+        'address',
+        'phone_number',
+        'payment_method',
+        'shipping_fee',
     ];
 
     /**
@@ -64,7 +72,7 @@ class Order extends Model
      */
     public function calculateBill($data = [])
     {
-        $this->shipping_fee = $data['shipping_fee'] ?? Option::get('shipping_fee');
+        $this->shipping_fee = $data['shipping_fee'] ?? option('shipping_fee');
         $this->sub_total = $this->items->sum(function($items) {
             return $items['unit_price'] * $items['qty'];
         });
@@ -79,20 +87,5 @@ class Order extends Model
         ]);
 
         $this->total = $fees->sum() - $exemptions->sum();
-    }
-
-    /**
-     * Ser the customer information of the order.
-     * 
-     * @param  array|null  $data
-     * @return void
-     */
-    public function setCustomer($data = null)
-    {
-        if ($this->customer_id) {
-            $this->first_name = $this->customer->first_name;
-            $this->last_name = $this->customer->last_name;
-            $this->gender = $this->customer->gender;
-        }
     }
 }
