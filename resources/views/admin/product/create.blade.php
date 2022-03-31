@@ -17,7 +17,12 @@
             <x-admin.form.text name="title" x-model="title" />
         </x-admin.panel.item>
 
-        {{-- Title --}}
+        {{-- Slug --}}
+        <x-admin.panel.item label="URL thân thiện">
+            <x-admin.form.text name="slug" x-model="slug" :placeholder="__('Có thể để trống để tự động tạo theo tiêu đề')" />
+        </x-admin.panel.item>
+
+        {{-- SKU --}}
         <x-admin.panel.item label="SKU" :required="true">
             <x-admin.form.text name="sku" x-model="sku" />
         </x-admin.panel.item>
@@ -49,6 +54,7 @@
 document.addEventListener('alpine:init', () => {
   Alpine.data('createProductForm', () => ({
     title: '',
+    slug: '',
     sku: '',
     catalog_id: '',
     loading: false,
@@ -57,6 +63,7 @@ document.addEventListener('alpine:init', () => {
 
       axios.post(route('admin.products.store'), {
         title: this.title,
+        slug: this.slug,
         sku: this.sku,
         catalog_id: this.catalog_id
       }).then(res => {

@@ -30,7 +30,7 @@ class StorePromotionRequest extends FormRequest
             'init_uses' => ['required', 'numeric', 'min:1'],
             'is_percent_unit' => ['required', 'boolean'],
             'started_at' => ['required', 'date'],
-            'ended_at' => ['nullable', 'date'],
+            'ended_at' => ['nullable', 'date',],
         ];
     }
 

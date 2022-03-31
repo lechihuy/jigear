@@ -90,7 +90,7 @@ class OrderItemController extends Controller
         return view('admin.order.item.create', [
             'order' => $order,
             'orderDetailUrl' => $orderDetailUrl,
-            'productOptions' => Product::purchasable()->inStock()->get()->mapWithKeys(fn($product) => [
+            'productOptions' => Product::inStock()->get()->mapWithKeys(fn($product) => [
                 $product->title => $product->id
             ])
         ]);

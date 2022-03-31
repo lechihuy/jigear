@@ -6,6 +6,7 @@ use App\Models\Brand;
 use App\Models\Image;
 use App\Models\Catalog;
 use App\Models\Product;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\StoreProductRequest;
@@ -32,7 +33,7 @@ class ProductController extends Controller
     public function index(Request $request)
     {
         $perPage = $request->input('per_page', 15);
-        $hasFilter = $request->hasAny(['q', 'published', 'catalog_id', 'per_page']);
+        $hasFilter = $request->hasAny(['q', 'published', 'catalog_id', 'in_stock', 'per_page']);
         $hasSort = $request->hasAny(['sort-id', 'sort-title', 'sort-sku', 'sort-unit_price']);
 
         if (!$hasSort) {
@@ -54,11 +55,8 @@ class ProductController extends Controller
             $products->where('published', $published);
         });
 
-        $request->whenHas('purchasable', function($purchasable) use ($products) {
-            $products->where('purchasable', $purchasable);
-        });
 
-        $request->whenHas('is_stock', function($isStock) use ($products) {
+        $request->whenHas('in_stock', function($isStock) use ($products) {
             if ((bool) $isStock) {
                 $products->where('stock', '>', 0);
             } else {
@@ -171,6 +169,12 @@ class ProductController extends Controller
     {
         $product = Product::findOrFail($id);
         $product->update($request->validated());
+
+        if ($request->slug != $product->slug->slug) {
+            $product->slug->update([
+                'slug' => Str::slug($request->slug ?? $product->title)
+            ]);
+        }
 
         if ($request->hasFile('thumbnail')) {
             if ($product->thumbnail) {

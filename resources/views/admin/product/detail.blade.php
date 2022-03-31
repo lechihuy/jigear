@@ -31,6 +31,11 @@
         <x-admin.detail.text :value="$product->title" />
     </x-admin.panel.item>
 
+    {{-- Slug --}}
+    <x-admin.panel.item label="URL thân thiện">
+        <x-admin.detail.text :value="$product->slug->slug" />
+    </x-admin.panel.item>
+
     {{-- SKU --}}
     <x-admin.panel.item label="SKU">
         <x-admin.detail.code :value="$product->sku" />
@@ -64,22 +69,6 @@
             :value="$product->published" 
         />
     </x-admin.panel.item>
-
-    {{-- Purchasable --}}
-    <x-admin.panel.item label="Có thể bán">
-        <x-admin.detail.boolean
-            :value="$product->purchasable" 
-        />
-    </x-admin.panel.item>
-
-    {{-- Brand --}}
-    {{-- <x-admin.panel.item label="Thương hiệu">
-        <x-admin.detail.belongs-to 
-            :owner="$product->brand" 
-            prefixRouteName="admin.brands."
-            display="name" 
-        />
-    </x-admin.panel.item> --}}
 
     {{-- Description --}}
     <x-admin.panel.item label="Mô tả">

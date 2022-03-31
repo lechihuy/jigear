@@ -26,7 +26,7 @@ class UpdateProductRequest extends FormRequest
     protected function prepareForValidation()
     {
         $this->merge([
-            'slug' => Str::slug($this->title),
+            'slug' => $this->slug ? $this->slug : Str::slug($this->title)
         ]);
     }
 
@@ -44,14 +44,13 @@ class UpdateProductRequest extends FormRequest
             'slug' => ['required', 'string', Rule::unique('slugs')->ignore($this->product, 'sluggable_id')],
             'catalog_id' => ['nullable', 'exists:catalogs,id'],
             'unit_price' => ['required', 'numeric', 'min:0'],
-            'stock' => ['nullable', 'integer', 'min:0'],
+            'stock' => ['required', 'integer', 'min:0'],
             'published' => ['required', 'boolean'],
-            'purchasable' => ['required', 'boolean'],
-            'brand_id' => ['nullable', 'exists:brands,id'],
             'description' => ['nullable', 'string'],
             'detail' => ['nullable', 'string'],
             'parameters' => ['nullable', 'json'],
             'previews.*' => ['nullable'],
+            'created_at' => ['required', 'date', 'before_or_equal:now'],
         ];
     }
 }
