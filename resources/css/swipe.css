@@ -1,0 +1,30 @@
+.slider .slider-items .item {
+  display: none;
+}
+
+
+.slider .slider-items .item.active {
+  display: block;
+}
+
+.slider .left-slide, .slider .right-slide {
+  position: absolute;
+  height: 40px;
+  width: 40px;
+  background-color: #fff;
+  border-radius: 50%;
+  color: #000;
+  font-size: 24px;
+  top: 50%;
+  cursor: pointer;
+  margin-top: -20px;
+  text-align: center;
+  line-height: 40px;
+  font-weight: bold;
+  transition: all 0.5s ease;
+}
+
+.slider .left-slide:hover, .slider .right-slide:hover {
+  background-color: #65c8c6;
+  color: #fff;
+}

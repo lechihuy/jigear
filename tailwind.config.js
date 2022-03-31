@@ -9,7 +9,7 @@ module.exports = {
     extend: {
       fontFamily: {
         sans: ['Open Sans', 'sans-serif'],
-        logo: ['Mochiy Pop P One', 'sans-serif']
+        logo: ['Mochiy Pop P One', 'sans-serif'],
       }
     },
   },
