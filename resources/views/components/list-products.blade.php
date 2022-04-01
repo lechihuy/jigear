@@ -2,49 +2,25 @@
     <x-container>
         <div class="flex justify-between pb-4">
             <p class="text-2xl font-medium">MacBook</p>
-            <p class="text-zinc-500">Xem tất cả</p>
+            <p class="text-zinc-500">See All</p>
             
         </div>
         <div class="grid grid-cols-2 gap-4 lg:grid-cols-3">
-            <div class="h-full bg-white shadow-lg rounded-2xl">
-                <p class="px-6 pt-6 text-2xl font-normal">MacBook Air</p>
-                <img src="{{ asset('images/mac_1.jpg') }}" alt="">
-                <div class="flex justify-center gap-2">
-                    <div class="w-3 h-3 rounded-[50%] bg-gray-500"></div>
-                    <div class="w-3 h-3 rounded-[50%] bg-amber-200"></div>
-                    <div class="w-3 h-3 rounded-[50%] bg-zinc-700"></div>
+            @for ($i = 0; $i < 3; $i++) 
+                <div class="h-full bg-white shadow-lg rounded-2xl">
+                    <p class="px-6 pt-6 text-2xl font-normal">MacBook Air</p>
+                    <img src="{{ asset('images/mac_1.jpg') }}" alt="">
+                    <div class="flex justify-center gap-2">
+                        <div class="w-3 h-3 rounded-[50%] bg-gray-500"></div>
+                        <div class="w-3 h-3 rounded-[50%] bg-amber-200"></div>
+                        <div class="w-3 h-3 rounded-[50%] bg-zinc-700"></div>
+                    </div>
+                    <div class="flex items-center px-4 py-4">
+                        <p class="font-light text-slate-500">$999</p>
+                        <button class="px-4 py-1 ml-auto text-white rounded-full bg-sky-500">Buy</button>
+                    </div>
                 </div>
-                <div class="flex items-center px-4 py-4">
-                    <p class="font-light text-slate-500">Giá: 24.000.000đ</p>
-                    <button class="px-4 py-1 ml-auto text-white rounded-full bg-sky-500">Buy</button>
-                </div>
-            </div>
-            <div class="h-full bg-white shadow-lg rounded-2xl">
-                <p class="px-6 pt-6 text-2xl font-normal">MacBook Air</p>
-                <img src="{{ asset('images/mac_1.jpg') }}" alt="">
-                <div class="flex justify-center gap-2">
-                    <div class="w-3 h-3 rounded-[50%] bg-gray-500"></div>
-                    <div class="w-3 h-3 rounded-[50%] bg-amber-200"></div>
-                    <div class="w-3 h-3 rounded-[50%] bg-zinc-700"></div>
-                </div>
-                <div class="flex items-center px-4 py-4">
-                    <p class="font-light text-slate-500">Giá: 24.000.000đ</p>
-                    <button class="px-4 py-1 ml-auto text-white rounded-full bg-sky-500">Buy</button>
-                </div>
-            </div>
-            <div class="h-full bg-white shadow-lg rounded-2xl">
-                <p class="px-6 pt-6 text-2xl font-normal">MacBook Air</p>
-                <img src="{{ asset('images/mac_1.jpg') }}" alt="">
-                <div class="flex justify-center gap-2">
-                    <div class="w-3 h-3 rounded-[50%] bg-gray-500"></div>
-                    <div class="w-3 h-3 rounded-[50%] bg-amber-200"></div>
-                    <div class="w-3 h-3 rounded-[50%] bg-zinc-700"></div>
-                </div>
-                <div class="flex items-center px-4 py-4">
-                    <p class="font-light text-slate-500">Giá: 24.000.000đ</p>
-                    <button class="px-4 py-1 ml-auto text-white rounded-full bg-sky-500">Buy</button>
-                </div>
-            </div>
+            @endfor
         </div>
     </x-container>
 </div>
@@ -91,7 +67,7 @@
                     <div class="pt-14">
                         <p class="text-sm font-medium text-orange-500">Free Engraving</p>
                         <p class="font-medium">AirPods (3rd generation)</p>
-                        <p class="pt-16 text-zinc-700">4.000.000đ</p>
+                        <p class="pt-16 text-zinc-700">$129.00</p>
                     </div>
                 </div>
             </x-slider.item>
