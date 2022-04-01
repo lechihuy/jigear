@@ -34,5 +34,9 @@ trait Sluggable
                 'slug' => Str::slug(request()->slug ?? $model->title)
             ]);
         });
+
+        static::deleted(function ($model) {
+            $model->slug->delete();
+        });
     }
 }

@@ -1,0 +1,38 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.5.5/css/simple-line-icons.min.css");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp");
+
+
+@tailwind base;
+body {
+    font-family: 'Poppins', sans-serif;
+}
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+    /* Chrome, Safari and Opera */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+
+    .no-scrollbar {
+      -ms-overflow-style: none; /* IE and Edge */
+      scrollbar-width: none; /* Firefox */
+    }
+}
+
+.menu-item::before {
+    content: "";
+    border: 15px solid;
+    border-color: transparent transparent transparent #65c8c6;
+    position: absolute;
+    right: -30px;
+    top: 1px;
+    z-index: 40;
+    display: none;
+}
+
+.menu-item:hover::before {
+    display: block !important;
+}
