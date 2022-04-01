@@ -9,3 +9,4 @@ window.Alpine = Alpine;
 
 import './store/theme';
 import './store/toast';
+import './store/confirm-modal';

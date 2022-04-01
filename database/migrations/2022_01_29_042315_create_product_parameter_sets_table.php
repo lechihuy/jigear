@@ -15,11 +15,10 @@ class CreateProductParameterSetsTable extends Migration
     {
         Schema::create('product_parameter_sets', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->unique();
-            $table->string('key')->unique();
-            $table->json('parameters');
+            $table->string('key')->fullText();
             $table->timestamps();
-            $table->softDeletes();
+
+            $table->unique('key');
         });
     }
 

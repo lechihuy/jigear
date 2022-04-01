@@ -11,6 +11,10 @@
     
     @routes
 
+    <link rel="stylesheet" type="text/css" href="{{ asset('trix/trix.css') }}">
+    <script type="text/javascript" src="{{ asset('trix/trix.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('trix/attachment.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
     <script src="{{ mix('js/admin/app.js') }}"></script>
 </head>
 <body class="bg-gray-100">
@@ -24,6 +28,8 @@
     </main>
 
     <x-toast />
+
+    <x-confirm-modal />
 
     @stack('scripts')
 

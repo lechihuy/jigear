@@ -17,9 +17,14 @@
             <x-admin.form.text name="title" x-model="title" />
         </x-admin.panel.item>
 
+        {{-- Slug --}}
+        <x-admin.panel.item label="URL thân thiện">
+            <x-admin.form.text name="slug" x-model="slug" :placeholder="__('Có thể để trống để tự động tạo theo tiêu đề')" />
+        </x-admin.panel.item>
+
         {{-- Parent ID --}}
         <x-admin.panel.item label="Danh mục cha">
-            <x-admin.form.select name="parent_id" x-model="parent_id" :options="$catalogs" />
+            <x-admin.form.select name="parent_id" x-model="parent_id" :options="$catalogOptions" />
         </x-admin.panel.item>
 
     </x-admin.panel>
@@ -40,5 +45,29 @@
 @endsection
 
 @push('scripts')
-<script src="{{ mix('js/admin/pages/catalog/create.js') }}"></script>
+<script>
+document.addEventListener('alpine:init', () => {
+  Alpine.data('createCatalogForm', () => ({
+    title: '',
+    slug: '',
+    parent_id: '',
+    loading: false,
+    submit() {
+      this.loading = true;
+
+      axios.post(route('admin.catalogs.store'), {
+        title: this.title,
+        slug: this.slug,
+        parent_id: this.parent_id
+      }).then(res => {
+        window.location.href = route('admin.catalogs.show', { catalog: res.data.catalog.id });
+      }).catch(err => {
+        Alpine.store('toast').show('danger', err.response.data.message)
+      }).finally(() => {
+        this.loading = false;
+      })
+    }
+  }));
+});
+</script>
 @endpush
