@@ -14,7 +14,7 @@ class FkProductParameterSetIdColumnToProductParametersTable extends Migration
     public function up()
     {
         Schema::table('product_parameters', function (Blueprint $table) {
-            $table->foreign('product_parameter_set_id')->references('id')->on('product_parameter_sets');
+            $table->foreign('product_parameter_set_id')->references('id')->on('product_parameter_sets')->onDelete('cascade');
         });
     }
 
