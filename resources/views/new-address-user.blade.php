@@ -39,35 +39,30 @@
                     </ul>
                 </div>
             </div>
-            <div class="grow">
-                <div class="flex items-center justify-between">
-                    <p class="font-medium text-3xl">My Address</p>
-                    <button class="px-3 py-3 rounded bg-blue-600 text-white text-sm">
-                        New Address
+            <div>
+                <div>
+                    <p class="font-medium text-3xl pb-4">Add Address</p>
+                    <p class="text-sm text-zinc-600">Manage your personal information, including phone numbers and email addresses where you can be reached.</p>
+                </div>
+                <div class="mt-4 flex-col">
+                    <div class="pt-2">
+                        <p class="py-2 font-medium text-zinc-700">Address</p>
+                        <input type="text" placeholder="Address" class="w-full py-3 rounded border-zinc-300 placeholder-zinc-400 text-sm">
+                    </div>
+                    <div class="pt-2">
+                        <p class="py-2 font-medium text-zinc-700">Phone number</p>
+                        <input type="tel" placeholder="Phone Number" class="w-full py-3 rounded border-zinc-300 placeholder-zinc-400 text-sm">
+                    </div>
+                    <div class="flex items-center pt-4">
+                        <input type="checkbox" class="form-checkbox">
+                        <p class="pl-4 font-medium text-zinc-700">Set default</p>
+                    </div>
+                    <button
+                        type="submit"
+                        class="w-full text-center py-3 rounded bg-blue-600 text-white my-4 mt-10"
+                        >Save
                     </button>
                 </div>
-                @for($i = 0; $i < 2; $i++) 
-                    <div class="flex justify-between py-8 border-b border-solid border-zinc-300">
-                        <div class="basis-96 flex flex-col gap-4">
-                            <div>
-                                <button class="px-1 py-0.5 text-center rounded-lg outline outline-offset-1 outline-blue-600 text-blue-600 text-xs font-medium">Default</button>
-                            </div>
-                            <p class="font-medium">78/17A đường Hồ Bá Phấn
-                                Phường Phước Long A
-                                Thành Phố Thủ Đức
-                                TP. Hồ Chí Minh
-                            </p>
-                            <p class="text-zinc-600">0931395321</p>
-                        </div>
-                        <div class="basis-28 flex flex-col justify-between">
-                            <div class="flex justify-between">
-                                <a class="text-zinc-700 text-sm underline" href="#">Edit</a>
-                                <a class="text-zinc-700 text-sm underline" href="#">Remove</a>
-                            </div>
-                            <button class="py-3 rounded text-xs outline outline-2 outline-zinc-400 font-medium opacity-50 cursor-not-allowed">Set Default</button>
-                        </div>
-                    </div>
-                @endfor
             </div>
         </div>
     </x-container>

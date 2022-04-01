@@ -7,7 +7,7 @@
     <x-container>
         <div class="py-4 flex justify-end border-b border-solid border-zinc-300">
             <div>
-                <button class="bg-blue-500 px-3 py-1 rounded-2xl text-white text-sm">Sign Out</button>
+                <button class="bg-blue-600 px-3 py-1 rounded-2xl text-white text-sm">Sign Out</button>
             </div>
         </div>
         <div class="flex gap-20 py-16">

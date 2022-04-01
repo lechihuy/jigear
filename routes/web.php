@@ -39,10 +39,13 @@ Route::get('/change-password', function () {
     return view('change-password-user');
 });
 
-Route::get('/address-user', function () {
+Route::get('/address', function () {
     return view('address-user');
 });
 
+Route::get('/new-address', function() {
+    return view('new-address-user');
+});
 Route::get('/login', function() {
     return view('auth.login');
 });
