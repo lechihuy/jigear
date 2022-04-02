@@ -42,9 +42,9 @@
 
             <div class="lg:col-span-2 flex flex-col order-1" x-data="{shown: false, url: null}">
                 <img src="{{ optional($product->thumbnail)->url }}" alt="" class="w-3/4 mx-auto" @click="shown = true; url = '{{ optional($product->thumbnail)->url }}'">
-                <div class="flex justify-center items-center gap-2 h-14">
+                <div class="flex justify-center items-center gap-2 h-14 mt-5">
                     @foreach ($product->previews as $preview)
-                        <img src="{{ $preview->url }}" class="h-full object-contain cursor-pointer" @click="shown = true; url = '{{ $preview->url }}'">
+                        <img src="{{ $preview->url }}" class="h-full object-contain cursor-pointer shadow-lg border border-gray-300" @click="shown = true; url = '{{ $preview->url }}'">
                     @endforeach
                     <div class="fixed w-full h-full z-10 top-0 left-0 p-20 flex items-center"
                         :class="shown ? 'bg-black/80' : 'bg-black/0'"
@@ -52,7 +52,7 @@
                         x-cloak 
                         x-show="shown"
                     >
-                        <img :src="url" class="max-w-full max-h-full mx-auto">
+                        <img :src="url" class="max-w-full max-h-full mx-auto shadow-lg">
                     </div>
                 </div>
             </div>
