@@ -21,7 +21,7 @@ class Slug extends Model
     /**
      * Get the parent sluggable model.
      */
-    public function imageable()
+    public function sluggable()
     {
         return $this->morphTo();
     }

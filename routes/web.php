@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\DetailController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\OrderController;
@@ -22,7 +23,9 @@ use App\Http\Controllers\Admin\ProductParameterSetController;
 |--------------------------------------------------------------------------
 |
 */
-Route::get('/', HomeController::class);
+Route::get('/', HomeController::class)->name('home');
+
+Route::get('/{slug}', DetailController::class)->name('detail');
 
 Route::get('/product-detail', function () {
     return view('product-detail');

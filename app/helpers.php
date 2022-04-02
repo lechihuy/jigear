@@ -20,3 +20,9 @@ if (! function_exists('calculate_trend')) {
         return [$percent >= 0 ? '+' : '-', round(abs($percent))];
     }
 }
+
+if (! function_exists('price_text')) {
+    function price_text($price) {
+        return option('currency') . number_format($price, 0);
+    }
+}
