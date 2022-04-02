@@ -1,6 +1,6 @@
 @extends('layouts.master', ['isSeparated' => true])
 
-@section('title', 'home')
+@section('title', config('app.name'))
 
 @section('content')
     {{-- Top banner --}}
@@ -18,7 +18,7 @@
         {{-- Top level catalog slider --}}
         <x-slider class="gap-10">
             @foreach ($topLevelCatalogs as $catalog)
-                <x-slider.item class="w-28" url="{{ route('detail', $catalog->slug->slug) }}">
+                <x-slider.item>
                     <img src="{{ optional($catalog->thumbnail)->url }}">
                     <p class="text-center pt-4 font-medium text-sm`">{{ $catalog->title }}</p>
                 </x-slider.item>
@@ -30,7 +30,11 @@
     {{-- Latest products section --}}
     <div class="bg-gray-100 pt-28">
         <x-container>
-            <p class="mb-4 text-2xl font-medium text-zinc-900">The latest. <span class="text-zinc-500">Take a look at what’s new, right now.</span></p>
+            <div class="pb-4">
+                <p class="mb-4 text-2xl font-medium text-zinc-900">The latest. <span class="text-zinc-500">Take a look at what’s new, right now.</span></p>
+            </div>
+        </x-container>
+        <x-container>
             <div class="grid grid-cols-2 gap-4 lg:grid-cols-3">
                 @foreach ($latestProducts as $product)
                     <div class="flex flex-col gap-4 p-5 bg-white shadow-lg rounded-2xl">
@@ -124,7 +128,7 @@
                 <p class="text-2xl font-medium">{{ $catalog->title }}</p>
             </div>
             </x-container>
-            <x-slider class="gap-6 py-4">
+            <x-slider class="gap-4 py-4">
                 @foreach ($catalog->allProducts()->get() as $product)
                     <x-slider.item class="h-full">
                         <div class="flex flex-col h-full px-6 py-6 bg-white shadow-lg w-72 rounded-2xl">
@@ -135,7 +139,7 @@
                                 <a href="{{ route('detail', $product->catalog->slug->slug) }}" class="text-sm font-medium text-orange-500 inline-block">
                                     {{ $product->catalog->title }}
                                 </a>
-                                <a href="{{ route('detail', $product->slug->slug) }}" class="font-medium block">{{ $product->title }}</a>
+                                <a href="{{ route('detail', $product->slug->slug) }}" class="font-medium block whitespace-normal">{{ $product->title }}</a>
                                 <p class="text-zinc-700 pt-14">{{ $product->unitPriceText }}</p>
                             </div>
                         </div>
