@@ -68,28 +68,28 @@
                 <div class="col-span-3 pt-4 lg:pt-0">
                     <div class="w-full">
                         <div class="overflow-hidden rounded border-b border-gray-200">
-                          <table class="min-w-full bg-white">
-                            <tbody class="text-gray-700">
-                                <tr>
-                                    <td class="w-1/3 text-left py-3 px-4 font-medium">Thời gian tai nghe:</td>
-                                    <td class="w-1/3 text-left py-3 px-4">Dùng 5 giờ - Sạc 2 giờ</td>
-                                </tr>
-                                <tr class="bg-gray-50">
-                                    <td class="w-1/3 text-left py-3 px-4 font-medium">Thời gian hộp sạc:</td>
-                                    <td class="w-1/3 text-left py-3 px-4">Dùng 24 giờ - Sạc 3 giờ</td>
-                                </tr>
-                                <tr>
-                                    <td class="w-1/3 text-left py-3 px-4 font-medium">Cổng sạc:</td>
-                                    <td class="w-1/3 text-left py-3 px-4">LightningSạc không dây</td>
-                                </tr>
-                                <tr class="bg-gray-50">
-                                    <td class="w-1/3 text-left py-3 px-4 font-medium">Công nghệ âm thanh:</td>
-                                    <td class="w-1/3 text-left py-3 px-4">Active Noise CancellationAdaptive EQCustom 
-                                        high-excursion Apple driverHigh Dynamic RangeSpatial AudioTransparency Mode
-                                    </td>
-                                </tr>
-                            </tbody>
-                          </table>
+                            <table class="min-w-full bg-white">
+                                <tbody class="text-gray-700">
+                                    <tr>
+                                        <td class="w-1/3 text-left py-3 px-4 font-medium">Thời gian tai nghe:</td>
+                                        <td class="w-1/3 text-left py-3 px-4">Dùng 5 giờ - Sạc 2 giờ</td>
+                                    </tr>
+                                    <tr class="bg-gray-50">
+                                        <td class="w-1/3 text-left py-3 px-4 font-medium">Thời gian hộp sạc:</td>
+                                        <td class="w-1/3 text-left py-3 px-4">Dùng 24 giờ - Sạc 3 giờ</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="w-1/3 text-left py-3 px-4 font-medium">Cổng sạc:</td>
+                                        <td class="w-1/3 text-left py-3 px-4">LightningSạc không dây</td>
+                                    </tr>
+                                    <tr class="bg-gray-50">
+                                        <td class="w-1/3 text-left py-3 px-4 font-medium">Công nghệ âm thanh:</td>
+                                        <td class="w-1/3 text-left py-3 px-4">Active Noise CancellationAdaptive EQCustom 
+                                            high-excursion Apple driverHigh Dynamic RangeSpatial AudioTransparency Mode
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>

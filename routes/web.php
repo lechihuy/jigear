@@ -40,6 +40,21 @@ Route::get('/category', function () {
     return view('category');
 });
 
+Route::get('/profile', function () {
+    return view('profile-user');
+});
+
+Route::get('/change-password', function () {
+    return view('change-password-user');
+});
+
+Route::get('/address', function () {
+    return view('address-user');
+});
+
+Route::get('/new-address', function() {
+    return view('new-address-user');
+});
 Route::get('/login', function() {
     return view('auth.login');
 });
