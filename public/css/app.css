@@ -782,6 +782,7 @@ body {
 .text-yellow-800{ --tw-text-opacity: 1; color: rgb(133 77 14 / var(--tw-text-opacity)); }
 .text-sky-700{ --tw-text-opacity: 1; color: rgb(3 105 161 / var(--tw-text-opacity)); }
 .text-green-700{ --tw-text-opacity: 1; color: rgb(21 128 61 / var(--tw-text-opacity)); }
+.text-red-900{ --tw-text-opacity: 1; color: rgb(127 29 29 / var(--tw-text-opacity)); }
 .underline{ -webkit-text-decoration-line: underline; text-decoration-line: underline; }
 .placeholder-zinc-400::-moz-placeholder{ --tw-placeholder-opacity: 1; color: rgb(161 161 170 / var(--tw-placeholder-opacity)); }
 .placeholder-zinc-400:-ms-input-placeholder{ --tw-placeholder-opacity: 1; color: rgb(161 161 170 / var(--tw-placeholder-opacity)); }
