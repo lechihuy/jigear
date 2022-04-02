@@ -3468,10 +3468,16 @@ document.addEventListener('alpine:init', function () {
     openBag: false,
     toggleBag: function toggleBag() {
       this.openBag = !this.openBag;
+      this.openSearch = false;
     },
     openSortBy: false,
     toggleSortBy: function toggleSortBy() {
       this.openSortBy = !this.openSortBy;
+    },
+    openSearch: false,
+    toggleSearch: function toggleSearch() {
+      this.openSearch = !this.openSearch;
+      this.openBag = false;
     }
   });
 });
