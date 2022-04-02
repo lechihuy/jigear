@@ -14,6 +14,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\OrderItemController;
 use App\Http\Controllers\Admin\PromotionController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Admin\Auth\LoginController as LoginAdminController;
 use App\Http\Controllers\Admin\DeliveryAddressController;
 use App\Http\Controllers\Admin\ProductParameterController;
 use App\Http\Controllers\Admin\ProductParameterSetController;
@@ -91,7 +92,7 @@ Route::get('/forgot-password', function() {
 */
 Route::prefix('admin')->name('admin.')->group(function() {
     /* Auth Routes */
-    Route::name('auth.')->controller(LoginController::class)->group(function() {
+    Route::name('auth.')->controller(LoginAdminController::class)->group(function() {
         Route::get('/login', 'showLoginForm')->name('login');
         Route::post('/login', 'store')->name('login.store');
         Route::post('/logout', 'logout')->name('logout');

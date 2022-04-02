@@ -18,11 +18,12 @@ class Authenticate
      */
     public function handle(Request $request, Closure $next, $role = 'customer')
     {
-        if (Auth::guest() || Auth::user()->role !== $role) {
+        if (Auth::guest() || Auth::user()->role != $role) {
             $redirectRoute = match($role) {
                 'admin' => 'admin.auth.login',
-                'customer' => 'login'
+                'customer' => 'auth.login'
             };
+
 
             return redirect()->route($redirectRoute);
         }
