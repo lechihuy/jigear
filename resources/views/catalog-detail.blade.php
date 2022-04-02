@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title', 'home')
+@section('title', $catalog->title . ' - ' . config('app.name'))
 @section('content')
 
 <div class="bg-white" x-data="{
