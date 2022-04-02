@@ -19,8 +19,10 @@
         <x-slider class="gap-10">
             @foreach ($topLevelCatalogs as $catalog)
                 <x-slider.item>
-                    <img src="{{ optional($catalog->thumbnail)->url }}">
-                    <p class="text-center pt-4 font-medium text-sm`">{{ $catalog->title }}</p>
+                    <a href="{{ route('detail', $catalog->slug->slug) }}">
+                        <img src="{{ optional($catalog->thumbnail)->url }}">
+                        <p class="text-center pt-4 font-medium text-sm`">{{ $catalog->title }}</p>
+                    </a>
                 </x-slider.item>
             @endforeach
         </x-slider>
