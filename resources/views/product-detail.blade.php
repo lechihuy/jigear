@@ -1,21 +1,21 @@
 @extends('layouts.master')
 
-@section('title', 'home')
+@section('title', $product->title . ' - ' . config('app.name'))
+
 @section('content')
 <div class="bg-white min-h-screen">
-    <div class="bg-gray-100 w-full h-12 flex items-center ">
-        <p class="text-sm text-gray-600 text-center mx-auto">Get 6 months of Apple Music free with your AirPods.⁺</p>
-    </div>
     <x-container>
         <div class="lg:grid lg:grid-cols-3 flex flex-col pt-10 gap-12 lg:gap-2 pb-8">
             <div class="order-2 lg:order-1 text-center lg:text-left">
-                <a class="text-base text-orange-500 font-medium" href="#">Airpods</a>
-                <p class="text-3xl font-semibold pt-2 pb-4">AirPods(3rd generation)</p>
+                <a class="text-base text-orange-500 font-medium" href="{{ $product->catalog->slug->slug }}">
+                    {{ $product->catalog->title }}
+                </a>
+                <p class="text-3xl font-semibold pt-2 pb-4">{{ $product->title }}</p>
                 <div class="pb-8 text-center lg:text-left">
-                    <p class="text-lg text-gray-600 font-medium">3.000.000đ</p>
+                    <p class="text-lg text-gray-600 font-medium">{{ $product->unitPriceText }}</p>
                 </div>
                 <div class="border-t border-zinc-300 py-8">
-                    <p class="text-gray-600 text-sm">To purchase with monthly pricing, add this item to your bag and choose to check out with Apple Card Monthly Installments.</p>
+                    <p class="text-gray-600 text-sm">{{ $product->description }}</p>
                 </div>
                 <div class="flex lg:justify-start justify-center gap-4">
                     <span class="material-icons-outlined">
@@ -24,14 +24,20 @@
                     <div>
                         <ul class="text-left">
                             <li class="font-medium text-gray-700 text-base">Delivery:</li>
-                            <li class="font-light text-gray-900 text-base">In Stock</li>
-                            <li class="font-light text-gray-900 text-base">Free Shipping</li>
+                            @if ($product->stock > 0)
+                                <li class="font-light text-gray-900 text-base">In Stock</li>
+                            @else
+                                <li class="font-light text-red-500 text-base">Out of Stock</li>
+                            @endif
+                            <li class="font-light text-gray-900 text-base">Shipping Fee: {{ price_text(option('shipping_fee')) }}</li>
                         </ul>
                     </div>
                 </div>
+                @if ($product->stock > 0)
                 <button type="submit" class="w-full text-center py-2 rounded-lg bg-blue-600 text-white my-8">
                     Add to Bag
                 </button>
+                @endif
             </div>
             <div class="lg:col-span-2 flex flex-col order-1">
                 <img src="{{ asset('images/sound_3.jpg') }}" alt="" class=" w-3/4 h-3/4 mx-auto">
