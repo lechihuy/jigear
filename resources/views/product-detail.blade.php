@@ -94,9 +94,8 @@
             <p class="text-2xl font-medium">Related products</p>
         </div>
         </x-container>
-        @dump($product->catalog->topLevelParent())
 
-        {{-- <x-slider class="gap-4 py-4">
+        <x-slider class="gap-4 py-4">
             @foreach ($product->relatedProducts()->take(8)->get() as $product)
                 <x-slider.item>
                     <div class="flex flex-col h-full p-6 bg-white shadow-lg w-72 rounded-2xl">
@@ -113,7 +112,7 @@
                     </div>
                 </x-slider.item>
             @endforeach
-        </x-slider> --}}
+        </x-slider>
     </div>
 </div>
 
