@@ -53,7 +53,7 @@ class Catalog extends Model
 
     public function allProducts()
     {
-        return Product::whereHas('catalog', function ($query) {
+        return Product::published()->whereHas('catalog', function ($query) {
             $query->where('parent_id', $this->id)->orWhere('id', $this->id);
         });
     }

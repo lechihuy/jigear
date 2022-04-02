@@ -18,7 +18,7 @@
         {{-- Top level catalog slider --}}
         <x-slider class="gap-10">
             @foreach ($topLevelCatalogs as $catalog)
-                <x-slider.item class="w-28">
+                <x-slider.item class="w-28" url="{{ route('detail', $catalog->slug->slug) }}">
                     <img src="{{ optional($catalog->thumbnail)->url }}">
                     <p class="text-center pt-4 font-medium text-sm`">{{ $catalog->title }}</p>
                 </x-slider.item>
@@ -35,10 +35,10 @@
                 @foreach ($latestProducts as $product)
                     <div class="flex flex-col gap-4 p-5 bg-white shadow-lg rounded-2xl">
                         <p class="text-2xl font-normal">{{ $product->title }}</p>
-                        <img src="{{ optional($product->thumbnail)->url }}" alt="">
+                        <img src="{{ optional($product->thumbnail)->url }}">
                         <div class="flex items-center mt-auto">
                             <p class="font-light text-slate-500">{{ $product->unitPriceText }}</p>
-                            <button class="px-4 py-1 ml-auto text-white rounded-full bg-sky-500">Buy</button>
+                            <a href="{{ route('detail', $product->slug->slug) }}" class="px-4 py-1 ml-auto text-white rounded-full bg-sky-500">Buy</a>
                         </div>
                     </div>
                 @endforeach
@@ -128,11 +128,15 @@
                 @foreach ($catalog->allProducts()->get() as $product)
                     <x-slider.item class="h-full">
                         <div class="flex flex-col h-full px-6 py-6 bg-white shadow-lg w-72 rounded-2xl">
-                            <img src="{{ optional($product->thumbnail)->url }}" alt="" class="inline-block mx-auto mt-10">
+                            <a href="{{ route('detail', $product->slug->slug) }}">
+                                <img src="{{ optional($product->thumbnail)->url }}" class="inline-block mx-auto mt-10">
+                            </a>
                             <div class="pt-14">
-                                <p class="text-sm font-medium text-orange-500">Free Engraving</p>
-                                <p class="font-medium">AirPods (3rd generation)</p>
-                                <p class="text-zinc-700 pt-14">$10</p>
+                                <a href="{{ route('detail', $product->catalog->slug->slug) }}" class="text-sm font-medium text-orange-500 inline-block">
+                                    {{ $product->catalog->title }}
+                                </a>
+                                <a href="{{ route('detail', $product->slug->slug) }}" class="font-medium block">{{ $product->title }}</a>
+                                <p class="text-zinc-700 pt-14">{{ $product->unitPriceText }}</p>
                             </div>
                         </div>
                     </x-slider.item>
