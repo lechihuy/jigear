@@ -60,7 +60,7 @@
             </div>
         </x-container>
         <x-slider class="gap-4 py-4">
-                <x-slider.item class="w-72 h-64">
+                <x-slider.item class="w-72 !h-64">
                     <div class="px-6 py-6 bg-white shadow-lg rounded-2xl h-full">
                         <span class="text-5xl material-icons text-sky-600">
                             local_mall
@@ -70,7 +70,7 @@
                         </p>
                     </div>
                 </x-slider.item>
-                <x-slider.item class="w-72 h-64">
+                <x-slider.item class="w-72 !h-64">
                     <div class="px-6 py-6 bg-white shadow-lg rounded-2xl h-full">
                         <span class="material-icons-outlined text-5xl text-rose-600">
                             inventory_2
@@ -80,7 +80,7 @@
                         </p>
                     </div>
                 </x-slider.item>
-                <x-slider.item class="w-72 h-64">
+                <x-slider.item class="w-72 !h-64">
                     <div class="px-6 py-6 bg-white shadow-lg rounded-2xl h-full">
                         <span class="material-icons-outlined text-5xl text-amber-500">
                             insert_emoticon
@@ -90,7 +90,7 @@
                         </p>
                     </div>
                 </x-slider.item>
-                <x-slider.item class="w-72 h-64">
+                <x-slider.item class="w-72 !h-64">
                     <div class="px-6 py-6 bg-white shadow-lg rounded-2xl h-full">
                         <span class="material-icons-outlined text-5xl text-purple-600">
                             phonelink
@@ -100,7 +100,7 @@
                         </p>
                     </div>
                 </x-slider.item>
-                <x-slider.item class="w-72 h-64">
+                <x-slider.item class="w-72 !h-64">
                     <div class="px-6 py-6 bg-white shadow-lg rounded-2xl h-full">
                         <span class="material-icons-outlined text-5xl text-slate-500">
                             brush
@@ -110,7 +110,7 @@
                         </p>
                     </div>
                 </x-slider.item>
-                <x-slider.item class="w-72 h-64">
+                <x-slider.item class="w-72 !h-64">
                     <div class="px-6 py-6 bg-white shadow-lg rounded-2xl h-full">
                         <span class="material-icons-outlined text-5xl text-green-600">
                             credit_card

@@ -538,6 +538,7 @@ body {
 .h-5{ height: 1.25rem; }
 .h-6{ height: 1.5rem; }
 .h-40{ height: 10rem; }
+.\!h-64{ height: 16rem !important; }
 .max-h-full{ max-height: 100%; }
 .max-h-\[calc\(100vh_-_theme\(space\.16\)\)\]{ max-height: calc(100vh - 4rem); }
 .max-h-40{ max-height: 10rem; }
