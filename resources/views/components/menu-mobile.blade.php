@@ -1,4 +1,4 @@
-<div class="bg-zinc-900 w-full h-full fixed lg:hidden left-0 top-10" x-show="open" 
+<div class="bg-zinc-900 w-full h-full fixed lg:hidden left-0 top-10" x-cloak x-show="open" 
     x-transition:enter="transition ease-out duration-500"
     x-transition:enter-start="-translate-x-full"
     x-transition:enter-end="translate-x-0"
