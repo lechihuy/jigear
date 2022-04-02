@@ -11,7 +11,7 @@
                 </span>
             </div>
             <div>
-                <img class="object-cover w-7 h-7" src="{{ asset('images/logo.png') }}" alt="">
+                <img class="object-cover w-12 h-12" src="{{ asset('images/logo.png') }}" alt="">
             </div>
             <ul class="items-center justify-between hidden gap-8 text-xs font-thin lg:flex align-center text-slate-50">
                 <li>
@@ -46,7 +46,10 @@
                 </li>
             </ul>
             <div class="flex items-center gap-4 text-white lg:gap-6">
-                <span class="text-sm icon-magnifier"></span>
+                <div class="relative" @click="toggleSearch">
+                    <span class="text-sm icon-magnifier cursor-pointer select-none "></span>
+                    <input type="text" class="text-black px-4 py-2 rounded-md absolute -right-3 top-9" placeholder="Search..." x-show="openSearch">
+                </div>
                 <div class="relative">
                     <span class="text-sm cursor-pointer select-none icon-bag" @click="toggleBag">
                     </span>

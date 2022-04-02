@@ -8,12 +8,21 @@ document.addEventListener('alpine:init', () => {
         openBag: false,
         toggleBag() {
             this.openBag = !this.openBag
+            this.openSearch = false
         },
 
         openSortBy: false,
         toggleSortBy() {
             this.openSortBy = !this.openSortBy
+        },
+
+        openSearch: false,
+        toggleSearch() {
+            this.openSearch = !this.openSearch
+            this.openBag = false
         }
     })
 })
+
+
 
