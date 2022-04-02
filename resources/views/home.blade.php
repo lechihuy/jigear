@@ -132,7 +132,7 @@
                 @foreach ($catalog->allProducts()->get() as $product)
                     <x-slider.item>
                         <div class="flex flex-col h-full p-6 bg-white shadow-lg w-72 rounded-2xl">
-                            <a href="{{ route('detail', $product->slug->slug) }}" class="flex items-center h-60 bg-red-500">
+                            <a href="{{ route('detail', $product->slug->slug) }}" class="flex items-center h-60">
                                 <img src="{{ optional($product->thumbnail)->url }}" class="inline-block mx-auto">
                             </a>
                             <div class="pt-6 h-36 mt-auto flex flex-col">
