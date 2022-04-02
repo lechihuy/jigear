@@ -25,8 +25,6 @@ use App\Http\Controllers\Admin\ProductParameterSetController;
 */
 Route::get('/', HomeController::class)->name('home');
 
-Route::get('/{slug}', DetailController::class)->name('detail');
-
 Route::get('/product-detail', function () {
     return view('product-detail');
 });
@@ -55,6 +53,10 @@ Route::get('/address', function () {
     return view('address-user');
 });
 
+Route::get('/order-detail', function () {
+    return view('order-detail');
+});
+
 Route::get('/new-address', function() {
     return view('new-address-user');
 });
@@ -69,7 +71,6 @@ Route::get('/register', function() {
 Route::get('/forgot-password', function() {
     return view('auth.forgot-password');
 });
-
 
 
 /*
@@ -122,3 +123,5 @@ Route::prefix('admin')->name('admin.')->group(function() {
         Route::get('/users/stock', [UserController::class, 'statisticTotalCustomerOrdered'])->name('users.ordered');
     });
 });
+
+Route::get('/{slug}', DetailController::class)->name('detail');
