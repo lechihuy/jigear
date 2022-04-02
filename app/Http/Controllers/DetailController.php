@@ -28,6 +28,23 @@ class DetailController extends Controller
 
         if ($sluggable instanceof Catalog) {
 
+            $products = $sluggable->allProducts();
+
+            $request->whenHas('latest', function($latest) use ($products) {
+                $products->latest();
+            });
+
+            $request->whenHas('price', function($price) use ($products) {
+                $products->orderBy('unit_price', $price);
+            });
+            
+            
+            $products = $products->paginate(1)->withQueryString();
+
+            return view('catalog-detail', [
+                'catalog' => $sluggable,
+                'products' => $products,
+            ]);
         }
         
     }

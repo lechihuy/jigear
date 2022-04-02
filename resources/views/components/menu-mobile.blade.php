@@ -1,3 +1,7 @@
+@props([
+    'topLevelCatalogs'
+])
+
 <div class="bg-zinc-900 w-full h-full fixed lg:hidden left-0 top-10" x-cloak x-show="open" 
     x-transition:enter="transition ease-out duration-500"
     x-transition:enter-start="-translate-x-full"
@@ -12,36 +16,11 @@
     <x-container>
         <div class="text-slate-50 text-sm font-thin after:px-4" >
             <ul class="divide-y divide-zinc-700">
-                <li class="py-3">
-                    <a href="">Store</a>
-                </li>
-                <li class="py-3">
-                    <a href="">Mac</a>
-                </li>
-                <li class="py-3"> 
-                    <a href="">iPad</a>
-                </li>
-                <li class="py-3">
-                    <a href="">iPhone</a>
-                </li>
-                <li class="py-3">
-                    <a href="">Watch</a>
-                </li>
-                <li class="py-3">
-                    <a href="">AirPods</a>
-                </li>
-                <li class="py-3">
-                    <a href="">TV & Home</a>
-                </li>
-                <li class="py-3">
-                    <a href="">Only on Apple</a>
-                </li>
-                <li class="py-3">
-                    <a href="">Accessories</a>
-                </li>
-                <li class="py-3">
-                    <a href="">Support</a>
-                </li>
+                @foreach ($topLevelCatalogs as $catalog)
+                    <li class="py-3">
+                        <a href="{{ route('detail', $catalog->slug->slug) }}">{{ $catalog->title }}</a>
+                    </li>
+                @endforeach
             </ul>
         </div>
     </x-container>

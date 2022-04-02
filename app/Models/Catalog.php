@@ -43,6 +43,11 @@ class Catalog extends Model
         return $this->hasMany(static::class, 'parent_id');
     }
 
+    public function descendant()
+    {
+        return $this->children()->with('descendant');
+    }
+
     /**
      * Get the products that belongs to this catalog.
      */
@@ -54,7 +59,7 @@ class Catalog extends Model
     public function allProducts()
     {
         return Product::published()->whereHas('catalog', function ($query) {
-            $query->where('parent_id', $this->id)->orWhere('id', $this->id);
+            $query->whereIn('id', collect($this->getAllCatalogChain())->pluck('id')->all());
         });
     }
 
@@ -71,5 +76,16 @@ class Catalog extends Model
         } while ($parent);
 
         return $parent;
+    }
+
+    public function getAllCatalogChain()
+    {
+        $catalogs = [$this];
+
+        foreach ($this->children as $child) {
+            $catalogs = array_merge($catalogs, $child->getAllCatalogChain());
+        }
+        
+        return $catalogs;
     }
 }
