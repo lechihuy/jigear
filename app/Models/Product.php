@@ -61,7 +61,7 @@ class Product extends Model
     protected function unitPriceText(): Attribute
     {
         return new Attribute(
-            get: fn ($value, $attributes) => option('currency') . $attributes['unit_price']
+            get: fn ($value, $attributes) => option('currency') . number_format($attributes['unit_price'])
         );
     }
 }
