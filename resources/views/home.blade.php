@@ -54,9 +54,8 @@
             </div>
         </x-container>
         <x-slider class="gap-4 py-4">
-            @for($i = 0; $i < 8; $i++) 
-                <x-slider.item class="w-72">
-                    <div class="px-6 py-6 bg-white shadow-lg rounded-2xl">
+                <x-slider.item class="w-72 h-64">
+                    <div class="px-6 py-6 bg-white shadow-lg rounded-2xl h-full">
                         <span class="text-5xl material-icons text-sky-600">
                             local_mall
                         </span>
@@ -65,7 +64,56 @@
                         </p>
                     </div>
                 </x-slider.item>
-            @endfor
+                <x-slider.item class="w-72 h-64">
+                    <div class="px-6 py-6 bg-white shadow-lg rounded-2xl h-full">
+                        <span class="material-icons-outlined text-5xl text-rose-600">
+                            inventory_2
+                        </span>
+                        <p class="pt-6 text-xl font-medium whitespace-normal">
+                            Choose fast, free delivery or <span class="font-semibold text-rose-600">two-hour courier delivery.</span>
+                        </p>
+                    </div>
+                </x-slider.item>
+                <x-slider.item class="w-72 h-64">
+                    <div class="px-6 py-6 bg-white shadow-lg rounded-2xl h-full">
+                        <span class="material-icons-outlined text-5xl text-amber-500">
+                            insert_emoticon
+                        </span>
+                        <p class="pt-6 text-xl font-medium whitespace-normal">
+                            Make them yours.  <span class="font-semibold text-amber-500">Engrave a mix of emoji, names, and numbers for free.</span>
+                        </p>
+                    </div>
+                </x-slider.item>
+                <x-slider.item class="w-72 h-64">
+                    <div class="px-6 py-6 bg-white shadow-lg rounded-2xl h-full">
+                        <span class="material-icons-outlined text-5xl text-purple-600">
+                            phonelink
+                        </span>
+                        <p class="pt-6 text-xl font-medium whitespace-normal">
+                            <span class="font-semibold text-purple-600">Trade in your current device.</span> Get credit toward a new one.
+                        </p>
+                    </div>
+                </x-slider.item>
+                <x-slider.item class="w-72 h-64">
+                    <div class="px-6 py-6 bg-white shadow-lg rounded-2xl h-full">
+                        <span class="material-icons-outlined text-5xl text-slate-500">
+                            brush
+                        </span>
+                        <p class="pt-6 text-xl font-medium whitespace-normal">
+                            <span class="font-semibold text-slate-500">Customize</span> your Mac and create your own style of Apple Watch.
+                        </p>
+                    </div>
+                </x-slider.item>
+                <x-slider.item class="w-72 h-64">
+                    <div class="px-6 py-6 bg-white shadow-lg rounded-2xl h-full">
+                        <span class="material-icons-outlined text-5xl text-green-600">
+                            credit_card
+                            </span>
+                        <p class="pt-6 text-xl font-medium whitespace-normal">
+                            Pay in full or <span class="font-semibold text-green-600">pay over time.</span>Your choice.
+                        </p>
+                    </div>
+                </x-slider.item>
         </x-slider>
     </div>
 
