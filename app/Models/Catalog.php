@@ -57,4 +57,15 @@ class Catalog extends Model
             $query->where('parent_id', $this->id)->orWhere('id', $this->id);
         });
     }
+
+    public function topLevelParent($id = null) 
+    {
+        $parent = optional(static::find($id ?? $this->parent_id))->parent;
+    
+        while ($parent) {
+            $parent = optional($parent)->parent;
+        }
+        
+        return $parent ?? $this;
+    }
 }

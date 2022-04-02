@@ -136,7 +136,6 @@ document.addEventListener('alpine:init', () => {
             this.loading = true;
             this.detail = document.getElementById('detail').value
             this.published = this.published ? 1 : 0
-            this.purchasable = this.purchasable ? 1 : 0
             const parameters = JSON.stringify(this.parameters)
             let data = new FormData()
 
