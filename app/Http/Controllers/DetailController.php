@@ -39,7 +39,7 @@ class DetailController extends Controller
             });
             
             
-            $products = $products->paginate(1)->withQueryString();
+            $products = $products->paginate(15)->withQueryString();
 
             return view('catalog-detail', [
                 'catalog' => $sluggable,
