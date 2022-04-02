@@ -73,7 +73,7 @@
                 <div class="grow border-l border-solid border-zinc-300 grid md:grid-cols-3 grid-cols-1 sm:grid-cols-2">
                     @foreach ($products as $product)
                         <a href="{{ route('detail', $product->slug->slug) }}" class="flex flex-col items-center gap-4 py-8 text-lg text-zinc-700 border-r border-b border-solid border-zinc-300">
-                            <div class="flex items-center h-60">
+                            <div class="flex items-center h-60 p-5">
                                 <img src="{{ optional($product->thumbnail)->url }}" class="inline-block mx-auto max-h-full">
                             </div>
                             <p>{{  $product->title }}</p>
