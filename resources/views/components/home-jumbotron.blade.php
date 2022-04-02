@@ -1,7 +1,10 @@
 <div class="bg-gray-100 h-96">
     <x-container>
         <div class="w-3/5 py-24">
-            <p class="text-3xl font-medium text-zinc-900 lg:text-4xl">Store. The best way to buy the products you love
+            <p class="text-3xl font-medium text-zinc-900 lg:text-4xl">
+                <span class="font-logo">Jigear</span> - 
+                <span class="text-zinc-500">The best way to buy the products you love.</span>
+            </p>
         </div>
     </x-container>
 

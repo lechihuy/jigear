@@ -48,17 +48,17 @@
             <div class="flex items-center gap-4 text-white lg:gap-6">
                 <span class="text-sm icon-magnifier"></span>
                 <div class="relative">
-                    <span class="text-sm icon-bag cursor-pointer select-none" @click="toggleBag">
+                    <span class="text-sm cursor-pointer select-none icon-bag" @click="toggleBag">
                     </span>
-                    <ul class="absolute bg-white top-10 rounded-lg border border-zinc-300 w-64 -right-3 lg:w-64" x-show="openBag">
-                        <li class="py-10 w-full text-center text-zinc-500 font-medium">Your Bag is empty</li>
-                        <li class="text-sky-600 flex items-center gap-2 pr-52 py-4 border-t border-zinc-200 mx-4">
-                            <span class="material-icons-outlined text-xl">
+                    <ul class="absolute w-64 bg-white border rounded-lg top-10 border-zinc-300 -right-3 lg:w-64" x-cloak x-show="openBag">
+                        <li class="w-full py-10 font-medium text-center text-zinc-500">Your Bag is empty</li>
+                        <li class="flex items-center gap-2 py-4 mx-4 border-t text-sky-600 pr-52 border-zinc-200">
+                            <span class="text-xl material-icons-outlined">
                                 shopping_bag
                             </span>
                             <a href="">Login</a>
                         </li>
-                        <li class="text-sky-600 mx-4 pr-52 py-4 flex items-center gap-2 border-t border-zinc-200">
+                        <li class="flex items-center gap-2 py-4 mx-4 border-t text-sky-600 pr-52 border-zinc-200">
                             <span class="material-icons-outlined">
                                 inventory
                             </span>

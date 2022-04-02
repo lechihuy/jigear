@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Product;
 use App\Models\Traits\Imaggable;
 use App\Models\Traits\Sluggable;
 use App\Models\Traits\Publishable;
@@ -32,5 +33,13 @@ class Catalog extends Model
     public function parent()
     {
         return $this->belongsTo(static::class);
+    }
+
+    /**
+     * Get the products that belongs to this catalog.
+     */
+    public function products()
+    {
+        return $this->hasMany(Product::class);
     }
 }

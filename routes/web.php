@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\OrderController;
@@ -21,9 +22,7 @@ use App\Http\Controllers\Admin\ProductParameterSetController;
 |--------------------------------------------------------------------------
 |
 */
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/', HomeController::class);
 
 Route::get('/product-detail', function () {
     return view('product-detail');
