@@ -1062,6 +1062,10 @@ img {
   margin-top: 0.25rem;
 }
 
+.mt-14{
+  margin-top: 3.5rem;
+}
+
 .block{
   display: block;
 }
@@ -1168,6 +1172,14 @@ img {
 
 .h-52{
   height: 13rem;
+}
+
+.h-60{
+  height: 15rem;
+}
+
+.h-36{
+  height: 9rem;
 }
 
 .max-h-\[calc\(100vh_-_theme\(space\.16\)\)\]{
@@ -1784,6 +1796,11 @@ img {
   background-color: rgb(224 242 254 / var(--tw-bg-opacity));
 }
 
+.bg-red-500{
+  --tw-bg-opacity: 1;
+  background-color: rgb(239 68 68 / var(--tw-bg-opacity));
+}
+
 .object-contain{
   -o-object-fit: contain;
      object-fit: contain;
@@ -1820,6 +1837,10 @@ img {
 
 .p-1{
   padding: 0.25rem;
+}
+
+.p-6{
+  padding: 1.5rem;
 }
 
 .py-8{
