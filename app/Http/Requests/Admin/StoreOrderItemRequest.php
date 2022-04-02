@@ -27,7 +27,7 @@ class StoreOrderItemRequest extends FormRequest
     {
         return [
             'product_id' => ['required', Rule::exists('products', 'id')->where(function ($query) {
-                return $query->where('purchasable', 1)->where('stock' , '>', 0);
+                return $query->where('stock' , '>', 0);
             })],
             'qty' => ['required', 'integer', 'min:1', 'max:' . optional(Product::find($this->product_id))->stock],
         ];

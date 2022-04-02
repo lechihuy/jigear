@@ -67,7 +67,6 @@ class Product extends Model
 
     public function relatedProducts()
     {
-        return $this->where('catalog_id', $this->catalog_id)
-            ->where('id', '!=', $this->id)->published()->inRandomOrder();
+        return $this->catalog->topLevelParent()->allProducts()->where('id', '!=', $this->id)->inRandomOrder();
     }
 }
