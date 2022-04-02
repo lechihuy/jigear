@@ -11,7 +11,7 @@
     @if ($catalog->children->count())
         <div class="border-b border-solid border-zinc-300 py-3">
             <x-container>
-                <div class="flex items-center gap-6 overflow-auto flex-nowrap whitespace-nowrap">
+                <div class="flex items-center gap-8 overflow-auto flex-nowrap whitespace-nowrap">
                     @foreach ($catalog->children as $child)
                         <a href="{{ route('detail', $child->slug->slug) }}" class="flex justify-center flex-col">
                             <img src="{{ optional($child->thumbnail)->url }}" class="flex-none mx-auto h-10">
