@@ -58,14 +58,18 @@ class Catalog extends Model
         });
     }
 
-    public function topLevelParent($id = null) 
+    public function topLevelParent() 
     {
-        $parent = optional(static::find($id ?? $this->parent_id))->parent;
-    
-        while ($parent) {
-            $parent = optional($parent)->parent;
-        }
-        
-        return $parent ?? $this;
+        $parent = optional(static::find($this->id))->parent;
+
+        do {
+            if ($newParent = optional($parent)->parent) {
+                $parent = $newParent;
+            } else {
+                break;
+            }
+        } while ($parent);
+
+        return $parent;
     }
 }

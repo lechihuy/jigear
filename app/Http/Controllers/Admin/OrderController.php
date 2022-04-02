@@ -42,7 +42,12 @@ class OrderController extends Controller
 
         // Filter
         $request->whenHas('q', function ($q) use ($orders) {
-            $orders->where('code', 'like', "%$q%");
+            $orders->where('code', 'like', "%$q%")
+                ->orWhere('first_name', 'like', "%$q%")
+                ->orWhere('last_name', 'like', "%$q%")
+                ->orWhere('phone_number', 'like', "%$q%")
+                ->orWhereFullText('address', $q)
+                ->orWhere('address', 'like', "%$q%");
         });
 
         $request->whenHas('status', function($status) use ($orders) {
