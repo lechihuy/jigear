@@ -16,9 +16,9 @@ $topLevelCatalogs = Catalog::published()->whereNull('parent_id')->get();
                     close
                 </span>
             </div>
-            <div>
+            <a href="{{ route('home') }}">
                 <img class="object-cover w-12 h-12" src="{{ asset('images/jigear-logo.png') }}" alt="">
-            </div>
+            </a>
             <ul class="items-center justify-between hidden gap-8 text-xs font-thin lg:flex align-center text-slate-50">
                 @foreach ($topLevelCatalogs as $catalog)
                 <li>

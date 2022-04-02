@@ -40,7 +40,7 @@
             <div class="grid grid-cols-2 gap-4 lg:grid-cols-3">
                 @foreach ($latestProducts as $product)
                     <div class="flex flex-col gap-4 p-5 bg-white shadow-lg rounded-2xl">
-                        <p class="text-2xl font-normal">{{ $product->title }}</p>
+                        <p class="text-xl font-normal">{{ $product->title }}</p>
                         <img src="{{ optional($product->thumbnail)->url }}">
                         <div class="flex items-center mt-auto">
                             <p class="font-light text-slate-500">{{ $product->unitPriceText }}</p>

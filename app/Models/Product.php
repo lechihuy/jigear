@@ -64,4 +64,10 @@ class Product extends Model
             get: fn ($value, $attributes) => option('currency') . number_format($attributes['unit_price'])
         );
     }
+
+    public function relatedProducts()
+    {
+        return $this->where('catalog_id', $this->catalog_id)
+            ->where('id', '!=', $this->id)->published()->inRandomOrder();
+    }
 }
