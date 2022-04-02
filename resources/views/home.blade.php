@@ -131,16 +131,16 @@
             <x-slider class="gap-4 py-4">
                 @foreach ($catalog->allProducts()->get() as $product)
                     <x-slider.item>
-                        <div class="flex flex-col h-full px-6 py-6 bg-white shadow-lg w-72 rounded-2xl">
-                            <a href="{{ route('detail', $product->slug->slug) }}" class="flex items-center h-48">
-                                <img src="{{ optional($product->thumbnail)->url }}" class="inline-block mx-auto mt-10">
+                        <div class="flex flex-col h-full p-6 bg-white shadow-lg w-72 rounded-2xl">
+                            <a href="{{ route('detail', $product->slug->slug) }}" class="flex items-center h-60 bg-red-500">
+                                <img src="{{ optional($product->thumbnail)->url }}" class="inline-block mx-auto">
                             </a>
-                            <div class="pt-14 h-48 mt-auto">
+                            <div class="pt-6 h-36 mt-auto flex flex-col">
                                 <a href="{{ route('detail', $product->catalog->slug->slug) }}" class="text-sm font-medium text-orange-500 inline-block">
                                     {{ $product->catalog->title }}
                                 </a>
                                 <a href="{{ route('detail', $product->slug->slug) }}" class="font-medium block whitespace-normal">{{ $product->title }}</a>
-                                <p class="text-zinc-700 pt-14">{{ $product->unitPriceText }}</p>
+                                <p class="text-zinc-700 mt-auto">{{ $product->unitPriceText }}</p>
                             </div>
                         </div>
                     </x-slider.item>
