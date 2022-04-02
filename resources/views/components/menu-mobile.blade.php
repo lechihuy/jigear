@@ -11,7 +11,7 @@
     x-transition:leave-end="-translate-x-full"
 > 
     <div class="px-3 py-3 border-b border-zinc-700">
-        <input type="text" placeholder="Search..." class="w-full py-2 border-b-2 rounded-md bg-zinc-800 border-transparent focus:border-transparent focus:ring-0">
+        <input type="text" name="q" placeholder="Search..." value="{{ request()->query('q') }}" class="w-full py-2 border-b-2 rounded-md bg-zinc-800 text-white border-transparent focus:border-transparent focus:ring-0">
     </div>
     <x-container>
         <div class="text-slate-50 text-sm font-thin after:px-4" >

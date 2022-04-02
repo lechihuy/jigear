@@ -29,7 +29,9 @@ $topLevelCatalogs = Catalog::published()->whereNull('parent_id')->get();
             <div class="flex items-center gap-4 text-white lg:gap-6">
                 <div class="relative">
                     <span class="text-sm icon-magnifier cursor-pointer select-none hidden lg:block" @click.self="toggleSearch"></span>
-                    <input type="text" class="text-black px-4 py-2 rounded-md absolute -right-3 top-9" placeholder="Search..." x-show="openSearch">
+                    <form action="{{ route('search') }}" method="GET">
+                        <input type="text" name="q" class="text-black px-4 py-2 rounded-md absolute -right-3 top-9 shadow-lg border-gray-300" placeholder="Search..." x-show="openSearch" value="{{ request()->query('q') }}">
+                    </form>
                 </div>
                 <div class="relative">
                     <span class="text-sm cursor-pointer select-none icon-bag" @click="toggleBag">
