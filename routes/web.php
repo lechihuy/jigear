@@ -55,6 +55,10 @@ Route::get('/address', function () {
     return view('address-user');
 });
 
+Route::get('/order-detail', function () {
+    return view('order-detail');
+});
+
 Route::get('/new-address', function() {
     return view('new-address-user');
 });
