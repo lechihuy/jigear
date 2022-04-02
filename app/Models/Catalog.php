@@ -36,10 +36,25 @@ class Catalog extends Model
     }
 
     /**
+     * Get the catalog that owns to this catalog.
+     */
+    public function children()
+    {
+        return $this->hasMany(static::class, 'parent_id');
+    }
+
+    /**
      * Get the products that belongs to this catalog.
      */
     public function products()
     {
         return $this->hasMany(Product::class);
+    }
+
+    public function allProducts()
+    {
+        return Product::whereHas('catalog', function ($query) {
+            $query->where('parent_id', $this->id)->orWhere('id', $this->id);
+        });
     }
 }

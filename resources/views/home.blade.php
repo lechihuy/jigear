@@ -77,7 +77,7 @@
             </div>
             </x-container>
             <x-slider class="gap-6 py-4">
-                @foreach ($catalog->products as $product)
+                @foreach ($catalog->allProducts()->get() as $product)
                     <x-slider.item class="h-full">
                         <div class="flex flex-col h-full px-6 py-6 bg-white shadow-lg w-72 rounded-2xl">
                             <img src="{{ optional($product->thumbnail)->url }}" alt="" class="inline-block mx-auto mt-10">
