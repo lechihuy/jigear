@@ -8,6 +8,7 @@ use App\Models\Traits\Imaggable;
 use App\Models\Traits\Sluggable;
 use App\Models\Traits\Publishable;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Product extends Model
@@ -55,5 +56,12 @@ class Product extends Model
     public function scopeInStock($query)
     {
         return $query->where('stock', '>', 0);
+    }
+
+    protected function unitPriceText(): Attribute
+    {
+        return new Attribute(
+            get: fn ($value, $attributes) => option('currency') . $attributes['unit_price']
+        );
     }
 }

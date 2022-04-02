@@ -1054,12 +1054,24 @@ img {
   margin-top: 0.25rem;
 }
 
+.mt-28{
+  margin-top: 7rem;
+}
+
+.mt-10{
+  margin-top: 2.5rem;
+}
+
 .block{
   display: block;
 }
 
 .inline-block{
   display: inline-block;
+}
+
+.inline{
+  display: inline;
 }
 
 .flex{
@@ -2568,6 +2580,10 @@ img {
     display: inline-block;
   }
 
+  .md\:w-3\/5{
+    width: 60%;
+  }
+
   .md\:grid-cols-3{
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
@@ -2646,6 +2662,10 @@ img {
 
   .lg\:w-80{
     width: 20rem;
+  }
+
+  .lg\:w-3\/5{
+    width: 60%;
   }
 
   .lg\:scale-90{
