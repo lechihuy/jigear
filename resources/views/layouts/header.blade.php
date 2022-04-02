@@ -17,7 +17,7 @@ $topLevelCatalogs = Catalog::published()->whereNull('parent_id')->get();
                 </span>
             </div>
             <div>
-                <img class="object-cover w-12 h-12" src="{{ asset('images/logo.png') }}" alt="">
+                <img class="object-cover w-12 h-12" src="{{ asset('images/jigear-logo.png') }}" alt="">
             </div>
             <ul class="items-center justify-between hidden gap-8 text-xs font-thin lg:flex align-center text-slate-50">
                 @foreach ($topLevelCatalogs as $catalog)

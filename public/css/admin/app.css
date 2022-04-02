@@ -1198,6 +1198,14 @@ img {
   height: 5rem;
 }
 
+.h-60{
+  height: 15rem;
+}
+
+.h-36{
+  height: 9rem;
+}
+
 .max-h-\[calc\(100vh_-_theme\(space\.16\)\)\]{
   max-height: calc(100vh - 4rem);
 }
@@ -1864,6 +1872,10 @@ img {
 
 .p-2{
   padding: 0.5rem;
+}
+
+.p-6{
+  padding: 1.5rem;
 }
 
 .py-4{
