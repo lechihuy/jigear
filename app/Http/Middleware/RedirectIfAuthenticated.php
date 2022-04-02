@@ -19,7 +19,7 @@ class RedirectIfAuthenticated
      */
     public function handle(Request $request, Closure $next, $role = 'customer')
     {
-        if (Auth::check() && Auth::user()->role === $role) {
+        if (Auth::check() && Auth::user()->role == $role) {
             $redirectRoute = match ($role) {
                 'admin' => 'admin.dashboard',
                 'customer' => 'home'

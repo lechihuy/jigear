@@ -38,18 +38,37 @@ $topLevelCatalogs = Catalog::published()->whereNull('parent_id')->get();
                     </span>
                     <ul class="absolute w-64 bg-white border rounded-lg top-10 border-zinc-300 -right-3 lg:w-64" x-cloak x-show="openBag">
                         <li class="w-full py-10 font-medium text-center text-zinc-500">Your Bag is empty</li>
-                        <li class="flex items-center gap-2 py-4 mx-4 border-t text-sky-600 pr-52 border-zinc-200">
-                            <span class="text-xl material-icons-outlined">
-                                shopping_bag
-                            </span>
-                            <a href="">Login</a>
-                        </li>
-                        <li class="flex items-center gap-2 py-4 mx-4 border-t text-sky-600 pr-52 border-zinc-200">
-                            <span class="material-icons-outlined">
-                                inventory
-                            </span>
-                            <a href="">Register</a>
-                        </li>
+
+                        @guest
+                            <li class="flex items-center gap-2 py-4 mx-4 border-t text-sky-600 pr-52 border-zinc-200">
+                                <span class="text-xl material-icons-outlined">
+                                    shopping_bag
+                                </span>
+                                <a href="{{ route('auth.login') }}">Login</a>
+                            </li>
+                            <li class="flex items-center gap-2 py-4 mx-4 border-t text-sky-600 pr-52 border-zinc-200">
+                                <span class="material-icons-outlined">
+                                    inventory
+                                </span>
+                                <a href="">Register</a>
+                            </li>
+                        @else
+                            <li class="flex items-center gap-2 py-4 mx-4 border-t text-sky-600 pr-52 border-zinc-200">
+                                <span class="material-icons-outlined">
+                                    account_circle
+                                </span>
+                                <a href="">Profile</a>
+                            </li>
+                            <li class="flex items-center gap-2 py-4 mx-4 border-t text-sky-600 pr-52 border-zinc-200">
+                                <span class="material-icons-outlined">
+                                    logout
+                                </span>
+                                <form action="{{ route('auth.logout') }}" method="POST">
+                                    @csrf
+                                    <button type="submit">Logout</button>
+                                </form>
+                            </li>
+                        @endguest
                     </ul>
                 </div>
             </div>

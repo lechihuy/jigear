@@ -1,5 +1,6 @@
 <div 
     class="fixed z-30 flex items-center max-w-sm gap-3 p-4 ml-3 text-sm rounded-lg shadow-lg top-3 right-3" 
+    x-cloak
     x-data="$store.toast" 
     x-show="shown"
     :class="getThemeClass()"

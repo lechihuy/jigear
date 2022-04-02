@@ -7,17 +7,36 @@
     <title>@yield('title')</title>
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
     <link rel="icon" href="{{ asset('images/jigear-logo.png') }}" type="image/x-icon" />
-    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
-</head>
-<body>
-    @include('layouts.header')
-    <div class="pt-10">
-        @yield('content')
-    </div>
-    @include('layouts.footer')
+
+    @routes
 
     <script src="https://code.jquery.com/jquery.min.js"></script>
     <script src="{{ mix('js/app.js') }}"></script>
+</head>
+<body>
+    @include('layouts.header')
+
+    <div class="pt-10">
+        @yield('content')
+    </div>
+
+    @include('layouts.footer')
+
+    <x-toast />
+
+    <x-confirm-modal />
+
+    @stack('scripts')
+
+    @if (Session::has('toast'))
+        @php $toast = Session::get('toast') @endphp
+        <script>
+            document.addEventListener('alpine:init', () => {
+                Alpine.store('toast').show('{{ $toast["type"] }}', '{{ $toast["message"] }}')
+            })
+        </script>
+    @endif
+
     <script>Alpine.start();</script>
 </body>
 </html>

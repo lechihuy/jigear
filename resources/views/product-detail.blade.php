@@ -46,8 +46,7 @@
                     @foreach ($product->previews as $preview)
                         <img src="{{ $preview->url }}" class="h-full object-contain cursor-pointer shadow-lg border border-gray-300" @click="shown = true; url = '{{ $preview->url }}'">
                     @endforeach
-                    <div class="fixed w-full h-full z-10 top-0 left-0 p-20 flex items-center"
-                        :class="shown ? 'bg-black/80' : 'bg-black/0'"
+                    <div class="fixed w-full h-full z-10 top-0 left-0 p-20 flex items-center bg-black/80"
                         @click.self="shown = false" 
                         x-cloak 
                         x-show="shown"

@@ -13,7 +13,7 @@ use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\OrderItemController;
 use App\Http\Controllers\Admin\PromotionController;
-use App\Http\Controllers\Admin\Auth\LoginController;
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Admin\DeliveryAddressController;
 use App\Http\Controllers\Admin\ProductParameterController;
 use App\Http\Controllers\Admin\ProductParameterSetController;
@@ -67,8 +67,11 @@ Route::get('/order-detail', function () {
 Route::get('/new-address', function() {
     return view('new-address-user');
 });
-Route::get('/login', function() {
-    return view('auth.login');
+
+Route::name('auth.')->group(function() {
+    Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
+    Route::post('/login', [LoginController::class, 'store'])->name('login.store');
+    Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 });
 
 Route::get('/register', function() {

@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Auth;
+namespace App\Http\Controllers\Auth;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\LoginRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Requests\Admin\LoginRequest;
 
 class LoginController extends Controller
-{   
+{
     /**
      * Create a new controller instance.
      * 
@@ -16,23 +16,18 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest:admin')->except('logout');
+        $this->middleware('guest')->except('logout');
     }
 
-    /**
-     * Show the login form.
-     * 
-     * @return \Illuminate\View\View
-     */
     public function showLoginForm()
     {
-        return view('admin.auth.login');
+        return view('auth.login');
     }
 
     /**
      * Handle to attempt login.
      * 
-     * @param \App\Http\Requests\LoginRequest  $request
+     * @param \App\Http\Requests\Admin\LoginRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function store(LoginRequest $request)
@@ -55,7 +50,7 @@ class LoginController extends Controller
     protected function credentials(Request $request)
     {
         $credentials = $request->only('email', 'password');
-        $credentials['role'] = 'admin';
+        $credentials['role'] = 'customer';
 
         return $credentials;
     }
@@ -74,6 +69,6 @@ class LoginController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect()->route('admin.auth.login');
+        return redirect()->route('auth.login');
     }
 }
