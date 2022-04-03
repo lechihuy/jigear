@@ -5,6 +5,8 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\DetailController;
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Admin\BrandController;
@@ -32,40 +34,27 @@ Route::get('/', HomeController::class)->name('home');
 
 Route::get('/search', SearchController::class)->name('search');
 
-Route::get('/product-detail', function () {
-    return view('product-detail');
-});
+Route::get('/checkout', [CheckoutController::class, 'showCheckoutForm'])->name('checkout');
+Route::post('/checkout', [CheckoutController::class, 'store'])->name('checkout.store');
 
-Route::get('/checkout', function () {
-    return view('checkout');
-});
 
-Route::get('/category', function () {
-    return view('category');
-});
+Route::prefix('profile')->name('profile.')->controller(ProfileController::class)->group(function() {
+    Route::get('/', 'index')->name('index');
+    Route::post('/', 'store')->name('store');
 
-Route::get('/profile', function () {
-    return view('profile-user');
-});
+    Route::get('/change-password', 'showChangePasswordForm')->name('change-password');
+    Route::post('/change-password', 'changePassword')->name('change-password.store');
 
-Route::get('/change-password', function () {
-    return view('change-password-user');
-});
+    Route::get('/delivery-addresses', 'showDeliveryAddresses')->name('delivery-addresses.index');
+    Route::get('/delivery-addresses/create', 'createDeliveryAddress')->name('delivery-addresses.create');
+    Route::post('/delivery-addresses', 'storeDeliveryAddress')->name('delivery-addresses.store');
+    Route::get('/delivery-addresses/{id}', 'editDeliveryAddress')->name('delivery-addresses.edit');
+    Route::put('/delivery-addresses/{id}', 'updateDeliveryAddress')->name('delivery-addresses.update');
+    Route::delete('/delivery-addresses/{id}', 'deleteDeliveryAddress')->name('delivery-addresses.destroy');
 
-Route::get('/address', function () {
-    return view('address-user');
-});
-
-Route::get('/order', function () {
-    return view('order');
-});
-
-Route::get('/order-detail', function () {
-    return view('order-detail');
-});
-
-Route::get('/new-address', function() {
-    return view('new-address-user');
+    Route::get('/orders', 'showOrders')->name('orders.index');
+    Route::get('/orders/{id}', 'showOrderDetail')->name('orders.show');
+    Route::post('/orders/cancel/{id}', 'cancelOrder')->name('orders.cancel');
 });
 
 Route::name('auth.')->group(function() {
@@ -76,7 +65,6 @@ Route::name('auth.')->group(function() {
     Route::get('/register', [RegisterController::class, 'showRegisterForm'])->name('register');
     Route::post('/register', [RegisterController::class, 'store'])->name('register.store');
 });
-
 
 Route::get('/forgot-password', [ForgotPasswordController::class, 'showForgotPasswordForm'])
     ->name('password.request');

@@ -22,7 +22,6 @@ class CreateProductsTable extends Migration
             $table->unsignedBigInteger('unit_price')->default(0)->index();
             $table->unsignedBigInteger('stock')->default(0)->index();
             $table->unsignedBigInteger('catalog_id')->nullable();
-            $table->unsignedBigInteger('brand_id')->nullable();
             $table->boolean('published')->default(false)->index();
             $table->json('parameters')->nullable();
             $table->timestamps();

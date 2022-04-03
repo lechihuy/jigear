@@ -32,3 +32,10 @@ if (! function_exists('cart')) {
         return json_decode(request()->cookie('cart') ?? '[]', true);
     }
 }
+
+
+if (! function_exists('auth_customer')) {
+    function auth_customer() {
+        return optional(auth()->user())->isAdmin ? null : auth()->user();
+    }
+}

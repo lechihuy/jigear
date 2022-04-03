@@ -45,7 +45,7 @@ $topLevelCatalogs = Catalog::published()->whereNull('parent_id')->get();
                         @else
                             <li class="w-full py-10 text-center text-zinc-500">Your Bag is empty.</li>
                         @endif
-                        @if (!auth()->check() || auth()->user()->isAdmin)
+                        @if (!auth_customer())
                             <li class="flex items-center gap-2 py-4 mx-4 border-t text-sky-600 pr-52 border-zinc-200">
                                 <span class="text-xl material-icons-outlined">
                                     shopping_bag
@@ -63,7 +63,7 @@ $topLevelCatalogs = Catalog::published()->whereNull('parent_id')->get();
                                 <span class="material-icons-outlined">
                                     account_circle
                                 </span>
-                                <a href="">Profile</a>
+                                <a href="{{ route('profile.index') }}">Profile</a>
                             </li>
                             <li class="flex items-center gap-2 py-4 mx-4 border-t text-sky-600 pr-52 border-zinc-200">
                                 <span class="material-icons-outlined">

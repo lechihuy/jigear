@@ -20,7 +20,7 @@
                     }" x-show="qty > 0">
                         <div class="flex gap-4 grow">
                             <a href="{{ route('detail', $product->slug->slug) }}">
-                                <img src="{{ optional($product->thumbnail)->url }}" class="w-28 h-28">
+                                <img src="{{ optional($product->thumbnail)->url }}" class="h-28">
                             </a>
                             <a href="{{ route('detail', $product->slug->slug) }}">{{ $product->title }}</a>
                         </div>
@@ -58,18 +58,18 @@
                         <p>Total</p>
                         <p class="text-lg font-medium" x-text="total"></p>
                     </div>
-                    <button
-                        type="submit"
-                        class="w-full text-center py-3 rounded bg-blue-500 text-white mt-4"
+                    <a
+                        href="{{ route('checkout') }}"
+                        class="w-full text-center py-3 rounded bg-blue-500 text-white mt-4 inline-block"
                         >Check out
-                    </button>
+                    </a>
                 </div>
             </div>
         </div>
 
         <div x-cloak x-show="isEmpty" class="flex justify-center py-24">
             <div class="w-96 max-w-full text-center">
-                <img src="{{ asset('images/empty-bag.webp') }}" alt="">
+                <img src="{{ asset('images/empty-bag.webp') }}">
                 <p>Empty bag</p>
             </div>
         </div>
