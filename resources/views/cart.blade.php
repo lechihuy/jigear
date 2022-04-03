@@ -24,7 +24,7 @@
                             </a>
                             <a href="{{ route('detail', $product->slug->slug) }}">{{ $product->title }}</a>
                         </div>
-                        <div class="flex gap-10 grow">
+                        <div class="flex gap-10 grow ml-auto">
                             <div class="flex gap-4">
                                 <span class="material-icons-outlined cursor-pointer" @click.debounce="updateQuantity({{ $product->id }}, 'minus'); qty--">
                                     remove
