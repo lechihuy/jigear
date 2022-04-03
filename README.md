@@ -47,3 +47,5 @@ Tài khoản user:
 Tài khoản admin:
 - Email: huy@jigear.xyz
 - Password: password
+
+Demo: https://jigear.xyz
