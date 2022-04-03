@@ -39,4 +39,9 @@ class ForgotPasswordController extends Controller
                         'message' => __($status),
                     ], 422);
     }
+
+    public function showResetPasswordForm()
+    {
+        
+    }
 }

@@ -34,7 +34,7 @@ document.addEventListener('alpine:init', () => {
         email: this.email,
       }).then(res => {
         Alpine.store('toast').show('success', err.response.data.message)
-    }).catch(err => {
+      }).catch(err => {
         Alpine.store('toast').show('danger', err.response.data.message)
       }).finally(() => {
         this.loading = false;

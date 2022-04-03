@@ -75,7 +75,7 @@ class Catalog extends Model
             }
         } while ($parent);
 
-        return $parent;
+        return $parent ?? $this;
     }
 
     public function getAllCatalogChain()
