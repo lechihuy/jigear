@@ -18,7 +18,7 @@ npm install
 npm run dev
 ```
 
-- Vào phpMyadmin hoặc dùng lệnh MySQL để tạo database `jigear` với character set `utf8mb4` và collate là `utf8mb4_unicode_ci`.  
+- Vào phpMyadmin hoặc dùng lệnh MySQL để tạo database `jigear` với character set `utf8mb4` và collate là `utf8mb4_unicode_ci`. Sau đó import file jigear.sql từ source code vào database vừa tạo
 
 - Mặc định  file `.env` cấu hình database như bên dưới, nếu có thay đổi gì thì có thể mở file này để chỉnh sửa
 ```
