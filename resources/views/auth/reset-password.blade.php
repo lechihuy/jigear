@@ -38,13 +38,13 @@ document.addEventListener('alpine:init', () => {
     submit() {
       this.loading = true;
 
-      axios.post(route('auth.password.update'), {
+      axios.post(route('password.update'), {
         token: this.token,
         email: this.email,
         password: this.password,
         password_confirmation: this.password_confirmation,
       }).then(res => {
-        Alpine.store('toast').show('success', err.response.data.message)
+        window.location.href = route('auth.login')
     }).catch(err => {
         Alpine.store('toast').show('danger', err.response.data.message)
       }).finally(() => {

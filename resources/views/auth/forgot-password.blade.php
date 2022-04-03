@@ -33,6 +33,7 @@ document.addEventListener('alpine:init', () => {
       axios.post(route('password.email'), {
         email: this.email,
       }).then(res => {
+        alert(1)
         Alpine.store('toast').show('success', err.response.data.message)
       }).catch(err => {
         Alpine.store('toast').show('danger', err.response.data.message)
