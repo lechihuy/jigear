@@ -15,6 +15,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\OrderItemController;
 use App\Http\Controllers\Admin\PromotionController;
+use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Admin\DeliveryAddressController;
 use App\Http\Controllers\Admin\ProductParameterController;
 use App\Http\Controllers\Admin\ProductParameterSetController;
@@ -79,9 +80,15 @@ Route::name('auth.')->group(function() {
     Route::post('/register', [RegisterController::class, 'store'])->name('register.store');
 });
 
-Route::get('/forgot-password', function() {
-    return view('auth.forgot-password');
-});
+
+Route::get('/forgot-password', [ForgotPasswordController::class, 'showForgotPasswordForm'])
+    ->name('password.request');
+
+Route::post('/forgot-password', [ForgotPasswordController::class, 'sendResetPasswordLink'])
+    ->name('password.email');
+
+Route::get('/reset-password/{token}', [ForgotPasswordController::class, 'showResetPasswordForm'])
+    ->name('password.reset');
 
 
 /*
