@@ -14,6 +14,8 @@ cd jigear
 composer install
 cp .env.example .env
 php artisan key:generate
+npm install
+npm run dev
 ```
 
 - Vào phpMyadmin hoặc dùng lệnh MySQL để tạo database `jigear` với character set `utf8mb4` và collate là `utf8mb4_unicode_ci`.  
