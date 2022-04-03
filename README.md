@@ -33,6 +33,18 @@ DB_PASSWORD=
 php artisan storage:link
 ```
 
+Để sử dụng tính năng quên mật khẩu, cấu hình mail ở file `.env`
+```
+MAIL_MAILER=smtp
+MAIL_HOST=smtp.gmail.com
+MAIL_PORT=465
+MAIL_USERNAME=yourmail@gmail.com
+MAIL_PASSWORD=password
+MAIL_ENCRYPTION=tls
+MAIL_FROM_ADDRESS=yourmail@gmail.com
+MAIL_FROM_NAME="${APP_NAME}"
+```
+
 Cuối cùng để chạy dự án, thực thi lệnh sau
 ```
 php artisan serve
