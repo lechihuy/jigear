@@ -50,7 +50,7 @@ $topLevelCatalogs = Catalog::published()->whereNull('parent_id')->get();
                                 <span class="material-icons-outlined">
                                     inventory
                                 </span>
-                                <a href="">Register</a>
+                                <a href="{{ route('auth.register') }}">Register</a>
                             </li>
                         @else
                             <li class="flex items-center gap-2 py-4 mx-4 border-t text-sky-600 pr-52 border-zinc-200">
