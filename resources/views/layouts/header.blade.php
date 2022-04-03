@@ -37,8 +37,14 @@ $topLevelCatalogs = Catalog::published()->whereNull('parent_id')->get();
                     <span class="text-sm cursor-pointer select-none icon-bag" @click="toggleBag">
                     </span>
                     <ul class="absolute w-64 bg-white border rounded-lg top-10 border-zinc-300 -right-3 lg:w-64" x-cloak x-show="openBag">
-                        <li class="w-full py-10 font-medium text-center text-zinc-500">Your Bag is empty</li>
-
+                        @if (count(cart()))
+                            <li class="w-full py-10 text-center text-zinc-500">
+                                Your Bag has {{ collect(cart())->sum('qty') }} items.
+                                <a href="{{ route('cart.index') }}" class="text-blue-500 underline inline-block mt-2">Review your bag</a>
+                            </li>
+                        @else
+                            <li class="w-full py-10 text-center text-zinc-500">Your Bag is empty.</li>
+                        @endif
                         @if (!auth()->check() || auth()->user()->isAdmin)
                             <li class="flex items-center gap-2 py-4 mx-4 border-t text-sky-600 pr-52 border-zinc-200">
                                 <span class="text-xl material-icons-outlined">

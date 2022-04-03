@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\DetailController;
 use App\Http\Controllers\SearchController;
@@ -33,10 +34,6 @@ Route::get('/search', SearchController::class)->name('search');
 
 Route::get('/product-detail', function () {
     return view('product-detail');
-});
-
-Route::get('/cart', function () {
-    return view('cart');
 });
 
 Route::get('/checkout', function () {
@@ -93,6 +90,11 @@ Route::get('/reset-password/{token}', [ForgotPasswordController::class, 'showRes
 Route::post('/reset-password', [ForgotPasswordController::class, 'resetPassword'])
     ->name('password.update');
 
+Route::prefix('cart')->name('cart.')->controller(CartController::class)->group(function() {
+    Route::get('/', 'showCart')->name('index');
+    Route::post('add', 'add')->name('add');
+    Route::post('update-quantity', 'updateQuantity')->name('update-quantity');
+});
 
 /*
 |--------------------------------------------------------------------------

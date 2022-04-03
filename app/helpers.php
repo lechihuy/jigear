@@ -26,3 +26,9 @@ if (! function_exists('price_text')) {
         return option('currency') . number_format($price, 0);
     }
 }
+
+if (! function_exists('cart')) {
+    function cart() {
+        return json_decode(request()->cookie('cart') ?? '[]', true);
+    }
+}

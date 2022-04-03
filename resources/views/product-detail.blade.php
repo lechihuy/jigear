@@ -34,7 +34,7 @@
                     </div>
                 </div>
                 @if ($product->stock > 0)
-                <button type="submit" class="w-full text-center py-2 rounded-lg bg-blue-600 text-white my-8">
+                <button x-data="addToBag" @click="submit('{{ $product->id }}')" type="submit" class="w-full text-center py-2 rounded-lg bg-blue-600 text-white my-8">
                     Add to Bag
                 </button>
                 @endif
@@ -115,7 +115,23 @@
     </div>
 </div>
 
-
-
-
 @endsection
+
+@push('scripts')
+<script>
+document.addEventListener('alpine:init', () => {
+  Alpine.data('addToBag', () => ({
+    id: null,
+    submit(id) {
+      axios.post(route('cart.add'), {
+        id: id,
+      }).then(res => {
+        Alpine.store('toast').show('success', res.data.message)
+      }).catch(err => {
+        Alpine.store('toast').show('danger', err.response.data.message)
+      })
+    }
+  }));
+});
+</script>
+@endpush
