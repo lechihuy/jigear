@@ -18,13 +18,13 @@
                     <div class="flex gap-10 text-zinc-800" x-data="{
                         qty: {{ $item['qty'] }}
                     }" x-show="qty > 0">
-                        <div class="flex gap-4">
+                        <div class="flex gap-4 grow">
                             <a href="{{ route('detail', $product->slug->slug) }}">
                                 <img src="{{ optional($product->thumbnail)->url }}" class="w-28 h-28">
                             </a>
                             <a href="{{ route('detail', $product->slug->slug) }}">{{ $product->title }}</a>
                         </div>
-                        <div class="flex gap-10 grow ml-auto">
+                        <div class="flex gap-10 flex-none ml-auto">
                             <div class="flex gap-4">
                                 <span class="material-icons-outlined cursor-pointer" @click.debounce="updateQuantity({{ $product->id }}, 'minus'); qty--">
                                     remove
