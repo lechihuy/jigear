@@ -1,13 +1,12 @@
 # Jigear
 
-# Cài đặt
 ## Yêu cầu
 - PHP 8.0 trở lên
 - MySQL 5.7 trở lên
 - Git
 - Composer
 
-## Tiến hành
+## Tiến hành cài đặt
 - Giải nén source code, hoặc clone từ đường dẫn https://github.com/lechihuy/jigear
 - Chạy các lệnh sau tại đường dẫn lưu source code:
 ```
