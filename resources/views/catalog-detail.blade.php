@@ -76,7 +76,7 @@
                             <div class="flex items-center h-60 p-5">
                                 <img src="{{ optional($product->thumbnail)->url }}" class="inline-block mx-auto max-h-full">
                             </div>
-                            <div class="p-5">
+                            <div class="p-5 w-full">
                                 <p>{{  $product->title }}</p>
                                 <p>{{  $product->unitPriceText }}</p>
                             </div>
