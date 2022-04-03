@@ -16,7 +16,7 @@
                 <input type="checkbox" x-model="remember" class="form-checkbox w-5 h-5 rounded shadow-inner border-gray-300"> Remember login
             </label>
             <div class="w-96 mx-auto text-center my-4">
-                <a class="text-sm text-sky-600" href="#">Forgot password?</a>
+                <a class="text-sm text-sky-600" href="{{ route('password.request') }}">Forgot password?</a>
             </div>
             <button
                 type="submit"
@@ -25,7 +25,7 @@
             </button>
             <div class="border-t border-zinc-200 mb-4 mt-8"></div>
             <p class="text-sm">Don’t have account?
-                <a href="#" class="text-sm text-sky-600">Create yours now.</a>
+                <a href="{{ route('auth.register') }}" class="text-sm text-sky-600">Create yours now.</a>
             </p>
         </form>
     </x-container>

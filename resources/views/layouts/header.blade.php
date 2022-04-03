@@ -39,7 +39,7 @@ $topLevelCatalogs = Catalog::published()->whereNull('parent_id')->get();
                     <ul class="absolute w-64 bg-white border rounded-lg top-10 border-zinc-300 -right-3 lg:w-64" x-cloak x-show="openBag">
                         <li class="w-full py-10 font-medium text-center text-zinc-500">Your Bag is empty</li>
 
-                        @guest
+                        @if (!auth()->check() || auth()->user()->isAdmin)
                             <li class="flex items-center gap-2 py-4 mx-4 border-t text-sky-600 pr-52 border-zinc-200">
                                 <span class="text-xl material-icons-outlined">
                                     shopping_bag
@@ -68,7 +68,7 @@ $topLevelCatalogs = Catalog::published()->whereNull('parent_id')->get();
                                     <button type="submit">Logout</button>
                                 </form>
                             </li>
-                        @endguest
+                        @endif
                     </ul>
                 </div>
             </div>

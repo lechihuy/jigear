@@ -34,13 +34,15 @@ class ForgotPasswordController extends Controller
             $request->only('email')
         );
     
-        return $status === Password::RESET_LINK_SENT
-                    ? response()->json([
-                        'message' => __($status),
-                    ])
-                    : response()->json([
-                        'message' => __($status),
-                    ], 422);
+        if ($status === Password::RESET_LINK_SENT) {
+            $request->toast('success', __($status));
+
+            return response()->noContent();
+        }
+
+        return response()->json([
+            'message' => __($status),
+        ], 422);
     }
 
     public function showResetPasswordForm()
@@ -68,11 +70,15 @@ class ForgotPasswordController extends Controller
                 event(new PasswordReset($user));
             }
         );
-     
-        return $status === Password::PASSWORD_RESET
-                    ? $request->toast('success', __('Password reset successfully, please login again.'))
-                    : response()->json([
-                        'message' => __($status),
-                    ], 422);
+
+        if ($status === Password::PASSWORD_RESET) {
+            $request->toast('success', __('Password reset successfully, please login again.'));
+
+            return response()->noContent();
+        }
+
+        response()->json([
+            'message' => __($status),
+        ], 422);
     }
 }

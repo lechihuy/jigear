@@ -90,7 +90,7 @@ Route::post('/forgot-password', [ForgotPasswordController::class, 'sendResetPass
 Route::get('/reset-password/{token}', [ForgotPasswordController::class, 'showResetPasswordForm'])
     ->name('password.reset');
 
-Route::post('/reset-password', [ForgotPasswordController::class, 'showResetPasswordForm'])
+Route::post('/reset-password', [ForgotPasswordController::class, 'resetPassword'])
     ->name('password.update');
 
 

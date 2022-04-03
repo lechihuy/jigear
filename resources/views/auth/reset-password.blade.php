@@ -44,7 +44,7 @@ document.addEventListener('alpine:init', () => {
         password: this.password,
         password_confirmation: this.password_confirmation,
       }).then(res => {
-        window.location.href = route('auth.login')
+        window.location.href = route('auth.login');
     }).catch(err => {
         Alpine.store('toast').show('danger', err.response.data.message)
       }).finally(() => {
