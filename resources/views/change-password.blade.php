@@ -1,3 +1,4 @@
+
 @extends('layouts.profile')
 @section('title', 'Change password' . ' - ' .config('app.name'))
 @section('box')

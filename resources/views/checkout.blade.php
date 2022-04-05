@@ -50,7 +50,7 @@
                                 <input type="radio" name="addressOption" 
                                     value="{{ $deliveryAddress->address.'||'.$deliveryAddress->phone_number }}" 
                                     x-model="value"
-                                    @click="address = '$deliveryAddress->address'; phone_number = '$deliveryAddress->phone_number'"
+                                    @click="address = '{{ $deliveryAddress->address }}'; phone_number = '{{ $deliveryAddress->phone_number }}'"
                                 >
                                 <div class="pl-4">
                                     <p>{{ $deliveryAddress->address }}</p>
