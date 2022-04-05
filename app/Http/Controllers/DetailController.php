@@ -20,6 +20,10 @@ class DetailController extends Controller
         $slug = Slug::where('slug', $slug)->firstOrFail();
         $sluggable = $slug->sluggable;
 
+        if (!$sluggable->published) {
+            return abort(404);
+        }
+
         if ($sluggable instanceof Product) {
             return view('product-detail', [
                 'product' => $sluggable,
