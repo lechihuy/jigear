@@ -152,9 +152,6 @@ class ProductController extends Controller
             'catalogOptions' => Catalog::all()->mapWithKeys(fn($catalog) => [
                 $catalog->title => $catalog->id
             ]),
-            'brandOptions' => Brand::all()->mapWithKeys(fn($brand) => [
-                $brand->name => $brand->id
-            ])
         ]);
     }
 

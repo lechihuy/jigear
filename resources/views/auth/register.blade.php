@@ -1,14 +1,14 @@
 @extends('layouts.master')
 
-@section('title', 'home')
+@section('title', 'Register')
 @section('content')
 <div class="bg-white min-h-screen flex items-center">
     <x-container>
-        <form class="w-1/2 mx-auto" x-data="registerForm" @submit.prevent="submit">
+        <form class="w-96 max-w-full mx-auto" x-data="registerForm" @submit.prevent="submit">
             <h1 class="py-2 text-2xl font-medium text-zinc-600 text-center mb-4">Create Your Apple ID</h1>
-            <div class="flex gap-2">
-                <input type="text" placeholder="First name" x-model="first_name" class="flex-grow py-3 rounded border-zinc-300 placeholder-zinc-400 text-sm">
-                <input type="text" placeholder="Last name" x-model="last_name" class="flex-grow py-3 rounded border-zinc-300 placeholder-zinc-400 text-sm">
+            <div class="grid grid-cols-2 gap-2">
+                <input type="text" placeholder="First name" x-model="first_name" class="grow py-3 rounded border-zinc-300 placeholder-zinc-400 text-sm">
+                <input type="text" placeholder="Last name" x-model="last_name" class="grow py-3 rounded border-zinc-300 placeholder-zinc-400 text-sm">
             </div>
             <div class="pt-2">
                 <input type="email" placeholder="Email" x-model="email" class="w-full py-3 rounded border-zinc-300 placeholder-zinc-400 text-sm">
